@@ -6,4 +6,12 @@ class IconPath {
   static const String us = '$_basePath/us.png';
   static const String sa = '$_basePath/sa.png';
   static const String fr = '$_basePath/fr.png';
+  static const String home = '$_basePath/home.png';
+  static const String love = '$_basePath/love.png';
+  static const String profile = '$_basePath/profile.png';
+  static const String list = '$_basePath/list.png';
+  static const String blockhome = '$_basePath/block_home.png';
+  static const String blocklove = '$_basePath/block_love.png';
+  static const String blockprofile = '$_basePath/block_profile.png';
+  static const String blocklist = '$_basePath/block_list.png';
 }

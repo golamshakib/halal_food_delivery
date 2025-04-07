@@ -1,57 +1,55 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class VerifyController extends GetxController {
   final TextEditingController otpController = TextEditingController();
-  RxInt secondsRemaining = 60.obs;
-  RxBool isClickable = false.obs;
-  RxBool showPurpleLabel = false.obs;
+  final TextEditingController otpMailController = TextEditingController();
+  var isResendEnabled = false.obs;
+  var start = 30.obs;
+  Timer? _timer;
 
-  late final Timer _timer;
-  final isLoading = true.obs;
   String? email;
   String? fromScreen;
 
   @override
   void onInit() {
-    if (Get.arguments != null) {
-      email = Get.arguments["user_email"]; // Ensure "user_email" is a string
-      fromScreen =
-          Get.arguments["form_screen"]; // Ensure "form_screen" is a string
-    }
     super.onInit();
-    _startCountdown();
+    startTimer();
+    Future.delayed(Duration.zero, resetState);
   }
 
-  void _startCountdown() {
-    // Start with 12 seconds as shown in the image
-    secondsRemaining.value = 15;
+  void resetState() {
+    otpController.clear();
+    startTimer();
+  }
+
+  void startTimer() {
+    isResendEnabled.value = false;
+    start.value = 30;
+    _timer?.cancel();
+
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (secondsRemaining.value > 0) {
-        secondsRemaining.value--;
+      if (start.value <= 0) {
+        isResendEnabled.value = true;
+        timer.cancel();
       } else {
-        isClickable.value = true;
-        _timer.cancel();
+        start.value--;
       }
     });
   }
 
-  void resetTimer() {
-    secondsRemaining.value = 60;
-    isClickable.value = false;
-    _startCountdown();
-  }
-
-  String formatTime(int seconds) {
-    final minutes = seconds ~/ 60;
-    final secs = seconds % 60;
-    return '${minutes.toString().padLeft(2, '0')}:${secs.toString().padLeft(2, '0')}';
+  void resendOtp() {
+    log("Resending OTP to $email");
+    resetState();
   }
 
   @override
   void onClose() {
-    _timer.cancel();
+    _timer?.cancel();
+    otpController.dispose();
+    otpMailController.dispose();
     super.onClose();
   }
 }

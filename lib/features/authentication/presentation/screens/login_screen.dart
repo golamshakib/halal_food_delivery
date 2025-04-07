@@ -80,7 +80,7 @@ class LoginScreen extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () => Get.toNamed(AppRoute.roleSelectionScreen),
                   child: CustomText(
                     text: "Sign up",
                     fontSize: 14.sp,
