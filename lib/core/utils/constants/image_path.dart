@@ -5,4 +5,6 @@ class ImagePath {
   static const String image1 = '$_basePath/image1.png';
   static const String image2 = '$_basePath/image2.png';
   static const String image3 = '$_basePath/image3.png';
+  static const String successful = '$_basePath/successful.png';
+  static const String verifysuccessful = '$_basePath/verifysuccessful.png';
 }

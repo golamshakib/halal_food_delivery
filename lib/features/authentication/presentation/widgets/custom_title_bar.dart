@@ -40,6 +40,7 @@ class CustomTitleBar extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: left ?? 12.w),
             child: CustomText(
+              textAlign: TextAlign.start,
               text: subtitle,
               fontSize: 14.sp,
               fontWeight: FontWeight.w400,

@@ -19,6 +19,7 @@ dependencies:
   google_fonts: ^6.2.1    # Custom fonts
   shared_preferences: ^2.3.2  # Local storage
   lottie: ^3.3.1         # Lottie animations
+  pin_code_fields: ^8.0.1 # OTP input fields
 
 dev_dependencies:
   flutter_test:

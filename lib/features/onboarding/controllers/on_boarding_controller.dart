@@ -20,13 +20,13 @@ class OnboardingController extends GetxController {
 
   void onLoginPressed() {
     // Navigate to login screen
-    Get.offAllNamed(AppRoute.loginScreen);
+    Get.toNamed(AppRoute.loginScreen);
     log("Navigate to Login Screen");
   }
 
   void onRegisterPressed() {
     // Navigate to register screen
-    // Get.offAll(() => SignUpScreen(isEmail: true));
+    Get.toNamed(AppRoute.roleSelectionScreen);
     log("Navigate to Register Screen");
   }
 
