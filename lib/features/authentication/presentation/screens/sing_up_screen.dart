@@ -56,6 +56,7 @@ class SignUpScreen extends StatelessWidget {
               prefixIcon: Icon(Icons.send_outlined),
               hintText: "Type Your Location",
             ),
+
             SizedBox(height: 16.h),
             Obx(
               () => CustomTextField(
@@ -73,6 +74,79 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
             ),
+            if (arguments == 'owner') ...[
+              SizedBox(height: 16.h),
+              GestureDetector(
+                onTap: () async {
+                  await controller.pickDocument();
+                },
+                child: Obx(() {
+                  final file = controller.pickedFile.value;
+                  final extension = file?.path.split('.').last.toLowerCase();
+                  final isImage = ['jpg', 'jpeg', 'png'].contains(extension);
+
+                  return Container(
+                    width: double.infinity,
+                    height: 180.h,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Color(0XFFE0E0E0)),
+                      borderRadius: BorderRadius.circular(8.h),
+                    ),
+                    child:
+                        file == null
+                            ? Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  CustomText(
+                                    text: "Commercial license/AVS Certificate",
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w400,
+                                    color: Color(0xff767676),
+                                  ),
+                                  SizedBox(height: 8.h),
+                                  Icon(
+                                    Icons.image_outlined,
+                                    color: Color(0xff767676),
+                                    size: 16.sp,
+                                  ),
+                                ],
+                              ),
+                            )
+                            : isImage
+                            ? ClipRRect(
+                              borderRadius: BorderRadius.circular(8.h),
+                              child: Image.file(
+                                file,
+                                width: double.infinity,
+                                height: 180.h,
+                                fit: BoxFit.cover,
+                              ),
+                            )
+                            : Center(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.insert_drive_file,
+                                    color: AppColors.primary,
+                                  ),
+                                  SizedBox(width: 10.w),
+                                  Flexible(
+                                    child: CustomText(
+                                      text: file.path.split('/').last,
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black87,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                  );
+                }),
+              ),
+            ],
             SizedBox(height: 32.h),
             CustomButton(
               onPressed: () {
@@ -80,7 +154,10 @@ class SignUpScreen extends StatelessWidget {
               },
               text: "Sign Up",
             ),
-            SizedBox(height: 200.h),
+            if (arguments == 'owner')
+              SizedBox(height: 39.h)
+            else
+              SizedBox(height: 200.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
