@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../delivery_profile/presentation/screens/delivery_profile_screen.dart';
 import '../../home/presentation/screens/delivery_home_screen.dart';
 
 class DeliveryNavBarController extends GetxController {
@@ -9,7 +10,7 @@ class DeliveryNavBarController extends GetxController {
   List screens = [
     DeliveryHomeScreen(),
     DeliveryHomeScreen(),
-    DeliveryHomeScreen(),
+    DeliveryProfileScreen(),
   ];
   void changeIndex(int index) {
     if (selectedIndex == index) {

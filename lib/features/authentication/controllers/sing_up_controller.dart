@@ -12,6 +12,7 @@ class SingUpController extends GetxController {
   var isPasswordVisible = false.obs;
 
   Rx<File?> pickedFile = Rx<File?>(null);
+  Rx<File?> pickedFile2 = Rx<File?>(null);
 
   void togglePasswordVisibility() {
     isPasswordVisible.value = !isPasswordVisible.value;
@@ -25,6 +26,17 @@ class SingUpController extends GetxController {
 
     if (result != null && result.files.single.path != null) {
       pickedFile.value = File(result.files.single.path!);
+    }
+  }
+
+  Future<void> pickDocument1() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['jpg', 'jpeg', 'png', 'pdf', 'doc', 'docx'],
+    );
+
+    if (result != null && result.files.single.path != null) {
+      pickedFile2.value = File(result.files.single.path!);
     }
   }
 }
