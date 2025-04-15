@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_text.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_text_field.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
+import 'package:halal_food_delivery/core/utils/constants/icon_path.dart';
 import 'package:halal_food_delivery/core/utils/constants/logo_path.dart';
 import 'package:halal_food_delivery/features/authentication/controllers/sing_up_controller.dart';
 
@@ -87,7 +88,7 @@ class SignUpScreen extends StatelessWidget {
 
                   return Container(
                     width: double.infinity,
-                    height: 180.h,
+                    height: 103.h,
                     decoration: BoxDecoration(
                       border: Border.all(color: Color(0XFFE0E0E0)),
                       borderRadius: BorderRadius.circular(8.h),
@@ -119,7 +120,79 @@ class SignUpScreen extends StatelessWidget {
                               child: Image.file(
                                 file,
                                 width: double.infinity,
-                                height: 180.h,
+                                height: 103.h,
+                                fit: BoxFit.cover,
+                              ),
+                            )
+                            : Center(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.insert_drive_file,
+                                    color: AppColors.primary,
+                                  ),
+                                  SizedBox(width: 10.w),
+                                  Flexible(
+                                    child: CustomText(
+                                      text: file.path.split('/').last,
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black87,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                  );
+                }),
+              ),
+              SizedBox(height: 16.h),
+              GestureDetector(
+                onTap: () async {
+                  await controller.pickDocument1();
+                },
+                child: Obx(() {
+                  final file = controller.pickedFile2.value;
+                  final extension = file?.path.split('.').last.toLowerCase();
+                  final isImage = ['jpg', 'jpeg', 'png'].contains(extension);
+
+                  return Container(
+                    width: double.infinity,
+                    height: 103.h,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Color(0XFFE0E0E0)),
+                      borderRadius: BorderRadius.circular(8.h),
+                    ),
+                    child:
+                        file == null
+                            ? Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  CustomText(
+                                    text: "Signature Here",
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w400,
+                                    color: Color(0xff767676),
+                                  ),
+                                  SizedBox(height: 8.h),
+                                  Image.asset(
+                                    IconPath.signature,
+                                    width: 16.w,
+                                    height: 16.h,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ],
+                              ),
+                            )
+                            : isImage
+                            ? ClipRRect(
+                              borderRadius: BorderRadius.circular(8.h),
+                              child: Image.file(
+                                file,
+                                width: double.infinity,
+                                height: 103.h,
                                 fit: BoxFit.cover,
                               ),
                             )

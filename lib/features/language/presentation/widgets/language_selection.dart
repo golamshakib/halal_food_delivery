@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_text.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_colors.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
-import 'package:halal_food_delivery/core/utils/constants/icon_path.dart';
+import 'package:halal_food_delivery/core/utils/constants/image_path.dart';
 
 import '../../controllers/lanauage_controller.dart';
 
@@ -26,8 +26,8 @@ class LanguageSelection extends StatelessWidget {
               border: Border.all(color: Color.fromRGBO(126, 31, 127, 0.25)),
             ),
             child: _buildLanguageOption(
-              flagAsset: IconPath.us,
-              language: 'United States (English)',
+              flagAsset: ImagePath.english,
+              language: 'English',
               languageCode: 'en',
               controller: languageController,
             ),
@@ -42,7 +42,7 @@ class LanguageSelection extends StatelessWidget {
               border: Border.all(color: Color.fromRGBO(126, 31, 127, 0.25)),
             ),
             child: _buildLanguageOption(
-              flagAsset: IconPath.sa,
+              flagAsset: ImagePath.arabic,
               language: 'Arabic',
               languageCode: 'ar',
               controller: languageController,
@@ -58,8 +58,8 @@ class LanguageSelection extends StatelessWidget {
               border: Border.all(color: Color.fromRGBO(126, 31, 127, 0.25)),
             ),
             child: _buildLanguageOption(
-              flagAsset: IconPath.fr,
-              language: 'France (French)',
+              flagAsset: ImagePath.french,
+              language: 'French',
               languageCode: 'fr',
               controller: languageController,
             ),

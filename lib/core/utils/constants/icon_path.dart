@@ -14,4 +14,12 @@ class IconPath {
   static const String blocklove = '$_basePath/block_love.png';
   static const String blockprofile = '$_basePath/block_profile.png';
   static const String blocklist = '$_basePath/block_list.png';
+
+  static const String menu = '$_basePath/menu.png';
+  static const String logout = '$_basePath/logout.png';
+  static const String user = '$_basePath/user.png';
+  static const String lock = '$_basePath/lock.png';
+  static const String key = '$_basePath/key.png';
+  static const String signature = '$_basePath/signature.png';
+  static const String image = '$_basePath/image.png';
 }
