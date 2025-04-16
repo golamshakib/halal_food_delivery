@@ -22,4 +22,9 @@ class IconPath {
   static const String key = '$_basePath/key.png';
   static const String signature = '$_basePath/signature.png';
   static const String image = '$_basePath/image.png';
+
+  static const String hand = '$_basePath/hand.png';
+  static const String message = '$_basePath/message.png';
+  static const String security = '$_basePath/security.png';
+  static const String scan = '$_basePath/scan.png';
 }

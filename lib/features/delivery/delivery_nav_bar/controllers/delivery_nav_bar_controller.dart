@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../delivery_order/presentation/screens/delivery_order_screen.dart';
 import '../../delivery_profile/presentation/screens/delivery_profile_screen.dart';
 import '../../home/presentation/screens/delivery_home_screen.dart';
 
@@ -9,7 +10,7 @@ class DeliveryNavBarController extends GetxController {
 
   List screens = [
     DeliveryHomeScreen(),
-    DeliveryHomeScreen(),
+    DeliveryOrderScreen(),
     DeliveryProfileScreen(),
   ];
   void changeIndex(int index) {

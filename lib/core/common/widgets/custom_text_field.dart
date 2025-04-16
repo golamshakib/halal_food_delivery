@@ -23,9 +23,11 @@ class CustomTextField extends StatelessWidget {
     this.showFocusedBorder = true,
     this.borderColor,
     this.textColor,
+    this.onChanged,
   });
 
   final TextEditingController controller;
+  final ValueChanged<String>? onChanged;
   final String hintText;
   final bool obscureText;
   final dynamic fillColor;
@@ -47,6 +49,7 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: TextFormField(
+        onChanged: onChanged,
         maxLines: maxLine,
         readOnly: readOnly,
         keyboardType: keyboardType,
