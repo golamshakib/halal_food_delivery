@@ -21,7 +21,12 @@ import '../features/delivery/delivery_profile/presentation/screens/delivery_poli
 import '../features/delivery/home/presentation/screens/delivery_see_all_request_screen.dart';
 import '../features/language/presentation/screens/language_selection_screen.dart';
 import '../features/onboarding/presentation/screens/onboarding_screen.dart';
+import '../features/owner/home/presentation/screens/owner_my_order_screen.dart';
+import '../features/owner/home/presentation/screens/owner_order_list_screen.dart';
 import '../features/owner/owner_nav_bar/presentation/screens/owner_nav_bar.dart';
+import '../features/owner/owner_notification/presentation/screens/owner_notification_screen.dart';
+import '../features/owner/owner_order/presentation/screens/owner_order_details_screen.dart';
+import '../features/owner/owner_order/presentation/screens/owner_order_scan_screen.dart';
 import '../features/owner/owner_profile/presentation/screens/owner_add_menu_screen.dart';
 import '../features/owner/owner_profile/presentation/screens/owner_change_password_screen.dart';
 import '../features/owner/owner_profile/presentation/screens/owner_edit_profile_screen.dart';
@@ -65,6 +70,12 @@ class AppRoute {
   static String deliveryNotificationScreen = "/deliveryNotificationScreen";
   static String deliveryOrderScanScreen = "/deliveryOrderScanScreen";
   static String deliveryOrderDetailsScreen = "/deliveryOrderDetailsScreen";
+
+  static String ownerNotificationScreen = "/ownerNotificationScreen";
+  static String ownerMyOrderScreen = "/ownerMyOrderScreen";
+  static String ownerOrderListScreen = "/ownerOrderListScreen";
+  static String ownerOrderDetailsScreen = "/ownerOrderDetailsScreen";
+  static String ownerOrderScanScreen = "/ownerOrderScanScreen";
 
   static List<GetPage> routes = [
     GetPage(name: loginScreen, page: () => LoginScreen()),
@@ -134,5 +145,16 @@ class AppRoute {
       name: deliveryOrderDetailsScreen,
       page: () => DeliveryOrderDetailsScreen(),
     ),
+    GetPage(
+      name: ownerNotificationScreen,
+      page: () => OwnerNotificationScreen(),
+    ),
+    GetPage(name: ownerMyOrderScreen, page: () => OwnerMyOrderScreen()),
+    GetPage(name: ownerOrderListScreen, page: () => OwnerOrderListScreen()),
+    GetPage(
+      name: ownerOrderDetailsScreen,
+      page: () => OwnerOrderDetailsScreen(),
+    ),
+    GetPage(name: ownerOrderScanScreen, page: () => OwnerOrderScanScreen()),
   ];
 }

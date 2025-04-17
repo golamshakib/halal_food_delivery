@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class DeliveryOrderController extends GetxController {
+class OwnerOrderController extends GetxController {
   final PageController pageController = PageController();
   final RxInt selectedTab = 0.obs;
 
