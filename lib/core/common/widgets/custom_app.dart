@@ -65,7 +65,7 @@ class CustomApp extends StatelessWidget implements PreferredSizeWidget {
                     color: color ?? AppColors.textThird,
                     text: title ?? '',
                     fontSize: fontSize ?? 16.sp,
-                    fontWeight: fontWeight ?? FontWeight.w500,
+                    fontWeight: fontWeight ?? FontWeight.w600,
                   )
                   : null,
           actions:

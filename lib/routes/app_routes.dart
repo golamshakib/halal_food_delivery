@@ -12,12 +12,21 @@ import '../features/customer/customer_profile/presentation/screens/customer_chan
 import '../features/customer/customer_profile/presentation/screens/customer_edit_profile_screen.dart';
 import '../features/customer/customer_profile/presentation/screens/customer_policy_screen.dart';
 import '../features/delivery/delivery_nav_bar/presentation/screens/delivery_nav_bar.dart';
+import '../features/delivery/delivery_notification/presentation/screens/delivery_notification_screen.dart';
+import '../features/delivery/delivery_order/presentation/screens/delivery_order_details_screen.dart';
+import '../features/delivery/delivery_order/presentation/screens/delivery_order_scan_screen.dart';
 import '../features/delivery/delivery_profile/presentation/screens/delivery_change_password_screen.dart';
 import '../features/delivery/delivery_profile/presentation/screens/delivery_edit_profile_screen.dart';
 import '../features/delivery/delivery_profile/presentation/screens/delivery_policy_screen.dart';
+import '../features/delivery/home/presentation/screens/delivery_see_all_request_screen.dart';
 import '../features/language/presentation/screens/language_selection_screen.dart';
 import '../features/onboarding/presentation/screens/onboarding_screen.dart';
+import '../features/owner/home/presentation/screens/owner_my_order_screen.dart';
+import '../features/owner/home/presentation/screens/owner_order_list_screen.dart';
 import '../features/owner/owner_nav_bar/presentation/screens/owner_nav_bar.dart';
+import '../features/owner/owner_notification/presentation/screens/owner_notification_screen.dart';
+import '../features/owner/owner_order/presentation/screens/owner_order_details_screen.dart';
+import '../features/owner/owner_order/presentation/screens/owner_order_scan_screen.dart';
 import '../features/owner/owner_profile/presentation/screens/owner_add_menu_screen.dart';
 import '../features/owner/owner_profile/presentation/screens/owner_change_password_screen.dart';
 import '../features/owner/owner_profile/presentation/screens/owner_edit_profile_screen.dart';
@@ -56,6 +65,17 @@ class AppRoute {
   static String deliveryChangePasswordScreen = "/deliveryChangePasswordScreen";
   static String deliveryEditProfileScreen = "/deliveryEditProfileScreen";
   static String deliveryPolicyScreen = "/deliveryPolicyScreen";
+
+  static String deliverySeeAllRequestScreen = "/deliverySeeAllRequestScreen";
+  static String deliveryNotificationScreen = "/deliveryNotificationScreen";
+  static String deliveryOrderScanScreen = "/deliveryOrderScanScreen";
+  static String deliveryOrderDetailsScreen = "/deliveryOrderDetailsScreen";
+
+  static String ownerNotificationScreen = "/ownerNotificationScreen";
+  static String ownerMyOrderScreen = "/ownerMyOrderScreen";
+  static String ownerOrderListScreen = "/ownerOrderListScreen";
+  static String ownerOrderDetailsScreen = "/ownerOrderDetailsScreen";
+  static String ownerOrderScanScreen = "/ownerOrderScanScreen";
 
   static List<GetPage> routes = [
     GetPage(name: loginScreen, page: () => LoginScreen()),
@@ -109,5 +129,32 @@ class AppRoute {
       page: () => DeliveryEditProfileScreen(),
     ),
     GetPage(name: deliveryPolicyScreen, page: () => DeliveryPolicyScreen()),
+    GetPage(
+      name: deliverySeeAllRequestScreen,
+      page: () => DeliverySeeAllRequestScreen(),
+    ),
+    GetPage(
+      name: deliveryNotificationScreen,
+      page: () => DeliveryNotificationScreen(),
+    ),
+    GetPage(
+      name: deliveryOrderScanScreen,
+      page: () => DeliveryOrderScanScreen(),
+    ),
+    GetPage(
+      name: deliveryOrderDetailsScreen,
+      page: () => DeliveryOrderDetailsScreen(),
+    ),
+    GetPage(
+      name: ownerNotificationScreen,
+      page: () => OwnerNotificationScreen(),
+    ),
+    GetPage(name: ownerMyOrderScreen, page: () => OwnerMyOrderScreen()),
+    GetPage(name: ownerOrderListScreen, page: () => OwnerOrderListScreen()),
+    GetPage(
+      name: ownerOrderDetailsScreen,
+      page: () => OwnerOrderDetailsScreen(),
+    ),
+    GetPage(name: ownerOrderScanScreen, page: () => OwnerOrderScanScreen()),
   ];
 }

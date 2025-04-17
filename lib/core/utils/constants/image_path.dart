@@ -16,4 +16,6 @@ class ImagePath {
   static const String customer = '$_basePath/customer.png';
   static const String delivery = '$_basePath/delivery.png';
   static const String background = '$_basePath/background.png';
+
+  static const String chicken = '$_basePath/chicken.png';
 }
