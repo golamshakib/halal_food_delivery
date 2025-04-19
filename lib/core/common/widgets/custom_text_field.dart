@@ -24,8 +24,11 @@ class CustomTextField extends StatelessWidget {
     this.borderColor,
     this.textColor,
     this.onChanged,
+    this.onTap,
+    this.color,
   });
 
+  final VoidCallback? onTap;
   final TextEditingController controller;
   final ValueChanged<String>? onChanged;
   final String hintText;
@@ -42,6 +45,7 @@ class CustomTextField extends StatelessWidget {
   final TextStyle? style;
   final Color? borderColor;
   final Color? textColor;
+  final Color? color;
   final bool showEnabledBorder;
   final bool showFocusedBorder;
 
@@ -49,6 +53,7 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: TextFormField(
+        onTap: onTap,
         onChanged: onChanged,
         maxLines: maxLine,
         readOnly: readOnly,
@@ -58,7 +63,7 @@ class CustomTextField extends StatelessWidget {
         style:
             style ??
             GoogleFonts.inter(
-              color: textColor ?? AppColors.black,
+              color: color ?? AppColors.black,
               fontWeight: FontWeight.w500,
               fontSize: 14.sp,
               height: 20.h / 14.h,

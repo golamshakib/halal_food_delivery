@@ -8,10 +8,16 @@ import '../features/authentication/presentation/screens/successful_screen.dart';
 import '../features/authentication/presentation/screens/verification_successful_screen.dart';
 import '../features/authentication/presentation/screens/verify_screen.dart';
 import '../features/customer/customer_nav_bar/presentation/screens/customer_nav_bar.dart';
+import '../features/customer/customer_notification/presentation/screens/customer_notification_screen.dart';
+import '../features/customer/customer_notification/presentation/screens/customer_rating_screen.dart';
 import '../features/customer/customer_order/presentation/screens/cusotmer_order_details_screen.dart';
 import '../features/customer/customer_profile/presentation/screens/customer_change_password_screen.dart';
 import '../features/customer/customer_profile/presentation/screens/customer_edit_profile_screen.dart';
 import '../features/customer/customer_profile/presentation/screens/customer_policy_screen.dart';
+import '../features/customer/customer_restaurant/presentation/screens/customer_restaurant_menu_screen.dart';
+import '../features/customer/customer_restaurant/presentation/screens/customer_restaurant_profile_screen.dart';
+import '../features/customer/home/presentation/screens/customer_search_result_screen.dart';
+import '../features/customer/home/presentation/screens/customer_search_screen.dart';
 import '../features/delivery/delivery_nav_bar/presentation/screens/delivery_nav_bar.dart';
 import '../features/delivery/delivery_notification/presentation/screens/delivery_notification_screen.dart';
 import '../features/delivery/delivery_order/presentation/screens/delivery_order_details_screen.dart';
@@ -79,6 +85,13 @@ class AppRoute {
   static String ownerOrderScanScreen = "/ownerOrderScanScreen";
 
   static String cusotmerOrderDetailsScreen = "/cusotmerOrderDetailsScreen";
+  static String customerNotificationScreen = "/customerNotificationScreen";
+  static String customerRatingScreen = "/customerRatingScreen";
+  static String customerSearchScreen = "/customerSearchScreen";
+  static String customerSearchResultScreen = "/customerSearchResultScreen";
+  static String customerRestaurantMenuScreen = "/customerRestaurantMenuScreen";
+  static String customerRestaurantProfileScreen =
+      "/customerRestaurantProfileScreen";
 
   static List<GetPage> routes = [
     GetPage(name: loginScreen, page: () => LoginScreen()),
@@ -162,6 +175,24 @@ class AppRoute {
     GetPage(
       name: cusotmerOrderDetailsScreen,
       page: () => CusotmerOrderDetailsScreen(),
+    ),
+    GetPage(
+      name: customerNotificationScreen,
+      page: () => CustomerNotificationScreen(),
+    ),
+    GetPage(name: customerRatingScreen, page: () => CustomerRatingScreen()),
+    GetPage(name: customerSearchScreen, page: () => CustomerSearchScreen()),
+    GetPage(
+      name: customerSearchResultScreen,
+      page: () => CustomerSearchResultScreen(),
+    ),
+    GetPage(
+      name: customerRestaurantMenuScreen,
+      page: () => CustomerRestaurantMenuScreen(),
+    ),
+    GetPage(
+      name: customerRestaurantProfileScreen,
+      page: () => CustomerRestaurantProfileScreen(),
     ),
   ];
 }
