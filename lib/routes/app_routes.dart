@@ -14,6 +14,8 @@ import '../features/customer/customer_order/presentation/screens/cusotmer_order_
 import '../features/customer/customer_profile/presentation/screens/customer_change_password_screen.dart';
 import '../features/customer/customer_profile/presentation/screens/customer_edit_profile_screen.dart';
 import '../features/customer/customer_profile/presentation/screens/customer_policy_screen.dart';
+import '../features/customer/customer_restaurant/presentation/screens/customer_restaurant_menu_screen.dart';
+import '../features/customer/customer_restaurant/presentation/screens/customer_restaurant_profile_screen.dart';
 import '../features/customer/home/presentation/screens/customer_search_result_screen.dart';
 import '../features/customer/home/presentation/screens/customer_search_screen.dart';
 import '../features/delivery/delivery_nav_bar/presentation/screens/delivery_nav_bar.dart';
@@ -87,6 +89,9 @@ class AppRoute {
   static String customerRatingScreen = "/customerRatingScreen";
   static String customerSearchScreen = "/customerSearchScreen";
   static String customerSearchResultScreen = "/customerSearchResultScreen";
+  static String customerRestaurantMenuScreen = "/customerRestaurantMenuScreen";
+  static String customerRestaurantProfileScreen =
+      "/customerRestaurantProfileScreen";
 
   static List<GetPage> routes = [
     GetPage(name: loginScreen, page: () => LoginScreen()),
@@ -180,6 +185,14 @@ class AppRoute {
     GetPage(
       name: customerSearchResultScreen,
       page: () => CustomerSearchResultScreen(),
+    ),
+    GetPage(
+      name: customerRestaurantMenuScreen,
+      page: () => CustomerRestaurantMenuScreen(),
+    ),
+    GetPage(
+      name: customerRestaurantProfileScreen,
+      page: () => CustomerRestaurantProfileScreen(),
     ),
   ];
 }

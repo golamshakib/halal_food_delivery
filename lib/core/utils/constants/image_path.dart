@@ -20,4 +20,10 @@ class ImagePath {
   static const String chicken = '$_basePath/chicken.png';
   static const String bannar = '$_basePath/bannar.png';
   static const String restaurants = '$_basePath/restaurants.png';
+
+  static const String cake = '$_basePath/cake.png';
+  static const String ban = '$_basePath/ban.png';
+  static const String juice = '$_basePath/juice.png';
+  static const String salad = '$_basePath/salad.png';
+  static const String fried = '$_basePath/fried.png';
 }

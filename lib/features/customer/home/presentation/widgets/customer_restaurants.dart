@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
+import 'package:halal_food_delivery/routes/app_routes.dart';
 
 import '../../../../../core/utils/constants/image_path.dart';
 import '../../controllers/customer_home_controller.dart';
@@ -26,7 +27,9 @@ class CustomerRestaurants extends StatelessWidget {
                   image: item['image'] ?? ImagePath.restaurants,
                   name: item['name'] ?? '',
                   star: item['rating'] ?? '0.0',
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(AppRoute.customerRestaurantProfileScreen);
+                  },
                 ),
               );
             }),
