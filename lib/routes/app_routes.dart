@@ -8,6 +8,7 @@ import '../features/authentication/presentation/screens/successful_screen.dart';
 import '../features/authentication/presentation/screens/verification_successful_screen.dart';
 import '../features/authentication/presentation/screens/verify_screen.dart';
 import '../features/customer/customer_nav_bar/presentation/screens/customer_nav_bar.dart';
+import '../features/customer/customer_order/presentation/screens/cusotmer_order_details_screen.dart';
 import '../features/customer/customer_profile/presentation/screens/customer_change_password_screen.dart';
 import '../features/customer/customer_profile/presentation/screens/customer_edit_profile_screen.dart';
 import '../features/customer/customer_profile/presentation/screens/customer_policy_screen.dart';
@@ -76,6 +77,8 @@ class AppRoute {
   static String ownerOrderListScreen = "/ownerOrderListScreen";
   static String ownerOrderDetailsScreen = "/ownerOrderDetailsScreen";
   static String ownerOrderScanScreen = "/ownerOrderScanScreen";
+
+  static String cusotmerOrderDetailsScreen = "/cusotmerOrderDetailsScreen";
 
   static List<GetPage> routes = [
     GetPage(name: loginScreen, page: () => LoginScreen()),
@@ -156,5 +159,9 @@ class AppRoute {
       page: () => OwnerOrderDetailsScreen(),
     ),
     GetPage(name: ownerOrderScanScreen, page: () => OwnerOrderScanScreen()),
+    GetPage(
+      name: cusotmerOrderDetailsScreen,
+      page: () => CusotmerOrderDetailsScreen(),
+    ),
   ];
 }
