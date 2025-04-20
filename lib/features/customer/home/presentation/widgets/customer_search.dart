@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 
 import '../../../../../core/utils/constants/image_path.dart';
+import '../../../../../routes/app_routes.dart';
 import '../../../customer_my_list/presentation/widgets/customer_custom_product_vertical.dart';
 import '../../controllers/customer_search_controller.dart';
 
@@ -26,6 +27,9 @@ class CustomerSearch extends StatelessWidget {
               foodName: item['name'] ?? '',
               price: item['price'] ?? '0.00',
               star: item['rating'] ?? '0.0',
+              onTap: () {
+                Get.toNamed(AppRoute.customerFoodProfileScreen);
+              },
             );
           }).toList(),
     );

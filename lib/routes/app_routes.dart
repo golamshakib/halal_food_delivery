@@ -7,6 +7,10 @@ import '../features/authentication/presentation/screens/sing_up_screen.dart';
 import '../features/authentication/presentation/screens/successful_screen.dart';
 import '../features/authentication/presentation/screens/verification_successful_screen.dart';
 import '../features/authentication/presentation/screens/verify_screen.dart';
+import '../features/customer/customer_food_profile/presentation/screens/customer_food_profile_screen.dart';
+import '../features/customer/customer_food_profile/presentation/screens/customer_order_confrim_screen.dart';
+import '../features/customer/customer_food_profile/presentation/screens/customer_payment_screen.dart';
+import '../features/customer/customer_food_profile/presentation/screens/customer_personal_information_screen.dart';
 import '../features/customer/customer_nav_bar/presentation/screens/customer_nav_bar.dart';
 import '../features/customer/customer_notification/presentation/screens/customer_notification_screen.dart';
 import '../features/customer/customer_notification/presentation/screens/customer_rating_screen.dart';
@@ -92,6 +96,12 @@ class AppRoute {
   static String customerRestaurantMenuScreen = "/customerRestaurantMenuScreen";
   static String customerRestaurantProfileScreen =
       "/customerRestaurantProfileScreen";
+
+  static String customerFoodProfileScreen = "/customerFoodProfileScreen";
+  static String customerPersonalInformationScreen =
+      "/customerPersonalInformationScreen";
+  static String customerPaymentScreen = "/customerPaymentScreen";
+  static String customerOrderConfrimScreen = "/customerOrderConfrimScreen";
 
   static List<GetPage> routes = [
     GetPage(name: loginScreen, page: () => LoginScreen()),
@@ -193,6 +203,19 @@ class AppRoute {
     GetPage(
       name: customerRestaurantProfileScreen,
       page: () => CustomerRestaurantProfileScreen(),
+    ),
+    GetPage(
+      name: customerFoodProfileScreen,
+      page: () => CustomerFoodProfileScreen(),
+    ),
+    GetPage(
+      name: customerPersonalInformationScreen,
+      page: () => CustomerPersonalInformationScreen(),
+    ),
+    GetPage(name: customerPaymentScreen, page: () => CustomerPaymentScreen()),
+    GetPage(
+      name: customerOrderConfrimScreen,
+      page: () => CustomerOrderConfrimScreen(),
     ),
   ];
 }

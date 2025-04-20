@@ -11,7 +11,7 @@ class CustomApp extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final bool isBack;
   final bool istitle;
-  final bool isNotification;
+  final bool isLove;
   final Color? backgroundColor;
   final Color? color;
   final int currentStep;
@@ -27,7 +27,7 @@ class CustomApp extends StatelessWidget implements PreferredSizeWidget {
     this.backgroundColor,
     this.color,
     this.currentStep = 1,
-    this.isNotification = false,
+    this.isLove = false,
     this.onPressed,
     this.fontSize,
     this.fontWeight,
@@ -69,23 +69,16 @@ class CustomApp extends StatelessWidget implements PreferredSizeWidget {
                   )
                   : null,
           actions:
-              isNotification
+              isLove
                   ? [
                     Padding(
-                      padding: EdgeInsets.only(right: 20.h),
+                      padding: EdgeInsets.only(right: 16.w),
                       child: GestureDetector(
                         onTap: onPressed,
-                        child: Container(
-                          padding: EdgeInsets.all(8.h),
-                          decoration: BoxDecoration(
-                            color: Color(0xffE7E7E7),
-                            shape: BoxShape.circle,
-                          ),
-                          child: Icon(
-                            Icons.notifications_none_outlined,
-                            size: 24.sp,
-                            color: AppColors.primary,
-                          ),
+                        child: Icon(
+                          Icons.favorite_outline,
+                          size: 24.sp,
+                          color: Color(0xff808080),
                         ),
                       ),
                     ),

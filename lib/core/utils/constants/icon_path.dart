@@ -27,4 +27,8 @@ class IconPath {
   static const String message = '$_basePath/message.png';
   static const String security = '$_basePath/security.png';
   static const String scan = '$_basePath/scan.png';
+
+  static const String fire = '$_basePath/fire.png';
+  static const String done = '$_basePath/done.png';
+  static const String stripe = '$_basePath/stripe.png';
 }
