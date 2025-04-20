@@ -12,14 +12,16 @@ class OwnerProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomApp(isBack: false, istitle: true, title: "Profile"),
-      body: Padding(
-        padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 54.h),
-        child: Column(
-          children: [
-            OwnerProfileDetails(),
-            SizedBox(height: 45.h),
-            OwnerProfileList(),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 54.h),
+          child: Column(
+            children: [
+              OwnerProfileDetails(),
+              SizedBox(height: 45.h),
+              OwnerProfileList(),
+            ],
+          ),
         ),
       ),
     );

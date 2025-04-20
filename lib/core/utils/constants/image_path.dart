@@ -26,4 +26,6 @@ class ImagePath {
   static const String juice = '$_basePath/juice.png';
   static const String salad = '$_basePath/salad.png';
   static const String fried = '$_basePath/fried.png';
+
+  static const String food = '$_basePath/food.png';
 }
