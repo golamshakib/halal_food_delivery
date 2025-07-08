@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_button.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_text.dart';
@@ -71,7 +72,17 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 24.h),
-              CustomButton(onPressed: () {}, text: "Sign In"),
+              Obx(
+                () =>
+                    controller.isLoading.value
+                        ? SpinKitWave(color: AppColors.primary, size: 30.0)
+                        : CustomButton(
+                          onPressed: () {
+                            controller.login();
+                          },
+                          text: "Sign In",
+                        ),
+              ),
               SizedBox(height: 150.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

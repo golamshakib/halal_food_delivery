@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:halal_food_delivery/core/services/Auth_service.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 
 import '../../../../../core/common/widgets/custom_button.dart';
 import '../../../../../core/common/widgets/custom_text.dart';
 import '../../../../../core/utils/constants/app_colors.dart';
-import '../../../../../routes/app_routes.dart';
 
 class CustomerLogoutBottomSheet extends StatelessWidget {
   const CustomerLogoutBottomSheet({super.key});
@@ -56,7 +56,7 @@ class CustomerLogoutBottomSheet extends StatelessWidget {
                     child: CustomButton(
                       radius: 78.h,
                       onPressed: () {
-                        Get.toNamed(AppRoute.onboardingScreen);
+                        AuthService.logoutUser();
                       },
                       text: "Yes, Logout",
                     ),
