@@ -11,10 +11,12 @@ import 'package:halal_food_delivery/features/authentication/controllers/sing_up_
 
 import '../../../../core/common/widgets/custom_button.dart';
 import '../../../../core/utils/constants/app_colors.dart';
+import '../../../../core/utils/constants/enums.dart';
 import '../../../../routes/app_routes.dart';
 
 class SignUpScreen extends StatelessWidget {
-  SignUpScreen({super.key});
+  final Role role;
+  SignUpScreen({super.key, required this.role});
 
   final controller = Get.put(SingUpController());
 
