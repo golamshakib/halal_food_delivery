@@ -5,7 +5,6 @@ import '../features/authentication/presentation/screens/forget_password_screen.d
 import '../features/authentication/presentation/screens/login_screen.dart';
 import '../features/authentication/presentation/screens/successful_screen.dart';
 import '../features/authentication/presentation/screens/verification_successful_screen.dart';
-import '../features/authentication/presentation/screens/verify_screen.dart';
 import '../features/customer/customer_food_profile/presentation/screens/customer_food_profile_screen.dart';
 import '../features/customer/customer_food_profile/presentation/screens/customer_order_confrim_screen.dart';
 import '../features/customer/customer_food_profile/presentation/screens/customer_payment_screen.dart';
@@ -47,7 +46,6 @@ import '../features/splash_screen/presentation/screens/splash_screen.dart';
 class AppRoute {
   static String loginScreen = "/loginScreen";
   static String forgetPasswordScreen = "/forgetPasswordScreen";
-  static String verifyScreen = "/verifyScreen";
   static String createPasswordScreen = "/createPasswordScreen";
   static String successfulScreen = "/successfulScreen";
   static String verificationSuccessfulScreen = "/verificationSuccessfulScreen";
@@ -111,7 +109,6 @@ class AppRoute {
     ),
     GetPage(name: onboardingScreen, page: () => OnboardingScreen()),
     GetPage(name: forgetPasswordScreen, page: () => ForgetPasswordScreen()),
-    GetPage(name: verifyScreen, page: () => VerifyScreen()),
     GetPage(name: createPasswordScreen, page: () => CreatePasswordScreen()),
     GetPage(name: successfulScreen, page: () => SuccessfulScreen()),
 

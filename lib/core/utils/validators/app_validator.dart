@@ -1,61 +1,113 @@
+import 'package:get/get.dart';
+
+import '../constants/app_texts.dart';
+
 class AppValidator {
   AppValidator._();
 
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Email is required.';
+      return AppText.emailRequired.tr;
     }
-
-    // Regular expression for email validation
     final emailRegExp = RegExp(r'^[\w\-.]+@([\w-]+\.)+[\w-]{2,4}$');
-
     if (!emailRegExp.hasMatch(value)) {
-      return 'Invalid email address.';
+      return AppText.invalidEmailAddress.tr;
     }
-
     return null;
   }
 
   static String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Password is required.';
+      return AppText.passwordRequired.tr;
     }
-
-    // Check for minimum password length
     if (value.length < 6) {
-      return 'Password must be at least 6 characters long.';
+      return AppText.passwordMinLength.tr;
     }
-// Check for uppercase letters
     if (!value.contains(RegExp(r'[A-Z]'))) {
-      return 'Password must contain at least one uppercase letter.';
+      return AppText.passwordUppercase.tr;
     }
-
-// Check for numbers
     if (!value.contains(RegExp(r'[0-9]'))) {
-      return 'Password must contain at least one number.';
+      return AppText.passwordNumber.tr;
     }
-
-// Check for special characters
     if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
-      return 'Password must contain at least one special character.';
+      return AppText.passwordSpecialChar.tr;
     }
     return null;
-
   }
+
   static String? validatePhoneNumber(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Phone number is required.';
+      return AppText.phoneNumberRequired.tr;
     }
-
-    // Regular expression for phone number validation (assuming a 10-digit US phone number format)
-    final phoneRegExp = RegExp(r'^\d{10}$');
-
+    final phoneRegExp = RegExp(r'^\d{11}$');
     if (!phoneRegExp.hasMatch(value)) {
-      return 'Invalid phone number format (10 digits required).';
+      return AppText.invalidPhoneNumber.tr;
     }
-
     return null;
   }
 
+  static String? validateName(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return AppText.nameRequired.tr;
+    }
+    if (value.length < 2) {
+      return AppText.nameMinLength.tr;
+    }
+    return null;
+  }
 
+  static String? validateUsername(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return AppText.usernameRequired.tr;
+    }
+    final usernameRegExp = RegExp(r'^[a-zA-Z0-9_]{3,15}$');
+    if (!usernameRegExp.hasMatch(value)) {
+      return AppText.invalidUsername.tr;
+    }
+    return null;
+  }
+
+  static String? validateConfirmPassword(
+    String? value,
+    String? originalPassword,
+  ) {
+    if (value == null || value.isEmpty) {
+      return AppText.confirmPasswordRequired.tr;
+    }
+    if (value != originalPassword) {
+      return AppText.passwordsDoNotMatch.tr;
+    }
+    return null;
+  }
+
+  static String? validateNotEmpty(
+    String? value, [
+    String fieldName = 'This field',
+  ]) {
+    if (value == null || value.trim().isEmpty) {
+      return AppText.fieldRequired.tr.replaceFirst('%s', fieldName);
+    }
+    return null;
+  }
+
+  static String? validateAddress(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return AppText.addressRequired.tr;
+    }
+    if (value.length < 10) {
+      return AppText.addressMinLength.tr;
+    }
+    return null;
+  }
+
+  static String? validateZipCode(String? value) {
+    if (value == null || value.isEmpty) {
+      return AppText.zipCodeRequired.tr;
+    }
+    final zipRegExp = RegExp(r'^\d{4,6}$');
+    if (!zipRegExp.hasMatch(value)) {
+      return AppText.invalidZipCode.tr;
+    }
+    return null;
+  }
 }

@@ -107,6 +107,11 @@ class CustomTextField extends StatelessWidget {
             vertical: 14.h,
             horizontal: 12.h,
           ),
+          errorStyle: GoogleFonts.inter(
+            color: Colors.redAccent,
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w500,
+          ),
         ),
         validator: validator,
       ),

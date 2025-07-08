@@ -4,8 +4,9 @@ import 'package:halal_food_delivery/core/common/widgets/custom_button.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_text_field.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 import 'package:halal_food_delivery/features/authentication/controllers/forget_password_controller.dart';
-import 'package:halal_food_delivery/routes/app_routes.dart';
+import 'package:halal_food_delivery/features/authentication/presentation/screens/verify_screen.dart';
 
+import '../../../../core/utils/constants/enums.dart';
 import '../widgets/custom_title_bar.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
@@ -30,7 +31,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             ),
             Spacer(),
             CustomButton(
-              onPressed: () => Get.toNamed(AppRoute.verifyScreen),
+              onPressed: () => Get.to(() => VerifyScreen(role: Role.CUSTOMER)),
               text: "Continue",
               isIcon: true,
               icon: Icons.arrow_forward_outlined,

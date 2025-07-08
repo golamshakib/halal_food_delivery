@@ -7,11 +7,13 @@ import 'package:halal_food_delivery/routes/app_routes.dart';
 
 import '../../../../core/common/widgets/custom_button.dart';
 
+import '../../../../core/utils/constants/enums.dart';
 import '../widgets/custom_title_bar.dart';
 import '../widgets/verify_box.dart';
 
 class VerifyScreen extends StatelessWidget {
-  const VerifyScreen({super.key});
+  final Role role;
+  const VerifyScreen({super.key, required this.role});
 
   @override
   Widget build(BuildContext context) {

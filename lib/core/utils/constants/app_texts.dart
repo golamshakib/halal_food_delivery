@@ -22,4 +22,27 @@ class AppText {
   static const String deliveryPartner = 'roleSelection';
   static const String roleSelection = 'role_selection';
   static const String selectRolePrompt = 'selectRolePrompt';
+  static const String error = 'error';
+  static const String success = 'success';
+
+  static const String emailRequired = 'emailRequired';
+  static const String invalidEmailAddress = 'invalidEmailAddress';
+  static const String passwordRequired = 'passwordRequired';
+  static const String passwordMinLength = 'passwordMinLength';
+  static const String passwordUppercase = 'passwordUppercase';
+  static const String passwordNumber = 'passwordNumber';
+  static const String passwordSpecialChar = 'passwordSpecialChar';
+  static const String phoneNumberRequired = 'phoneNumberRequired';
+  static const String invalidPhoneNumber = 'invalidPhoneNumber';
+  static const String passwordsDoNotMatch = 'passwordsDoNotMatch';
+  static const String nameRequired = 'nameRequired';
+  static const String nameMinLength = 'nameMinLength';
+  static const String usernameRequired = 'usernameRequired';
+  static const String invalidUsername = 'invalidUsername';
+  static const String confirmPasswordRequired = 'confirmPasswordRequired';
+  static const String fieldRequired = 'fieldRequired';
+  static const String addressRequired = 'addressRequired';
+  static const String addressMinLength = 'addressMinLength';
+  static const String zipCodeRequired = 'zipCodeRequired';
+  static const String invalidZipCode = 'invalidZipCode';
 }
