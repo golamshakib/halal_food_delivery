@@ -9,7 +9,8 @@ import '../../../../core/common/widgets/custom_text.dart';
 import '../../controllers/verify_controller.dart';
 
 class VerifyBox extends StatelessWidget {
-  VerifyBox({super.key});
+  final String email;
+  VerifyBox({super.key, required this.email});
 
   final VerifyController controller = Get.put(VerifyController());
 
@@ -21,7 +22,7 @@ class VerifyBox extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: PinCodeTextField(
             appContext: context,
-            length: 5,
+            length: 6,
             onChanged: (value) {},
             controller: controller.otpController,
             pinTheme: PinTheme(
@@ -54,7 +55,7 @@ class VerifyBox extends StatelessWidget {
                 controller.isResendEnabled.value
                     ? GestureDetector(
                       onTap: () {
-                        controller.resendOtp();
+                        controller.resendOtp(email);
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,

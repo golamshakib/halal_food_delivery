@@ -31,7 +31,14 @@ class ForgetPasswordScreen extends StatelessWidget {
             ),
             Spacer(),
             CustomButton(
-              onPressed: () => Get.to(() => VerifyScreen(role: Role.CUSTOMER)),
+              onPressed:
+                  () => Get.to(
+                    () => VerifyScreen(
+                      role: Role.CUSTOMER,
+                      screen: Screen.forgetPassword,
+                      email: controller.emailController.text,
+                    ),
+                  ),
               text: "Continue",
               isIcon: true,
               icon: Icons.arrow_forward_outlined,

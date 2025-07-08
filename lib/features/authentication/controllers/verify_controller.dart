@@ -3,21 +3,26 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../core/services/network_caller.dart';
+import '../../../core/utils/constants/app_snackbar.dart';
+import '../../../core/utils/constants/app_urls.dart';
+import '../../../core/utils/constants/enums.dart';
+import '../../../core/utils/logging/logger.dart';
+import '../../../routes/app_routes.dart';
+
 class VerifyController extends GetxController {
   final TextEditingController otpController = TextEditingController();
-  final TextEditingController otpMailController = TextEditingController();
+
   var isResendEnabled = false.obs;
   var start = 30.obs;
   Timer? _timer;
-
-  String? email;
-  String? fromScreen;
+  final RxBool isLoading = false.obs;
 
   @override
   void onInit() {
     super.onInit();
     startTimer();
-    Future.delayed(Duration.zero, resetState);
+    resetState();
   }
 
   void resetState() {
@@ -40,16 +45,67 @@ class VerifyController extends GetxController {
     });
   }
 
-  void resendOtp() {
-    log("Resending OTP to $email");
-    resetState();
+  Future<void> resendOtp(String email) async {
+    isLoading.value = true;
+    try {
+      final response = await NetworkCaller().postRequest(
+        AppUrls.resendOtp,
+        body: {'email': email},
+      );
+      if (response.isSuccess) {
+        log('OTP resent successfully');
+        AppSnackBar.showSuccess("OTP resent successfully");
+        resetState();
+      } else {
+        final message = "Failed to resend OTP";
+        log('OTP resend failed: $message');
+        AppSnackBar.showError(message);
+      }
+    } catch (e) {
+      log('Error resending OTP: $e');
+      AppLoggerHelper.error('Error resending OTP: $e');
+      AppSnackBar.showError("An error occurred while resending OTP");
+    } finally {
+      isLoading.value = false;
+      log('isLoading set to false');
+    }
+  }
+
+  Future<void> verifyOtp(String email, Screen screen) async {
+    final otp = otpController.text.trim();
+    isLoading.value = true;
+    try {
+      final response = await NetworkCaller().postRequest(
+        AppUrls.verifyOtp,
+        body: {'otp': int.parse(otp), 'email': email},
+      );
+      if (response.isSuccess) {
+        log('OTP verified successfully');
+        AppSnackBar.showSuccess("OTP verified successfully");
+        // Navigate to the next screen based on the fromScreen value
+        if (screen == Screen.singUp) {
+          Get.offAllNamed(AppRoute.verificationSuccessfulScreen);
+        } else if (screen == Screen.forgetPassword) {
+          Get.toNamed(AppRoute.createPasswordScreen);
+        }
+      } else {
+        final message = "Invalid OTP";
+        log('OTP verification failed: $message');
+        AppSnackBar.showError(message);
+      }
+    } catch (e) {
+      log('Error verifying OTP: $e');
+      AppLoggerHelper.error('Error verifying OTP: $e');
+      AppSnackBar.showError("An error occurred while verifying OTP");
+    } finally {
+      isLoading.value = false;
+    }
   }
 
   @override
   void onClose() {
     _timer?.cancel();
     otpController.dispose();
-    otpMailController.dispose();
     super.onClose();
   }
 }

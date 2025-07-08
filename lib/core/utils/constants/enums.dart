@@ -8,3 +8,5 @@ enum PaymentMethod { creditCard, applePay }
 
 // ignore: constant_identifier_names
 enum Role { CUSTOMER, RESTAURANT_OWNER, DELIVERY_PARTNER }
+
+enum Screen { singUp, forgetPassword }

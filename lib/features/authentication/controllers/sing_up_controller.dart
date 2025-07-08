@@ -206,7 +206,7 @@ class SingUpController extends GetxController {
 
       if (response.statusCode == 201) {
         AppSnackBar.showSuccess("Sign up successful");
-        Get.to(() => VerifyScreen(role: role));
+        Get.to(() => VerifyScreen(role: role, screen: Screen.singUp, email: email,));
         clearForm();
       } else if (response.statusCode == 409) {
         AppSnackBar.showError("User already exists");
