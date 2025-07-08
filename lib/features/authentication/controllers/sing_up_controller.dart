@@ -12,6 +12,7 @@ import 'package:halal_food_delivery/core/utils/constants/app_urls.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../core/utils/constants/app_snackbar.dart';
+import '../../../core/utils/constants/app_texts.dart';
 import '../../../core/utils/constants/enums.dart';
 import '../../../core/utils/logging/logger.dart';
 // ignore: depend_on_referenced_packages
@@ -75,7 +76,7 @@ class SingUpController extends GetxController {
     try {
       bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
       if (!serviceEnabled) {
-        AppSnackBar.showError("Location services are disabled");
+        AppSnackBar.showError(AppText.locationServicesDisabled.tr);
         return;
       }
 
@@ -83,13 +84,13 @@ class SingUpController extends GetxController {
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
         if (permission == LocationPermission.denied) {
-          AppSnackBar.showError("Location permission denied");
+          AppSnackBar.showError(AppText.locationPermissionDenied.tr);
           return;
         }
       }
 
       if (permission == LocationPermission.deniedForever) {
-        AppSnackBar.showError("Location permission permanently denied");
+        AppSnackBar.showError(AppText.locationPermissionPermanentlyDenied.tr);
         return;
       }
 
@@ -97,7 +98,9 @@ class SingUpController extends GetxController {
       userLocation.value = LatLng(position.latitude, position.longitude);
     } catch (e) {
       log("Error getting location: $e");
-      AppSnackBar.showError("Error getting location: $e");
+      AppSnackBar.showError(
+        AppText.errorGettingLocation.trParams({'': e.toString()}),
+      );
     }
   }
 
@@ -120,7 +123,9 @@ class SingUpController extends GetxController {
       }
     } catch (e) {
       AppLoggerHelper.error(e.toString());
-      AppSnackBar.showError("Error fetching address: $e");
+      AppSnackBar.showError(
+        AppText.errorFetchingAddress.trParams({'': e.toString()}),
+      );
     }
   }
 
@@ -130,28 +135,28 @@ class SingUpController extends GetxController {
     final location = locationController.text.trim();
 
     if (email.isEmpty) {
-      AppSnackBar.showError("Email cannot be empty");
+      AppSnackBar.showError(AppText.emailCannotBeEmpty.tr);
       return;
     }
 
     if (location.isEmpty) {
-      AppSnackBar.showError("Location cannot be empty");
+      AppSnackBar.showError(AppText.locationCannotBeEmpty.tr);
       return;
     }
     if (password.isEmpty) {
-      AppSnackBar.showError("Password cannot be empty");
+      AppSnackBar.showError(AppText.passwordCannotBeEmpty.tr);
       return;
     }
 
     if (role == Role.RESTAURANT_OWNER &&
         pickedFile.value == null &&
         pickedFile2.value == null) {
-      AppSnackBar.showError("Please upload restaurant documents");
+      AppSnackBar.showError(AppText.uploadRestaurantDocuments.tr);
       return;
     }
 
     if (selectedLatLng.value == null) {
-      AppSnackBar.showError("Please select a location");
+      AppSnackBar.showError(AppText.selectLocation.tr);
       return;
     }
 
@@ -205,18 +210,24 @@ class SingUpController extends GetxController {
       final response = await http.Response.fromStream(streamedResponse);
 
       if (response.statusCode == 201) {
-        AppSnackBar.showSuccess("Sign up successful");
-        Get.to(() => VerifyScreen(role: role, screen: Screen.singUp, email: email,));
+        AppSnackBar.showSuccess(AppText.signUpSuccessful.tr);
+        Get.to(
+          () => VerifyScreen(role: role, screen: Screen.singUp, email: email),
+        );
         clearForm();
       } else if (response.statusCode == 409) {
-        AppSnackBar.showError("User already exists");
+        AppSnackBar.showError(AppText.userAlreadyExists.tr);
         log("User already exists: ${response.body}");
       } else {
-        AppSnackBar.showError("Failed to sign up: ${response.body}");
+        AppSnackBar.showError(
+          AppText.failedToSignUp.trParams({'': response.body}),
+        );
         log("Failed to sign up: ${response.body}");
       }
     } catch (e) {
-      AppSnackBar.showError("Error signing up: $e");
+      AppSnackBar.showError(
+        AppText.errorSigningUp.trParams({'': e.toString()}),
+      );
       AppLoggerHelper.error(e.toString());
     } finally {
       isLoading.value = false;

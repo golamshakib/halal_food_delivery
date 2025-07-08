@@ -82,7 +82,7 @@ class VerifyController extends GetxController {
       if (response.isSuccess) {
         log('OTP verified successfully');
         AppSnackBar.showSuccess("OTP verified successfully");
-        // Navigate to the next screen based on the fromScreen value
+
         if (screen == Screen.singUp) {
           Get.offAllNamed(AppRoute.verificationSuccessfulScreen);
         } else if (screen == Screen.forgetPassword) {

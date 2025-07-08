@@ -5,6 +5,7 @@ class AppTranslations extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
     'en_US': {
+      // Existing translations
       AppText.language: 'Language',
       AppText.continue1: 'Continue',
       AppText.english: 'English',
@@ -20,7 +21,7 @@ class AppTranslations extends Translations {
       AppText.securePaymentsDesc:
           'Pay your way with multiple payment options, from credit cards to digital wallets.',
       AppText.logIn: 'Log In',
-      AppText.register: 'Register',
+      AppText.registration: 'Register',
       AppText.next: 'Next',
       AppText.chooseRole: 'Choose Your Role',
       AppText.chooseRoleDesc:
@@ -56,8 +57,39 @@ class AppTranslations extends Translations {
       AppText.addressMinLength: 'Address must be at least 10 characters long.',
       AppText.zipCodeRequired: 'Zip code is required.',
       AppText.invalidZipCode: 'Invalid zip code. Must be 5 digits.',
+
+      // New translations from SignUpScreen
+      AppText.createAccount: 'Create an account',
+      AppText.exploreDescription:
+          'Start exploring a world of delicious meals, real-time tracking, and seamless deliveries!',
+      AppText.typeYourEmail: 'Type Your Email',
+      AppText.typeYourLocation: 'Type Your Location',
+      AppText.typeYourPassword: 'Type Your Password',
+      AppText.commercialLicense: 'Commercial license/AVS Certificate',
+      AppText.signatureHere: 'Signature Here',
+      AppText.signUp: 'Sign Up',
+      AppText.alreadyHaveAccount: 'Already have an account?',
+      AppText.signIn: 'Sign In',
+
+      // New translations from SingUpController
+      AppText.locationServicesDisabled: 'Location services are disabled',
+      AppText.locationPermissionDenied: 'Location permission denied',
+      AppText.locationPermissionPermanentlyDenied:
+          'Location permission permanently denied',
+      AppText.errorGettingLocation: 'Error getting location: %s',
+      AppText.emailCannotBeEmpty: 'Email cannot be empty',
+      AppText.locationCannotBeEmpty: 'Location cannot be empty',
+      AppText.passwordCannotBeEmpty: 'Password cannot be empty',
+      AppText.uploadRestaurantDocuments: 'Please upload restaurant documents',
+      AppText.selectLocation: 'Please select a location',
+      AppText.errorFetchingAddress: 'Error fetching address: %s',
+      AppText.signUpSuccessful: 'Sign up successful',
+      AppText.userAlreadyExists: 'User already exists',
+      AppText.failedToSignUp: 'Failed to sign up: %s',
+      AppText.errorSigningUp: 'Error signing up: %s',
     },
     'fr_FR': {
+      // Existing translations
       AppText.language: 'Langue',
       AppText.continue1: 'Continuer',
       AppText.english: 'Anglais',
@@ -73,7 +105,7 @@ class AppTranslations extends Translations {
       AppText.securePaymentsDesc:
           'Payez à votre manière avec plusieurs options de paiement, des cartes de crédit aux portefeuilles numériques.',
       AppText.logIn: 'Se Connecter',
-      AppText.register: 'S\'Inscrire',
+      AppText.registration: 'S\'Inscrire',
       AppText.next: 'Suivant',
       AppText.chooseRole: 'Choisissez Votre Rôle',
       AppText.chooseRoleDesc:
@@ -116,8 +148,43 @@ class AppTranslations extends Translations {
       AppText.zipCodeRequired: 'Le code postal est requis.',
       AppText.invalidZipCode:
           'Code postal invalide. Doit comporter 5 chiffres.',
+
+      // New translations from SignUpScreen
+      AppText.createAccount: 'Créer un compte',
+      AppText.exploreDescription:
+          'Commencez à explorer un monde de repas délicieux, de suivi en temps réel et de livraisons fluides !',
+      AppText.typeYourEmail: 'Entrez votre email',
+      AppText.typeYourLocation: 'Entrez votre localisation',
+      AppText.typeYourPassword: 'Entrez votre mot de passe',
+      AppText.commercialLicense: 'Licence commerciale/Certificat AVS',
+      AppText.signatureHere: 'Signature ici',
+      AppText.signUp: 'S\'inscrire',
+      AppText.alreadyHaveAccount: 'Vous avez déjà un compte ?',
+      AppText.signIn: 'Se connecter',
+
+      // New translations from SingUpController
+      AppText.locationServicesDisabled:
+          'Les services de localisation sont désactivés',
+      AppText.locationPermissionDenied: 'Permission de localisation refusée',
+      AppText.locationPermissionPermanentlyDenied:
+          'Permission de localisation refusée de manière permanente',
+      AppText.errorGettingLocation:
+          'Erreur lors de l\'obtention de la localisation : %s',
+      AppText.emailCannotBeEmpty: 'L\'email ne peut pas être vide',
+      AppText.locationCannotBeEmpty: 'La localisation ne peut pas être vide',
+      AppText.passwordCannotBeEmpty: 'Le mot de passe ne peut pas être vide',
+      AppText.uploadRestaurantDocuments:
+          'Veuillez télécharger les documents du restaurant',
+      AppText.selectLocation: 'Veuillez sélectionner une localisation',
+      AppText.errorFetchingAddress:
+          'Erreur lors de la récupération de l\'adresse : %s',
+      AppText.signUpSuccessful: 'Inscription réussie',
+      AppText.userAlreadyExists: 'L\'utilisateur existe déjà',
+      AppText.failedToSignUp: 'Échec de l\'inscription : %s',
+      AppText.errorSigningUp: 'Erreur lors de l\'inscription : %s',
     },
     'ar_AR': {
+      // Existing translations
       AppText.language: 'اللغة',
       AppText.continue1: 'متابعة',
       AppText.english: 'الإنجليزية',
@@ -133,7 +200,7 @@ class AppTranslations extends Translations {
       AppText.securePaymentsDesc:
           'ادفع بطريقتك مع خيارات دفع متعددة، من بطاقات الائتمان إلى المحافظ الرقمية.',
       AppText.logIn: 'تسجيل الدخول',
-      AppText.register: 'التسجيل',
+      AppText.registration: 'التسجيل',
       AppText.next: 'التالي',
       AppText.chooseRole: 'اختر دورك',
       AppText.chooseRoleDesc:
@@ -173,6 +240,36 @@ class AppTranslations extends Translations {
       AppText.zipCodeRequired: 'الرمز البريدي مطلوب.',
       AppText.invalidZipCode:
           'الرمز البريدي غير صالح. يجب أن يتكون من 5 أرقام.',
+
+      // New translations from SignUpScreen
+      AppText.createAccount: 'إنشاء حساب',
+      AppText.exploreDescription:
+          'ابدأ في استكشاف عالم من الوجبات اللذيذة، التتبع في الوقت الفعلي، والتوصيلات السلسة!',
+      AppText.typeYourEmail: 'اكتب بريدك الإلكتروني',
+      AppText.typeYourLocation: 'اكتب موقعك',
+      AppText.typeYourPassword: 'اكتب كلمة المرور الخاصة بك',
+      AppText.commercialLicense: 'الرخصة التجارية/شهادة AVS',
+      AppText.signatureHere: 'التوقيع هنا',
+      AppText.signUp: 'التسجيل',
+      AppText.alreadyHaveAccount: 'هل لديك حساب بالفعل؟',
+      AppText.signIn: 'تسجيل الدخول',
+
+      // New translations from SingUpController
+      AppText.locationServicesDisabled: 'خدمات الموقع معطلة',
+      AppText.locationPermissionDenied: 'تم رفض إذن الموقع',
+      AppText.locationPermissionPermanentlyDenied:
+          'تم رفض إذن الموقع بشكل دائم',
+      AppText.errorGettingLocation: 'خطأ في الحصول على الموقع: %s',
+      AppText.emailCannotBeEmpty: 'البريد الإلكتروني لا يمكن أن يكون فارغًا',
+      AppText.locationCannotBeEmpty: 'الموقع لا يمكن أن يكون فارغًا',
+      AppText.passwordCannotBeEmpty: 'كلمة المرور لا يمكن أن تكون فارغة',
+      AppText.uploadRestaurantDocuments: 'يرجى رفع وثائق المطعم',
+      AppText.selectLocation: 'يرجى اختيار موقع',
+      AppText.errorFetchingAddress: 'خطأ في جلب العنوان: %s',
+      AppText.signUpSuccessful: 'التسجيل ناجح',
+      AppText.userAlreadyExists: 'المستخدم موجود بالفعل',
+      AppText.failedToSignUp: 'فشل التسجيل: %s',
+      AppText.errorSigningUp: 'خطأ أثناء التسجيل: %s',
     },
   };
 }

@@ -118,7 +118,7 @@ class OnboardingScreen extends StatelessWidget {
                           SizedBox(height: 12.h),
                           CustomButton(
                             onPressed: controller.onRegisterPressed,
-                            text: AppText.register.tr,
+                            text: AppText.registration.tr,
                             isIcon: true,
                             icon: Icons.arrow_forward_outlined,
                             iconColor: AppColors.textSecondary,
