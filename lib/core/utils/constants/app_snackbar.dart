@@ -1,15 +1,13 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_texts.dart';
 import '../../common/widgets/custom_text.dart';
 
-
 class AppSnackBar {
   static void showError(String message, {String? title}) {
     Get.snackbar(
-      title ?? AppText.error.tr, 
+      title ?? AppText.error.tr,
       message,
       snackPosition: SnackPosition.TOP,
       backgroundColor: Colors.red.withAlpha(230),
@@ -51,7 +49,7 @@ class AppSnackBar {
       isDismissible: true,
       snackStyle: SnackStyle.FLOATING,
       titleText: CustomText(
-        text: title ?? AppText.success.tr, 
+        text: title ?? AppText.success.tr,
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,
         color: Colors.white,

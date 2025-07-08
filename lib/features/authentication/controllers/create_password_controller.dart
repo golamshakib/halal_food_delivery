@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../../core/services/network_caller.dart';
 import '../../../core/utils/constants/app_snackbar.dart';
+import '../../../core/utils/constants/app_texts.dart';
 import '../../../core/utils/constants/app_urls.dart';
 import '../../../routes/app_routes.dart';
 
@@ -37,7 +38,7 @@ class CreatePasswordController extends GetxController {
       final confirmPassword = confirmPasswordController.text.trim();
 
       if (newPassword != confirmPassword) {
-        AppSnackBar.showError("Passwords do not match");
+        AppSnackBar.showError(AppText.passwordsDoNotMatch.tr);
         return;
       }
 
@@ -52,14 +53,16 @@ class CreatePasswordController extends GetxController {
           .timeout(const Duration(seconds: 30));
 
       if (response.isSuccess) {
-        AppSnackBar.showSuccess("Password reset successfully");
+        AppSnackBar.showSuccess(AppText.passwordChangedSuccessfully.tr);
         Get.offAllNamed(AppRoute.successfulScreen);
       } else {
-        AppSnackBar.showError("Failed to reset password");
+        AppSnackBar.showError(AppText.failedToSignUp.tr.replaceFirst('%s', ''));
       }
     } catch (e) {
       log('Reset password error: $e');
-      AppSnackBar.showError("Error resetting password: $e");
+      AppSnackBar.showError(
+        AppText.errorSigningUp.tr.replaceFirst('%s', e.toString()),
+      );
     } finally {
       isLoading.value = false;
     }

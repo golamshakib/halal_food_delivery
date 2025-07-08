@@ -29,12 +29,8 @@ class AppText {
   static const String emailRequired = 'emailRequired';
   static const String invalidEmailAddress = 'invalidEmailAddress';
   static const String passwordRequired = 'passwordRequired';
-
-  /// Changed to avoid conflict
   static const String passwordMinLength = 'passwordMinLength';
   static const String passwordUppercase = 'passwordUppercase';
-
-  /// Changed to avoid conflict
   static const String passwordNumber = 'passwordNumber';
   static const String passwordSpecialChar = 'passwordSpecialChar';
   static const String phoneNumberRequired = 'phoneNumberRequired';
@@ -58,7 +54,6 @@ class AppText {
   static const String typeYourName = 'typeYourName';
   static const String typeYourLocation = 'typeYourLocation';
   static const String typeYourPassword = 'typeYourPassword';
-  static const String typeYourTypeYourPassword = 'typeYourPassword';
   static const String commercialLicense = 'commercialLicense';
   static const String signatureHere = 'signatureHere';
   static const String signUp = 'signUp';
@@ -77,7 +72,6 @@ class AppText {
   static const String passwordCannotBeEmpty = 'passwordCannotBeEmpty';
   static const String uploadRestaurantDocuments = 'uploadRestaurantDocuments';
   static const String selectLocation = 'selectLocation';
-
   static const String errorFetchingAddress = 'errorFetchingAddress';
   static const String signUpSuccessful = 'signUpSuccessful';
   static const String userAlreadyExists = 'userAlreadyExists';
@@ -85,4 +79,51 @@ class AppText {
   static const String errorSigningUp = 'errorSigningUp';
   static const String locationRequired = 'locationRequired';
   static const String locationMinLength = 'locationMinLength';
+
+  /// New keys from CreatePasswordScreen
+  static const String setNewPassword = 'setNewPassword';
+  static const String createNewPasswordDesc = 'createNewPasswordDesc';
+  static const String newPassword = 'newPassword';
+  static const String confirmPassword = 'confirmPassword';
+  static const String changePassword = 'changePassword';
+
+  /// New keys from ForgetPasswordScreen
+  static const String resetPassword = 'resetPassword';
+  static const String resetPasswordDesc = 'resetPasswordDesc';
+  static const String otpSentSuccessfully = 'otpSentSuccessfully';
+  static const String emailNotRegistered = 'emailNotRegistered';
+  static const String errorSendingOtp = 'errorSendingOtp';
+
+  /// New keys from LoginScreen
+  static const String welcomeBack = 'welcomeBack';
+  static const String welcomeBackDesc = 'welcomeBackDesc';
+  static const String forgotPassword = 'forgotPassword';
+  static const String dontHaveAccount = 'dontHaveAccount';
+  static const String pleaseFillAllFields = 'pleaseFillAllFields';
+  static const String invalidLoginResponse = 'invalidLoginResponse';
+  static const String invalidRoleReceived = 'invalidRoleReceived';
+  static const String errorLoggingIn = 'errorLoggingIn';
+
+  /// New keys from SuccessfulScreen
+  static const String passwordChangedSuccessfully =
+      'passwordChangedSuccessfully';
+
+  /// New keys from VerificationSuccessfulScreen
+  static const String verificationSuccessful = 'verificationSuccessful';
+  static const String verificationSuccessfulDesc = 'verificationSuccessfulDesc';
+
+  /// New keys from VerifyScreen
+  static const String verificationCode = 'verificationCode';
+  static const String verificationCodeDesc = 'verificationCodeDesc';
+  static const String verify = 'verify';
+  static const String otpIncorrect = 'otpIncorrect';
+  static const String otpExpired = 'otpExpired';
+  static const String errorVerifyingOtp = 'errorVerifyingOtp';
+  static const String otpResentSuccessfully = 'otpResentSuccessfully';
+  static const String failedToResendOtp = 'failedToResendOtp';
+  static const String errorResendingOtp = 'errorResendingOtp';
+
+  /// New keys from VerifyBox
+  static const String resendCodeIn = 'resendCodeIn';
+  static const String resend = 'resend';
 }

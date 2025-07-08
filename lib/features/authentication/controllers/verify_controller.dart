@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../../core/services/network_caller.dart';
 import '../../../core/utils/constants/app_snackbar.dart';
+import '../../../core/utils/constants/app_texts.dart';
 import '../../../core/utils/constants/app_urls.dart';
 import '../../../core/utils/constants/enums.dart';
 import '../../../core/utils/logging/logger.dart';
@@ -55,17 +56,17 @@ class VerifyController extends GetxController {
       );
       if (response.isSuccess) {
         log('OTP resent successfully');
-        AppSnackBar.showSuccess("OTP resent successfully");
+        AppSnackBar.showSuccess(AppText.otpResentSuccessfully.tr);
         resetState();
       } else {
-        final message = "Failed to resend OTP";
+        final message = AppText.failedToResendOtp.tr;
         log('OTP resend failed: $message');
         AppSnackBar.showError(message);
       }
     } catch (e) {
       log('Error resending OTP: $e');
       AppLoggerHelper.error('Error resending OTP: $e');
-      AppSnackBar.showError("An error occurred while resending OTP");
+      AppSnackBar.showError(AppText.errorResendingOtp.tr);
     } finally {
       isLoading.value = false;
       log('isLoading set to false');
@@ -82,23 +83,22 @@ class VerifyController extends GetxController {
       );
       if (response.statusCode == 200) {
         log('OTP verified successfully');
-
         String? accesstoken = response.responseData['data'];
         if (screen == Screen.singUp) {
           Get.offAllNamed(AppRoute.verificationSuccessfulScreen);
         } else if (screen == Screen.forgetPassword) {
           Get.to(() => CreatePasswordScreen(accesstoken: accesstoken!));
         }
-        AppSnackBar.showSuccess("OTP verified successfully");
+        AppSnackBar.showSuccess(AppText.verificationSuccessful.tr);
       } else if (response.statusCode == 409) {
-        AppSnackBar.showError("OTP is Incorrected");
+        AppSnackBar.showError(AppText.otpIncorrect.tr);
       } else if (response.statusCode == 400) {
-        AppSnackBar.showError("OTP is expired");
+        AppSnackBar.showError(AppText.otpExpired.tr);
       }
     } catch (e) {
       log('Error verifying OTP: $e');
       AppLoggerHelper.error('Error verifying OTP: $e');
-      AppSnackBar.showError("An error occurred while verifying OTP");
+      AppSnackBar.showError(AppText.errorVerifyingOtp.tr);
     } finally {
       isLoading.value = false;
     }

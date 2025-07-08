@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_colors.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
+import 'package:halal_food_delivery/core/utils/constants/app_texts.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../core/common/widgets/custom_text.dart';
@@ -61,13 +62,13 @@ class VerifyBox extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CustomText(
-                            text: 'Resend code in ',
+                            text: AppText.resendCodeIn.tr,
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w500,
                             color: Color(0xff0C0B0B),
                           ),
                           CustomText(
-                            text: 'Resend',
+                            text: AppText.resend.tr,
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w700,
                             color: Color(0xff0C0B0B),
@@ -79,7 +80,7 @@ class VerifyBox extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CustomText(
-                          text: 'Resend code in ',
+                          text: AppText.resendCodeIn.tr,
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w500,
                           color: Color(0xff0C0B0B),

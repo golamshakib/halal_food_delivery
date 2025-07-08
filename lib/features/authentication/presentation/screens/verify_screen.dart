@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
+import 'package:halal_food_delivery/core/utils/constants/app_texts.dart';
 import '../../../../core/common/widgets/custom_button.dart';
 import '../../../../core/utils/constants/app_colors.dart';
 import '../../../../core/utils/constants/enums.dart';
@@ -36,10 +37,9 @@ class VerifyScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomTitleBar(
-                title: "Verification code",
+                title: AppText.verificationCode.tr,
                 left: 30.w,
-                subtitle:
-                    "Please check your phone. We have sent the verification code to your eamil.",
+                subtitle: AppText.verificationCodeDesc.tr,
               ),
               SizedBox(height: 40.h),
               VerifyBox(email: email),
@@ -52,7 +52,7 @@ class VerifyScreen extends StatelessWidget {
                           onPressed: () {
                             controller.verifyOtp(email, screen);
                           },
-                          text: "Verify",
+                          text: AppText.verify.tr,
                           isIcon: true,
                           icon: Icons.arrow_forward_outlined,
                         ),

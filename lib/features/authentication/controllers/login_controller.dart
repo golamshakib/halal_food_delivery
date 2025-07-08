@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:halal_food_delivery/core/services/Auth_service.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_snackbar.dart';
+import 'package:halal_food_delivery/core/utils/constants/app_texts.dart';
 import 'package:halal_food_delivery/core/utils/constants/enums.dart';
 
 import '../../../core/services/network_caller.dart';
@@ -27,7 +28,7 @@ class LoginController extends GetxController {
     final password = passwordController.text.trim();
 
     if (email.isEmpty || password.isEmpty) {
-      AppSnackBar.showError("Please fill in all fields");
+      AppSnackBar.showError(AppText.pleaseFillAllFields.tr);
       return;
     }
 
@@ -55,7 +56,7 @@ class LoginController extends GetxController {
             orElse: () => throw Exception('Invalid role: $roleString'),
           );
         } catch (e) {
-          AppSnackBar.showError("Invalid role received from server");
+          AppSnackBar.showError(AppText.invalidRoleReceived.tr);
           AppLoggerHelper.error('Invalid role: $roleString');
           return;
         }
@@ -63,7 +64,7 @@ class LoginController extends GetxController {
         if (token != null) {
           await AuthService.saveToken(token, userId, role);
         } else {
-          AppSnackBar.showError("Invalid login response");
+          AppSnackBar.showError(AppText.invalidLoginResponse.tr);
           return;
         }
 
@@ -74,13 +75,11 @@ class LoginController extends GetxController {
         } else if (role == Role.DELIVERY_PARTNER) {
           Get.offAll(() => DeliveryNavBar());
         }
-        AppSnackBar.showSuccess("Login successful");
+        AppSnackBar.showSuccess(AppText.success.tr);
       }
     } catch (e, stack) {
       AppLoggerHelper.error('Error: $e stack: $stack');
-      AppSnackBar.showError(
-        "Error occurred while logging in. Please try again.",
-      );
+      AppSnackBar.showError(AppText.errorLoggingIn.tr);
     } finally {
       isLoading.value = false;
     }

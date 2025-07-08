@@ -23,8 +23,8 @@ class ForgetPasswordScreen extends StatelessWidget {
           child: Column(
             children: [
               CustomTitleBar(
-                title: "Reset password",
-                subtitle: "Please enter your email to reset the password",
+                title: AppText.resetPassword.tr,
+                subtitle: AppText.resetPasswordDesc.tr,
               ),
               CustomTextField(
                 controller: controller.emailController,
@@ -37,14 +37,6 @@ class ForgetPasswordScreen extends StatelessWidget {
                     controller.isLoading.value
                         ? SpinKitWave(color: AppColors.primary, size: 30.0)
                         : CustomButton(
-                          // onPressed:
-                          //     () => Get.to(
-                          //       () => VerifyScreen(
-                          //         role: Role.CUSTOMER,
-                          //         screen: Screen.forgetPassword,
-                          //         email: controller.emailController.text,
-                          //       ),
-                          //     ),
                           onPressed: () {
                             controller.forgetPassword();
                           },

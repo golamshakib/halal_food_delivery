@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:halal_food_delivery/core/common/widgets/custom_button.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_text.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
+import 'package:halal_food_delivery/core/utils/constants/app_texts.dart';
 import 'package:halal_food_delivery/core/utils/constants/image_path.dart';
-
-import '../../../../core/common/widgets/custom_button.dart';
-import '../../../../routes/app_routes.dart';
+import 'package:halal_food_delivery/routes/app_routes.dart';
 
 class SuccessfulScreen extends StatelessWidget {
   const SuccessfulScreen({super.key});
@@ -25,13 +25,12 @@ class SuccessfulScreen extends StatelessWidget {
               CustomText(
                 textAlign: TextAlign.center,
                 fontSize: 18.sp,
-                text:
-                    "Congratulation! your password has been changed successfully!",
+                text: AppText.passwordChangedSuccessfully.tr,
               ),
               SizedBox(height: 171.h),
               CustomButton(
                 onPressed: () => Get.offAllNamed(AppRoute.loginScreen),
-                text: "Go to Sign In",
+                text: AppText.signIn.tr,
               ),
             ],
           ),

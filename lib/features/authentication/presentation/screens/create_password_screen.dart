@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
+import 'package:halal_food_delivery/core/utils/constants/app_texts.dart';
 import 'package:halal_food_delivery/core/utils/validators/app_validator.dart';
 
 import '../../../../core/common/widgets/custom_button.dart';
@@ -31,17 +32,15 @@ class CreatePasswordScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomTitleBar(
-                  title: "Set New Password",
+                  title: AppText.setNewPassword.tr,
                   left: 30.w,
-                  subtitle:
-                      "Create your new password so you can share your memories again.",
+                  subtitle: AppText.createNewPasswordDesc.tr,
                 ),
-                // SizedBox(height: 32.h),
                 Obx(
                   () => CustomTextField(
                     validator: AppValidator.validatePassword,
                     controller: controller.passwordController,
-                    hintText: 'New password',
+                    hintText: AppText.newPassword.tr,
                     obscureText: !controller.isPasswordVisible.value,
                     prefixIcon: Icon(Icons.lock_outline),
                     suffixIcon: IconButton(
@@ -63,7 +62,7 @@ class CreatePasswordScreen extends StatelessWidget {
                           controller.passwordController.text,
                         ),
                     controller: controller.confirmPasswordController,
-                    hintText: 'Confirm password',
+                    hintText: AppText.confirmPassword.tr,
                     obscureText: !controller.isConfirmPasswordVisible.value,
                     prefixIcon: Icon(Icons.lock_outline),
                     suffixIcon: IconButton(
@@ -85,7 +84,7 @@ class CreatePasswordScreen extends StatelessWidget {
                             onPressed: () {
                               controller.resetPassword(accesstoken);
                             },
-                            text: "Change Password",
+                            text: AppText.changePassword.tr,
                           ),
                 ),
                 SizedBox(height: 24.h),

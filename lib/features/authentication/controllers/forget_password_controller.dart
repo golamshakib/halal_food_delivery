@@ -31,19 +31,16 @@ class ForgetPasswordController extends GetxController {
       );
 
       if (response.statusCode == 200) {
-        // Store hexCode from response
-
         Get.to(() => VerifyScreen(screen: Screen.forgetPassword, email: email));
-        AppSnackBar.showSuccess("OTP sent successfully to $email");
+        AppSnackBar.showSuccess(
+          AppText.otpSentSuccessfully.tr.replaceFirst('%s', email),
+        );
       } else if (response.statusCode == 400) {
-        String errorMessage = "Email is not registered.";
-        AppSnackBar.showError(errorMessage);
+        AppSnackBar.showError(AppText.emailNotRegistered.tr);
       }
     } catch (e) {
       AppLoggerHelper.error('Error: $e');
-      AppSnackBar.showError(
-        "Error occurred while sending OTP. Please try again.",
-      );
+      AppSnackBar.showError(AppText.errorSendingOtp.tr);
       return;
     } finally {
       isLoading.value = false;

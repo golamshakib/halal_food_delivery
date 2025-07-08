@@ -33,7 +33,6 @@ class AppTranslations extends Translations {
       AppText.selectRolePrompt: 'Please select a role before proceeding.',
       AppText.error: 'Error',
       AppText.success: 'Success',
-
       AppText.emailRequired: 'Email is required.',
       AppText.invalidEmailAddress: 'Invalid email address.',
       AppText.passwordRequired: 'Password is required.',
@@ -91,6 +90,60 @@ class AppTranslations extends Translations {
       AppText.errorSigningUp: 'Error signing up: %s',
       AppText.locationRequired: 'Location is required',
       AppText.locationMinLength: 'Location must be at least 5 characters long',
+
+      // New translations from CreatePasswordScreen
+      AppText.setNewPassword: 'Set New Password',
+      AppText.createNewPasswordDesc:
+          'Create your new password so you can share your memories again.',
+      AppText.newPassword: 'New password',
+      AppText.confirmPassword: 'Confirm password',
+      AppText.changePassword: 'Change Password',
+
+      // New translations from ForgetPasswordScreen
+      AppText.resetPassword: 'Reset password',
+      AppText.resetPasswordDesc:
+          'Please enter your email to reset the password',
+      AppText.otpSentSuccessfully: 'OTP sent successfully to %s',
+      AppText.emailNotRegistered: 'Email is not registered.',
+      AppText.errorSendingOtp:
+          'Error occurred while sending OTP. Please try again.',
+
+      // New translations from LoginScreen
+      AppText.welcomeBack: 'Welcome Back 👋',
+      AppText.welcomeBackDesc:
+          'We happy to see you again! To use your account, please sign in first.',
+      AppText.forgotPassword: 'Forgot password?',
+      AppText.dontHaveAccount: 'I don’t have an account?',
+      AppText.pleaseFillAllFields: 'Please fill in all fields',
+      AppText.invalidLoginResponse: 'Invalid login response',
+      AppText.invalidRoleReceived: 'Invalid role received from server',
+      AppText.errorLoggingIn:
+          'Error occurred while logging in. Please try again.',
+
+      // New translations from SuccessfulScreen
+      AppText.passwordChangedSuccessfully:
+          'Congratulation! your password has been changed successfully!',
+
+      // New translations from VerificationSuccessfulScreen
+      AppText.verificationSuccessful: 'Verification Successful!',
+      AppText.verificationSuccessfulDesc:
+          'You have successfully verified your email address',
+
+      // New translations from VerifyScreen
+      AppText.verificationCode: 'Verification code',
+      AppText.verificationCodeDesc:
+          'Please check your phone. We have sent the verification code to your email.',
+      AppText.verify: 'Verify',
+      AppText.otpIncorrect: 'OTP is incorrect',
+      AppText.otpExpired: 'OTP is expired',
+      AppText.errorVerifyingOtp: 'An error occurred while verifying OTP',
+      AppText.otpResentSuccessfully: 'OTP resent successfully',
+      AppText.failedToResendOtp: 'Failed to resend OTP',
+      AppText.errorResendingOtp: 'An error occurred while resending OTP',
+
+      // New translations from VerifyBox
+      AppText.resendCodeIn: 'Resend code in ',
+      AppText.resend: 'Resend',
     },
     'fr_FR': {
       // Existing translations
@@ -122,7 +175,6 @@ class AppTranslations extends Translations {
           'Veuillez sélectionner un rôle avant de continuer.',
       AppText.error: 'Erreur',
       AppText.success: 'Succès',
-
       AppText.emailRequired: 'L\'email est requis.',
       AppText.invalidEmailAddress: 'Adresse email invalide.',
       AppText.passwordRequired: 'Le mot de passe est requis.',
@@ -191,6 +243,62 @@ class AppTranslations extends Translations {
       AppText.locationRequired: 'La localisation est requise',
       AppText.locationMinLength:
           'La localisation doit comporter au moins 5 caractères',
+
+      // New translations from CreatePasswordScreen
+      AppText.setNewPassword: 'Définir un nouveau mot de passe',
+      AppText.createNewPasswordDesc:
+          'Créez votre nouveau mot de passe pour pouvoir partager à nouveau vos souvenirs.',
+      AppText.newPassword: 'Nouveau mot de passe',
+      AppText.confirmPassword: 'Confirmer le mot de passe',
+      AppText.changePassword: 'Changer le mot de passe',
+
+      // New translations from ForgetPasswordScreen
+      AppText.resetPassword: 'Réinitialiser le mot de passe',
+      AppText.resetPasswordDesc:
+          'Veuillez entrer votre email pour réinitialiser le mot de passe',
+      AppText.otpSentSuccessfully: 'OTP envoyé avec succès à %s',
+      AppText.emailNotRegistered: 'L\'email n\'est pas enregistré.',
+      AppText.errorSendingOtp:
+          'Une erreur s\'est produite lors de l\'envoi de l\'OTP. Veuillez réessayer.',
+
+      // New translations from LoginScreen
+      AppText.welcomeBack: 'Bon retour 👋',
+      AppText.welcomeBackDesc:
+          'Nous sommes heureux de vous revoir ! Pour utiliser votre compte, veuillez d\'abord vous connecter.',
+      AppText.forgotPassword: 'Mot de passe oublié ?',
+      AppText.dontHaveAccount: 'Je n\'ai pas de compte ?',
+      AppText.pleaseFillAllFields: 'Veuillez remplir tous les champs',
+      AppText.invalidLoginResponse: 'Réponse de connexion invalide',
+      AppText.invalidRoleReceived: 'Rôle invalide reçu du serveur',
+      AppText.errorLoggingIn:
+          'Une erreur s\'est produite lors de la connexion. Veuillez réessayer.',
+
+      // New translations from SuccessfulScreen
+      AppText.passwordChangedSuccessfully:
+          'Félicitations ! Votre mot de passe a été changé avec succès !',
+
+      // New translations from VerificationSuccessfulScreen
+      AppText.verificationSuccessful: 'Vérification réussie !',
+      AppText.verificationSuccessfulDesc:
+          'Vous avez vérifié votre adresse email avec succès',
+
+      // New translations from VerifyScreen
+      AppText.verificationCode: 'Code de vérification',
+      AppText.verificationCodeDesc:
+          'Veuillez vérifier votre téléphone. Nous avons envoyé le code de vérification à votre email.',
+      AppText.verify: 'Vérifier',
+      AppText.otpIncorrect: 'L\'OTP est incorrect',
+      AppText.otpExpired: 'L\'OTP a expiré',
+      AppText.errorVerifyingOtp:
+          'Une erreur s\'est produite lors de la vérification de l\'OTP',
+      AppText.otpResentSuccessfully: 'OTP renvoyé avec succès',
+      AppText.failedToResendOtp: 'Échec du renvoi de l\'OTP',
+      AppText.errorResendingOtp:
+          'Une erreur s\'est produite lors du renvoi de l\'OTP',
+
+      // New translations from VerifyBox
+      AppText.resendCodeIn: 'Renvoyer le code dans ',
+      AppText.resend: 'Renvoyer',
     },
     'ar_AR': {
       // Existing translations
@@ -221,7 +329,6 @@ class AppTranslations extends Translations {
       AppText.selectRolePrompt: 'يرجى اختيار دور قبل المتابعة.',
       AppText.error: 'خطأ',
       AppText.success: 'نجاح',
-
       AppText.emailRequired: 'البريد الإلكتروني مطلوب.',
       AppText.invalidEmailAddress: 'عنوان البريد الإلكتروني غير صالح.',
       AppText.passwordRequired: 'كلمة المرور مطلوبة.',
@@ -283,6 +390,60 @@ class AppTranslations extends Translations {
       AppText.errorSigningUp: 'خطأ أثناء التسجيل: %s',
       AppText.locationRequired: 'الموقع مطلوب',
       AppText.locationMinLength: 'يجب أن يتكون الموقع من 5 أحرف على الأقل',
+
+      // New translations from CreatePasswordScreen
+      AppText.setNewPassword: 'تعيين كلمة مرور جديدة',
+      AppText.createNewPasswordDesc:
+          'قم بإنشاء كلمة المرور الجديدة الخاصة بك حتى تتمكن من مشاركة ذكرياتك مرة أخرى.',
+      AppText.newPassword: 'كلمة المرور الجديدة',
+      AppText.confirmPassword: 'تأكيد كلمة المرور',
+      AppText.changePassword: 'تغيير كلمة المرور',
+
+      // New translations from ForgetPasswordScreen
+      AppText.resetPassword: 'إعادة تعيين كلمة المرور',
+      AppText.resetPasswordDesc:
+          'يرجى إدخال بريدك الإلكتروني لإعادة تعيين كلمة المرور',
+      AppText.otpSentSuccessfully: 'تم إرسال OTP بنجاح إلى %s',
+      AppText.emailNotRegistered: 'البريد الإلكتروني غير مسجل.',
+      AppText.errorSendingOtp:
+          'حدث خطأ أثناء إرسال OTP. يرجى المحاولة مرة أخرى.',
+
+      // New translations from LoginScreen
+      AppText.welcomeBack: 'مرحبًا بعودتك 👋',
+      AppText.welcomeBackDesc:
+          'نحن سعداء برؤيتك مرة أخرى! لاستخدام حسابك، يرجى تسجيل الدخول أولاً.',
+      AppText.forgotPassword: 'هل نسيت كلمة المرور؟',
+      AppText.dontHaveAccount: 'ليس لدي حساب؟',
+      AppText.pleaseFillAllFields: 'يرجى ملء جميع الحقول',
+      AppText.invalidLoginResponse: 'استجابة تسجيل الدخول غير صالحة',
+      AppText.invalidRoleReceived: 'تم استلام دور غير صالح من الخادم',
+      AppText.errorLoggingIn:
+          'حدث خطأ أثناء تسجيل الدخول. يرجى المحاولة مرة أخرى.',
+
+      // New translations from SuccessfulScreen
+      AppText.passwordChangedSuccessfully:
+          'تهانينا! تم تغيير كلمة المرور بنجاح!',
+
+      // New translations from VerificationSuccessfulScreen
+      AppText.verificationSuccessful: 'تم التحقق بنجاح!',
+      AppText.verificationSuccessfulDesc:
+          'لقد قمت بالتحقق من عنوان بريدك الإلكتروني بنجاح',
+
+      // New translations from VerifyScreen
+      AppText.verificationCode: 'رمز التحقق',
+      AppText.verificationCodeDesc:
+          'يرجى التحقق من هاتفك. لقد أرسلنا رمز التحقق إلى بريدك الإلكتروني.',
+      AppText.verify: 'تحقق',
+      AppText.otpIncorrect: 'OTP غير صحيح',
+      AppText.otpExpired: 'OTP منتهي الصلاحية',
+      AppText.errorVerifyingOtp: 'حدث خطأ أثناء التحقق من OTP',
+      AppText.otpResentSuccessfully: 'تم إعادة إرسال OTP بنجاح',
+      AppText.failedToResendOtp: 'فشل إعادة إرسال OTP',
+      AppText.errorResendingOtp: 'حدث خطأ أثناء إعادة إرسال OTP',
+
+      // New translations from VerifyBox
+      AppText.resendCodeIn: 'إعادة إرسال الرمز في ',
+      AppText.resend: 'إعادة إرسال',
     },
   };
 }
