@@ -16,43 +16,46 @@ class ForgetPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.h),
-        child: Column(
-          children: [
-            CustomTitleBar(
-              title: "Reset password",
-              subtitle: "Please enter your email to reset the password",
-            ),
-            CustomTextField(
-              controller: controller.emailController,
-              prefixIcon: Icon(Icons.email_outlined),
-              hintText: AppText.typeYourEmail.tr,
-            ),
-            Spacer(),
-            Obx(
-              () =>
-                  controller.isLoading.value
-                      ? SpinKitWave(color: AppColors.primary, size: 30.0)
-                      : CustomButton(
-                        // onPressed:
-                        //     () => Get.to(
-                        //       () => VerifyScreen(
-                        //         role: Role.CUSTOMER,
-                        //         screen: Screen.forgetPassword,
-                        //         email: controller.emailController.text,
-                        //       ),
-                        //     ),
+      body: Directionality(
+        textDirection: TextDirection.ltr,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.h),
+          child: Column(
+            children: [
+              CustomTitleBar(
+                title: "Reset password",
+                subtitle: "Please enter your email to reset the password",
+              ),
+              CustomTextField(
+                controller: controller.emailController,
+                prefixIcon: Icon(Icons.email_outlined),
+                hintText: AppText.typeYourEmail.tr,
+              ),
+              Spacer(),
+              Obx(
+                () =>
+                    controller.isLoading.value
+                        ? SpinKitWave(color: AppColors.primary, size: 30.0)
+                        : CustomButton(
+                          // onPressed:
+                          //     () => Get.to(
+                          //       () => VerifyScreen(
+                          //         role: Role.CUSTOMER,
+                          //         screen: Screen.forgetPassword,
+                          //         email: controller.emailController.text,
+                          //       ),
+                          //     ),
                           onPressed: () {
-                          controller.forgetPassword();
-                        },
-                        text: AppText.continue1.tr,
-                        isIcon: true,
-                        icon: Icons.arrow_forward_outlined,
-                      ),
-            ),
-            SizedBox(height: 40.h),
-          ],
+                            controller.forgetPassword();
+                          },
+                          text: AppText.continue1.tr,
+                          isIcon: true,
+                          icon: Icons.arrow_forward_outlined,
+                        ),
+              ),
+              SizedBox(height: 40.h),
+            ],
+          ),
         ),
       ),
     );

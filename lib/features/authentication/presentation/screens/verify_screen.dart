@@ -28,35 +28,38 @@ class VerifyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     log("Role: $role, Screen: $screen");
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomTitleBar(
-              title: "Verification code",
-              left: 30.w,
-              subtitle:
-                  "Please check your phone. We have sent the verification code to your eamil.",
-            ),
-            SizedBox(height: 40.h),
-            VerifyBox(email: email),
-            Spacer(),
-            Obx(
-              () =>
-                  controller.isLoading.value
-                      ? SpinKitWave(color: AppColors.primary, size: 30.0)
-                      : CustomButton(
-                        onPressed: () {
-                          controller.verifyOtp(email, screen);
-                        },
-                        text: "Verify",
-                        isIcon: true,
-                        icon: Icons.arrow_forward_outlined,
-                      ),
-            ),
-            SizedBox(height: 24.h),
-          ],
+      body: Directionality(
+        textDirection: TextDirection.ltr,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomTitleBar(
+                title: "Verification code",
+                left: 30.w,
+                subtitle:
+                    "Please check your phone. We have sent the verification code to your eamil.",
+              ),
+              SizedBox(height: 40.h),
+              VerifyBox(email: email),
+              Spacer(),
+              Obx(
+                () =>
+                    controller.isLoading.value
+                        ? SpinKitWave(color: AppColors.primary, size: 30.0)
+                        : CustomButton(
+                          onPressed: () {
+                            controller.verifyOtp(email, screen);
+                          },
+                          text: "Verify",
+                          isIcon: true,
+                          icon: Icons.arrow_forward_outlined,
+                        ),
+              ),
+              SizedBox(height: 24.h),
+            ],
+          ),
         ),
       ),
     );
