@@ -13,11 +13,11 @@ import '../widgets/verify_box.dart';
 
 class VerifyScreen extends StatelessWidget {
   final String email;
-  final Role role;
+  final Role? role;
   final Screen screen;
   VerifyScreen({
     super.key,
-    required this.role,
+    this.role,
     required this.screen,
     required this.email,
   });

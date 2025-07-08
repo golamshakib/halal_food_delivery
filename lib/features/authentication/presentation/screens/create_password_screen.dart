@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
@@ -15,6 +17,7 @@ class CreatePasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log("Access Token: $accesstoken");
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.h),
