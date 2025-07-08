@@ -110,4 +110,14 @@ class AppValidator {
     }
     return null;
   }
+
+  static String? validateLocation(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return AppText.locationRequired.tr;
+    }
+    if (value.length < 5) {
+      return AppText.locationMinLength.tr;
+    }
+    return null;
+  }
 }

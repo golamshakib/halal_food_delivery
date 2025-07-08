@@ -1,6 +1,4 @@
 import 'package:get/get.dart';
-
-import '../features/authentication/presentation/screens/create_password_screen.dart';
 import '../features/authentication/presentation/screens/forget_password_screen.dart';
 import '../features/authentication/presentation/screens/login_screen.dart';
 import '../features/authentication/presentation/screens/successful_screen.dart';
@@ -46,7 +44,6 @@ import '../features/splash_screen/presentation/screens/splash_screen.dart';
 class AppRoute {
   static String loginScreen = "/loginScreen";
   static String forgetPasswordScreen = "/forgetPasswordScreen";
-  static String createPasswordScreen = "/createPasswordScreen";
   static String successfulScreen = "/successfulScreen";
   static String verificationSuccessfulScreen = "/verificationSuccessfulScreen";
   static String init = "/";
@@ -109,7 +106,6 @@ class AppRoute {
     ),
     GetPage(name: onboardingScreen, page: () => OnboardingScreen()),
     GetPage(name: forgetPasswordScreen, page: () => ForgetPasswordScreen()),
-    GetPage(name: createPasswordScreen, page: () => CreatePasswordScreen()),
     GetPage(name: successfulScreen, page: () => SuccessfulScreen()),
 
     GetPage(name: roleSelectionScreen, page: () => RoleSelectionScreen()),

@@ -1,25 +1,17 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_button.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_text.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 import 'package:halal_food_delivery/core/utils/constants/image_path.dart';
-import '../../controllers/verification_controller.dart';
+
+import 'login_screen.dart';
 
 class VerificationSuccessfulScreen extends StatelessWidget {
   const VerificationSuccessfulScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final dynamic arguments = Get.arguments;
-
-    log("Received arguments: $arguments (type: ${arguments.runtimeType})");
-    final String? role = arguments is String ? arguments : null;
-
-    // Create an instance of VerificationController
-    final VerificationController controller = Get.put(VerificationController());
-
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -48,11 +40,9 @@ class VerificationSuccessfulScreen extends StatelessWidget {
             CustomButton(
               onPressed: () {
                 // Trigger navigation directly after button press
-                if (role != null) {
-                  controller.navigateToRoleBasedScreen(role);
-                }
+                Get.to(() => LoginScreen());
               },
-              text: "Continue",
+              text: "Go to Sign In",
               isIcon: true,
               icon: Icons.arrow_forward_outlined,
             ),

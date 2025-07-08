@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 import '../../utils/constants/app_colors.dart';
@@ -26,6 +27,7 @@ class CustomTextField extends StatelessWidget {
     this.onChanged,
     this.onTap,
     this.color,
+    this.inputFormatters,
   });
 
   final VoidCallback? onTap;
@@ -48,6 +50,7 @@ class CustomTextField extends StatelessWidget {
   final Color? color;
   final bool showEnabledBorder;
   final bool showFocusedBorder;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +63,7 @@ class CustomTextField extends StatelessWidget {
         keyboardType: keyboardType,
         obscureText: obscureText,
         controller: controller,
+        inputFormatters: inputFormatters,
         style:
             style ??
             GoogleFonts.inter(

@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -52,6 +53,17 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 24.h),
                 CustomTextField(
+                  validator: AppValidator.validateName,
+                  controller: controller.nameController,
+                  prefixIcon: Icon(Icons.person_outline),
+                  hintText: AppText.typeYourName.tr,inputFormatters: [
+                    FilteringTextInputFormatter.allow(
+                      RegExp(r'[a-zA-Z\s]'), // Allow letters and spaces
+                    ),
+                  ],
+                ),
+                SizedBox(height: 16.h),
+                CustomTextField(
                   validator: AppValidator.validateEmail,
                   controller: controller.emailController,
                   prefixIcon: Icon(Icons.email_outlined),
@@ -59,6 +71,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 16.h),
                 CustomTextField(
+                  validator: AppValidator.validateLocation,
                   readOnly: true,
                   controller: controller.locationController,
                   prefixIcon: GestureDetector(

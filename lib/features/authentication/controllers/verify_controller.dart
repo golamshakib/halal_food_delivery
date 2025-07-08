@@ -9,6 +9,7 @@ import '../../../core/utils/constants/app_urls.dart';
 import '../../../core/utils/constants/enums.dart';
 import '../../../core/utils/logging/logger.dart';
 import '../../../routes/app_routes.dart';
+import '../presentation/screens/create_password_screen.dart';
 
 class VerifyController extends GetxController {
   final TextEditingController otpController = TextEditingController();
@@ -79,19 +80,20 @@ class VerifyController extends GetxController {
         AppUrls.verifyOtp,
         body: {'otp': int.parse(otp), 'email': email},
       );
-      if (response.isSuccess) {
+      if (response.statusCode == 200) {
         log('OTP verified successfully');
-        AppSnackBar.showSuccess("OTP verified successfully");
 
+        String? accesstoken = response.responseData['data'];
         if (screen == Screen.singUp) {
           Get.offAllNamed(AppRoute.verificationSuccessfulScreen);
         } else if (screen == Screen.forgetPassword) {
-          Get.toNamed(AppRoute.createPasswordScreen);
+          Get.to(() => CreatePasswordScreen(accesstoken: accesstoken!));
         }
-      } else {
-        final message = "Invalid OTP";
-        log('OTP verification failed: $message');
-        AppSnackBar.showError(message);
+        AppSnackBar.showSuccess("OTP verified successfully");
+      } else if (response.statusCode == 409) {
+        AppSnackBar.showError("OTP is Incorrected");
+      } else if (response.statusCode == 400) {
+        AppSnackBar.showError("OTP is expired");
       }
     } catch (e) {
       log('Error verifying OTP: $e');

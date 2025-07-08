@@ -9,7 +9,8 @@ import '../../controllers/create_password_controller.dart';
 import '../widgets/custom_title_bar.dart';
 
 class CreatePasswordScreen extends StatelessWidget {
-  CreatePasswordScreen({super.key});
+  final String accesstoken;
+  CreatePasswordScreen({super.key, required this.accesstoken});
   final controller = Get.put(CreatePasswordController());
 
   @override

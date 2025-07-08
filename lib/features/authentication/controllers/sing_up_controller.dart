@@ -21,6 +21,7 @@ import 'package:http_parser/http_parser.dart';
 import '../presentation/screens/verify_screen.dart';
 
 class SingUpController extends GetxController {
+  final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final locationController = TextEditingController();
@@ -133,6 +134,12 @@ class SingUpController extends GetxController {
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
     final location = locationController.text.trim();
+    final name = nameController.text.trim();
+
+    if (name.isEmpty) {
+      AppSnackBar.showError(AppText.nameCannotBeEmpty.tr);
+      return;
+    }
 
     if (email.isEmpty) {
       AppSnackBar.showError(AppText.emailCannotBeEmpty.tr);
@@ -164,6 +171,7 @@ class SingUpController extends GetxController {
 
     final requestBody = {
       "email": email,
+      "name": name,
       "password": password,
       "role": role.toString().split('.').last, // Convert enum to string
       "location": location,

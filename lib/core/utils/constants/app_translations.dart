@@ -63,6 +63,7 @@ class AppTranslations extends Translations {
       AppText.exploreDescription:
           'Start exploring a world of delicious meals, real-time tracking, and seamless deliveries!',
       AppText.typeYourEmail: 'Type Your Email',
+      AppText.typeYourName: 'Type Your Name',
       AppText.typeYourLocation: 'Type Your Location',
       AppText.typeYourPassword: 'Type Your Password',
       AppText.commercialLicense: 'Commercial license/AVS Certificate',
@@ -78,6 +79,7 @@ class AppTranslations extends Translations {
           'Location permission permanently denied',
       AppText.errorGettingLocation: 'Error getting location: %s',
       AppText.emailCannotBeEmpty: 'Email cannot be empty',
+      AppText.nameCannotBeEmpty: 'Name cannot be empty',
       AppText.locationCannotBeEmpty: 'Location cannot be empty',
       AppText.passwordCannotBeEmpty: 'Password cannot be empty',
       AppText.uploadRestaurantDocuments: 'Please upload restaurant documents',
@@ -87,6 +89,8 @@ class AppTranslations extends Translations {
       AppText.userAlreadyExists: 'User already exists',
       AppText.failedToSignUp: 'Failed to sign up: %s',
       AppText.errorSigningUp: 'Error signing up: %s',
+      AppText.locationRequired: 'Location is required',
+      AppText.locationMinLength: 'Location must be at least 5 characters long',
     },
     'fr_FR': {
       // Existing translations
@@ -154,6 +158,7 @@ class AppTranslations extends Translations {
       AppText.exploreDescription:
           'Commencez à explorer un monde de repas délicieux, de suivi en temps réel et de livraisons fluides !',
       AppText.typeYourEmail: 'Entrez votre email',
+      AppText.typeYourName: 'Entrez votre nom',
       AppText.typeYourLocation: 'Entrez votre localisation',
       AppText.typeYourPassword: 'Entrez votre mot de passe',
       AppText.commercialLicense: 'Licence commerciale/Certificat AVS',
@@ -171,6 +176,7 @@ class AppTranslations extends Translations {
       AppText.errorGettingLocation:
           'Erreur lors de l\'obtention de la localisation : %s',
       AppText.emailCannotBeEmpty: 'L\'email ne peut pas être vide',
+      AppText.nameCannotBeEmpty: 'Le nom ne peut pas être vide',
       AppText.locationCannotBeEmpty: 'La localisation ne peut pas être vide',
       AppText.passwordCannotBeEmpty: 'Le mot de passe ne peut pas être vide',
       AppText.uploadRestaurantDocuments:
@@ -182,6 +188,9 @@ class AppTranslations extends Translations {
       AppText.userAlreadyExists: 'L\'utilisateur existe déjà',
       AppText.failedToSignUp: 'Échec de l\'inscription : %s',
       AppText.errorSigningUp: 'Erreur lors de l\'inscription : %s',
+      AppText.locationRequired: 'La localisation est requise',
+      AppText.locationMinLength:
+          'La localisation doit comporter au moins 5 caractères',
     },
     'ar_AR': {
       // Existing translations
@@ -246,6 +255,7 @@ class AppTranslations extends Translations {
       AppText.exploreDescription:
           'ابدأ في استكشاف عالم من الوجبات اللذيذة، التتبع في الوقت الفعلي، والتوصيلات السلسة!',
       AppText.typeYourEmail: 'اكتب بريدك الإلكتروني',
+      AppText.typeYourName: 'اكتب اسمك',
       AppText.typeYourLocation: 'اكتب موقعك',
       AppText.typeYourPassword: 'اكتب كلمة المرور الخاصة بك',
       AppText.commercialLicense: 'الرخصة التجارية/شهادة AVS',
@@ -261,6 +271,7 @@ class AppTranslations extends Translations {
           'تم رفض إذن الموقع بشكل دائم',
       AppText.errorGettingLocation: 'خطأ في الحصول على الموقع: %s',
       AppText.emailCannotBeEmpty: 'البريد الإلكتروني لا يمكن أن يكون فارغًا',
+      AppText.nameCannotBeEmpty: 'الاسم لا يمكن أن يكون فارغًا',
       AppText.locationCannotBeEmpty: 'الموقع لا يمكن أن يكون فارغًا',
       AppText.passwordCannotBeEmpty: 'كلمة المرور لا يمكن أن تكون فارغة',
       AppText.uploadRestaurantDocuments: 'يرجى رفع وثائق المطعم',
@@ -270,6 +281,8 @@ class AppTranslations extends Translations {
       AppText.userAlreadyExists: 'المستخدم موجود بالفعل',
       AppText.failedToSignUp: 'فشل التسجيل: %s',
       AppText.errorSigningUp: 'خطأ أثناء التسجيل: %s',
+      AppText.locationRequired: 'الموقع مطلوب',
+      AppText.locationMinLength: 'يجب أن يتكون الموقع من 5 أحرف على الأقل',
     },
   };
 }

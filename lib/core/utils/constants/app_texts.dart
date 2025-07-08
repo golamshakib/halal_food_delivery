@@ -55,6 +55,7 @@ class AppText {
   static const String createAccount = 'createAccount';
   static const String exploreDescription = 'exploreDescription';
   static const String typeYourEmail = 'typeYourEmail';
+  static const String typeYourName = 'typeYourName';
   static const String typeYourLocation = 'typeYourLocation';
   static const String typeYourPassword = 'typeYourPassword';
   static const String typeYourTypeYourPassword = 'typeYourPassword';
@@ -71,13 +72,17 @@ class AppText {
       'locationPermissionPermanentlyDenied';
   static const String errorGettingLocation = 'errorGettingLocation';
   static const String emailCannotBeEmpty = 'emailCannotBeEmpty';
+  static const String nameCannotBeEmpty = 'nameCannotBeEmpty';
   static const String locationCannotBeEmpty = 'locationCannotBeEmpty';
   static const String passwordCannotBeEmpty = 'passwordCannotBeEmpty';
   static const String uploadRestaurantDocuments = 'uploadRestaurantDocuments';
   static const String selectLocation = 'selectLocation';
+
   static const String errorFetchingAddress = 'errorFetchingAddress';
   static const String signUpSuccessful = 'signUpSuccessful';
   static const String userAlreadyExists = 'userAlreadyExists';
   static const String failedToSignUp = 'failedToSignUp';
   static const String errorSigningUp = 'errorSigningUp';
+  static const String locationRequired = 'locationRequired';
+  static const String locationMinLength = 'locationMinLength';
 }
