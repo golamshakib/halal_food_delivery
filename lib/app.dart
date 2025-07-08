@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'core/bindings/controller_binder.dart';
 import 'core/utils/constants/app_sizer.dart';
+import 'core/utils/constants/app_translations.dart';
 import 'core/utils/theme/theme.dart';
+import 'features/language/controllers/lanauage_controller.dart';
 import 'routes/app_routes.dart';
 
 class PlatformUtils {
@@ -19,28 +21,36 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Ensure LanguageController is initialized
+    Get.put(LanguageController());
+
     return Sizer(
       builder: (context, orientation, deviceType) {
-        return GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          initialRoute: AppRoute.init,
-          getPages: AppRoute.routes,
-          initialBinding: ControllerBinder(),
-          themeMode: ThemeMode.system,
-          theme: _getLightTheme(),
-          darkTheme: _getDarkTheme(),
-          defaultTransition:
-              PlatformUtils.isIOS ? Transition.cupertino : Transition.fade,
-          locale: Get.deviceLocale,
-          builder:
-              (context, child) =>
-                  PlatformUtils.isIOS
-                      ? CupertinoTheme(
-                        data: const CupertinoThemeData(),
-                        child: child!,
-                      )
-                      : child!,
-        );
+        return Obx(() {
+          // Access LanguageController after initialization
+          final languageController = Get.find<LanguageController>();
+          return GetMaterialApp(
+            debugShowCheckedModeBanner: false,
+            initialRoute: AppRoute.init,
+            getPages: AppRoute.routes,
+            initialBinding: ControllerBinder(),
+            themeMode: ThemeMode.system,
+            theme: _getLightTheme(),
+            darkTheme: _getDarkTheme(),
+            defaultTransition:
+                PlatformUtils.isIOS ? Transition.cupertino : Transition.fade,
+            locale: languageController.currentLocale.value,
+            translations: AppTranslations(),
+            builder:
+                (context, child) =>
+                    PlatformUtils.isIOS
+                        ? CupertinoTheme(
+                          data: const CupertinoThemeData(),
+                          child: child!,
+                        )
+                        : child!,
+          );
+        });
       },
     );
   }

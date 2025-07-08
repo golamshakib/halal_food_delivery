@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_text.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_colors.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
+import 'package:halal_food_delivery/core/utils/constants/app_texts.dart';
 import 'package:halal_food_delivery/core/utils/constants/image_path.dart';
 
 import '../../controllers/lanauage_controller.dart';
@@ -13,58 +14,61 @@ class LanguageSelection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 32.h),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // English option
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.h),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.h),
-              border: Border.all(color: Color.fromRGBO(126, 31, 127, 0.25)),
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 32.h),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // English option
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.h),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.h),
+                border: Border.all(color: Color.fromRGBO(126, 31, 127, 0.25)),
+              ),
+              child: _buildLanguageOption(
+                flagAsset: ImagePath.english,
+                language: AppText.english.tr,
+                languageCode: 'en',
+                controller: languageController,
+              ),
             ),
-            child: _buildLanguageOption(
-              flagAsset: ImagePath.english,
-              language: 'English',
-              languageCode: 'en',
-              controller: languageController,
-            ),
-          ),
-          SizedBox(height: 11.h),
+            SizedBox(height: 11.h),
 
-          // Arabic option
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.h),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.h),
-              border: Border.all(color: Color.fromRGBO(126, 31, 127, 0.25)),
+            // Arabic option
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.h),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.h),
+                border: Border.all(color: Color.fromRGBO(126, 31, 127, 0.25)),
+              ),
+              child: _buildLanguageOption(
+                flagAsset: ImagePath.arabic,
+                language: AppText.arabic.tr,
+                languageCode: 'ar',
+                controller: languageController,
+              ),
             ),
-            child: _buildLanguageOption(
-              flagAsset: ImagePath.arabic,
-              language: 'Arabic',
-              languageCode: 'ar',
-              controller: languageController,
-            ),
-          ),
-          SizedBox(height: 11.h),
+            SizedBox(height: 11.h),
 
-          // French option
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.h),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.h),
-              border: Border.all(color: Color.fromRGBO(126, 31, 127, 0.25)),
+            // French option
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.h),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.h),
+                border: Border.all(color: Color.fromRGBO(126, 31, 127, 0.25)),
+              ),
+              child: _buildLanguageOption(
+                flagAsset: ImagePath.french,
+                language: AppText.french.tr,
+                languageCode: 'fr',
+                controller: languageController,
+              ),
             ),
-            child: _buildLanguageOption(
-              flagAsset: ImagePath.french,
-              language: 'French',
-              languageCode: 'fr',
-              controller: languageController,
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

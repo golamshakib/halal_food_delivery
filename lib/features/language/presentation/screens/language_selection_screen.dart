@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_text.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_colors.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
+import 'package:halal_food_delivery/core/utils/constants/app_texts.dart';
 import 'package:halal_food_delivery/routes/app_routes.dart';
 
 import '../../../../core/common/widgets/custom_button.dart';
@@ -18,7 +19,7 @@ class LanguageSelectionScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         backgroundColor: AppColors.white,
         title: CustomText(
-          text: 'Language',
+          text: AppText.language.tr,
           fontSize: 16.sp,
           fontWeight: FontWeight.w500,
           color: Color(0xff171717),
@@ -34,7 +35,7 @@ class LanguageSelectionScreen extends StatelessWidget {
               onPressed: () {
                 Get.toNamed(AppRoute.onboardingScreen);
               },
-              text: 'Continue',
+              text: AppText.continue1.tr,
               isIcon: true,
               icon: Icons.arrow_forward_outlined,
             ),
