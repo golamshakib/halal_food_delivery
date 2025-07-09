@@ -70,12 +70,16 @@ class LoginController extends GetxController {
 
         if (role == Role.CUSTOMER) {
           Get.offAll(() => CustomerNavBar());
+          AppSnackBar.showSuccess(AppText.loginSuccesful.tr);
         } else if (role == Role.RESTAURANT_OWNER) {
           Get.offAll(() => OwnerNavBar());
+          AppSnackBar.showSuccess(AppText.loginSuccesful.tr);
         } else if (role == Role.DELIVERY_PARTNER) {
           Get.offAll(() => DeliveryNavBar());
+          AppSnackBar.showSuccess(AppText.loginSuccesful.tr);
         }
-        AppSnackBar.showSuccess(AppText.success.tr);
+      } else if (response.statusCode == 203) {
+        AppSnackBar.showError(AppText.passwordIncorrted.tr);
       }
     } catch (e, stack) {
       AppLoggerHelper.error('Error: $e stack: $stack');

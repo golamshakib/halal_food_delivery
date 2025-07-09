@@ -144,6 +144,9 @@ class AppTranslations extends Translations {
       // New translations from VerifyBox
       AppText.resendCodeIn: 'Resend code in ',
       AppText.resend: 'Resend',
+
+      AppText.loginSuccesful: 'Login Successful',
+      AppText.passwordIncorrted: 'Password is Incorrected',
     },
     'fr_FR': {
       // Existing translations
@@ -299,6 +302,9 @@ class AppTranslations extends Translations {
       // New translations from VerifyBox
       AppText.resendCodeIn: 'Renvoyer le code dans ',
       AppText.resend: 'Renvoyer',
+
+      AppText.loginSuccesful: 'Connexion réussie',
+      AppText.passwordIncorrted: 'Le mot de passe est incorrect',
     },
     'ar_AR': {
       // Existing translations
@@ -444,6 +450,8 @@ class AppTranslations extends Translations {
       // New translations from VerifyBox
       AppText.resendCodeIn: 'إعادة إرسال الرمز في ',
       AppText.resend: 'إعادة إرسال',
+      AppText.loginSuccesful: 'تم تسجيل الدخول بنجاح',
+      AppText.passwordIncorrted: 'كلمة المرور غير صحيحة',
     },
   };
 }

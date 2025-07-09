@@ -126,4 +126,7 @@ class AppText {
   /// New keys from VerifyBox
   static const String resendCodeIn = 'resendCodeIn';
   static const String resend = 'resend';
+
+  static const String loginSuccesful = 'loginSuccesful';
+  static const String passwordIncorrted = 'passwordIncorrted';
 }
