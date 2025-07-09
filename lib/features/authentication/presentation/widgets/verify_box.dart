@@ -3,13 +3,15 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_colors.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
+import 'package:halal_food_delivery/core/utils/constants/app_texts.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../core/common/widgets/custom_text.dart';
 import '../../controllers/verify_controller.dart';
 
 class VerifyBox extends StatelessWidget {
-  VerifyBox({super.key});
+  final String email;
+  VerifyBox({super.key, required this.email});
 
   final VerifyController controller = Get.put(VerifyController());
 
@@ -21,7 +23,7 @@ class VerifyBox extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: PinCodeTextField(
             appContext: context,
-            length: 5,
+            length: 6,
             onChanged: (value) {},
             controller: controller.otpController,
             pinTheme: PinTheme(
@@ -54,19 +56,19 @@ class VerifyBox extends StatelessWidget {
                 controller.isResendEnabled.value
                     ? GestureDetector(
                       onTap: () {
-                        controller.resendOtp();
+                        controller.resendOtp(email);
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CustomText(
-                            text: 'Resend code in ',
+                            text: AppText.resendCodeIn.tr,
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w500,
                             color: Color(0xff0C0B0B),
                           ),
                           CustomText(
-                            text: 'Resend',
+                            text: AppText.resend.tr,
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w700,
                             color: Color(0xff0C0B0B),
@@ -78,7 +80,7 @@ class VerifyBox extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CustomText(
-                          text: 'Resend code in ',
+                          text: AppText.resendCodeIn.tr,
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w500,
                           color: Color(0xff0C0B0B),

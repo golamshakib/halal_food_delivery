@@ -40,42 +40,49 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        alignment: Alignment.center,
-        // width: double.maxFinite,
-        padding: EdgeInsets.symmetric(
-          vertical: vertical ?? 13.h,
-          horizontal: horizontal ?? 10.w,
-        ),
-        decoration: BoxDecoration(
-          color: backgroundColor ?? AppColors.primary,
-          gradient: gradient,
-          borderRadius: BorderRadius.circular(radius ?? 8.h),
-          border: Border.all(
-            color:
-                gradient == null
-                    ? (borderColor ?? Color(0xffF3F3F5))
-                    : Colors.transparent,
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: GestureDetector(
+        onTap: onPressed,
+        child: Container(
+          alignment: Alignment.center,
+          // width: double.maxFinite,
+          padding: EdgeInsets.symmetric(
+            vertical: vertical ?? 13.h,
+            horizontal: horizontal ?? 10.w,
           ),
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CustomText(
-              text: text,
-              color: textColor ?? AppColors.textPrimary,
-              fontWeight: fontWeight ?? FontWeight.w600,
-              fontSize: fontSize ?? 16.sp,
-              textAlign: TextAlign.center,
+          decoration: BoxDecoration(
+            color: backgroundColor ?? AppColors.primary,
+            gradient: gradient,
+            borderRadius: BorderRadius.circular(radius ?? 8.h),
+            border: Border.all(
+              color:
+                  gradient == null
+                      ? (borderColor ?? Color(0xffF3F3F5))
+                      : Colors.transparent,
             ),
-            if (isIcon == true) ...[
-              SizedBox(width: 16.w),
-              Icon(icon, size: 20.h, color: iconColor ?? AppColors.textPrimary),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CustomText(
+                text: text,
+                color: textColor ?? AppColors.textPrimary,
+                fontWeight: fontWeight ?? FontWeight.w600,
+                fontSize: fontSize ?? 16.sp,
+                textAlign: TextAlign.center,
+              ),
+              if (isIcon == true) ...[
+                SizedBox(width: 16.w),
+                Icon(
+                  icon,
+                  size: 20.h,
+                  color: iconColor ?? AppColors.textPrimary,
+                ),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );

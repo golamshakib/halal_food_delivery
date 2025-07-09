@@ -4,8 +4,8 @@ import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 
 import '../../../../../core/common/widgets/custom_button.dart';
 import '../../../../../core/common/widgets/custom_text.dart';
+import '../../../../../core/services/Auth_service.dart';
 import '../../../../../core/utils/constants/app_colors.dart';
-import '../../../../../routes/app_routes.dart';
 
 class DeliveryLogoutBottomSheet extends StatelessWidget {
   const DeliveryLogoutBottomSheet({super.key});
@@ -56,7 +56,7 @@ class DeliveryLogoutBottomSheet extends StatelessWidget {
                     child: CustomButton(
                       radius: 78.h,
                       onPressed: () {
-                        Get.toNamed(AppRoute.onboardingScreen);
+                        AuthService.logoutUser();
                       },
                       text: "Yes, Logout",
                     ),

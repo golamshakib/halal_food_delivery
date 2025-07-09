@@ -1,12 +1,8 @@
 import 'package:get/get.dart';
-
-import '../features/authentication/presentation/screens/create_password_screen.dart';
 import '../features/authentication/presentation/screens/forget_password_screen.dart';
 import '../features/authentication/presentation/screens/login_screen.dart';
-import '../features/authentication/presentation/screens/sing_up_screen.dart';
 import '../features/authentication/presentation/screens/successful_screen.dart';
 import '../features/authentication/presentation/screens/verification_successful_screen.dart';
-import '../features/authentication/presentation/screens/verify_screen.dart';
 import '../features/customer/customer_food_profile/presentation/screens/customer_food_profile_screen.dart';
 import '../features/customer/customer_food_profile/presentation/screens/customer_order_confrim_screen.dart';
 import '../features/customer/customer_food_profile/presentation/screens/customer_payment_screen.dart';
@@ -47,10 +43,7 @@ import '../features/splash_screen/presentation/screens/splash_screen.dart';
 
 class AppRoute {
   static String loginScreen = "/loginScreen";
-  static String signUpScreen = "/signUpScreen";
   static String forgetPasswordScreen = "/forgetPasswordScreen";
-  static String verifyScreen = "/verifyScreen";
-  static String createPasswordScreen = "/createPasswordScreen";
   static String successfulScreen = "/successfulScreen";
   static String verificationSuccessfulScreen = "/verificationSuccessfulScreen";
   static String init = "/";
@@ -106,16 +99,13 @@ class AppRoute {
   static List<GetPage> routes = [
     GetPage(name: loginScreen, page: () => LoginScreen()),
     GetPage(name: init, page: () => SplashScreen()),
-    GetPage(name: signUpScreen, page: () => SignUpScreen()),
-
+    
     GetPage(
       name: languageSelectionScreen,
       page: () => LanguageSelectionScreen(),
     ),
     GetPage(name: onboardingScreen, page: () => OnboardingScreen()),
     GetPage(name: forgetPasswordScreen, page: () => ForgetPasswordScreen()),
-    GetPage(name: verifyScreen, page: () => VerifyScreen()),
-    GetPage(name: createPasswordScreen, page: () => CreatePasswordScreen()),
     GetPage(name: successfulScreen, page: () => SuccessfulScreen()),
 
     GetPage(name: roleSelectionScreen, page: () => RoleSelectionScreen()),
