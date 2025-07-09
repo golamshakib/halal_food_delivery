@@ -147,6 +147,7 @@ class AppTranslations extends Translations {
 
       AppText.loginSuccesful: 'Login Successful',
       AppText.passwordIncorrted: 'Password is Incorrected',
+      AppText.userNotExist: "User not Exist",
     },
     'fr_FR': {
       // Existing translations
@@ -305,6 +306,8 @@ class AppTranslations extends Translations {
 
       AppText.loginSuccesful: 'Connexion réussie',
       AppText.passwordIncorrted: 'Le mot de passe est incorrect',
+
+      AppText.userNotExist: "L'utilisateur n'existe pas",
     },
     'ar_AR': {
       // Existing translations
@@ -452,6 +455,7 @@ class AppTranslations extends Translations {
       AppText.resend: 'إعادة إرسال',
       AppText.loginSuccesful: 'تم تسجيل الدخول بنجاح',
       AppText.passwordIncorrted: 'كلمة المرور غير صحيحة',
+      AppText.userNotExist: "المستخدم غير موجود",
     },
   };
 }

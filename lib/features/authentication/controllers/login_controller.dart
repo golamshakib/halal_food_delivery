@@ -80,6 +80,8 @@ class LoginController extends GetxController {
         }
       } else if (response.statusCode == 203) {
         AppSnackBar.showError(AppText.passwordIncorrted.tr);
+      } else if (response.statusCode == 404) {
+        AppSnackBar.showError(AppText.userNotExist.tr);
       }
     } catch (e, stack) {
       AppLoggerHelper.error('Error: $e stack: $stack');

@@ -129,4 +129,6 @@ class AppText {
 
   static const String loginSuccesful = 'loginSuccesful';
   static const String passwordIncorrted = 'passwordIncorrted';
+  static const String userNotExist = 'userNotExist';
+  
 }
