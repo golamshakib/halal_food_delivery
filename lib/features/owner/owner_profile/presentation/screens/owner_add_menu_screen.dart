@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_app.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_button.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_text.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_text_field.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
-import 'package:halal_food_delivery/features/owner/owner_nav_bar/controllers/owner_nav_bar_controller.dart';
+import 'package:halal_food_delivery/core/utils/constants/app_colors.dart';
+import 'package:halal_food_delivery/core/utils/constants/icon_path.dart';
 import 'package:halal_food_delivery/features/owner/owner_profile/controllers/owner_add_menu_controller.dart';
-import 'package:halal_food_delivery/routes/app_routes.dart';
-
-import '../../../../../core/utils/constants/app_colors.dart';
-import '../../../../../core/utils/constants/icon_path.dart';
+import '../../../../../core/utils/constants/enums.dart';
 
 class OwnerAddMenuScreen extends StatelessWidget {
   OwnerAddMenuScreen({super.key});
@@ -19,7 +18,7 @@ class OwnerAddMenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomApp(istitle: true, title: "My Menu"),
+      appBar: CustomApp(istitle: true, title: "Add Menu"),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
@@ -30,14 +29,46 @@ class OwnerAddMenuScreen extends StatelessWidget {
               SizedBox(height: 8.h),
               CustomTextField(
                 controller: controller.foodNameController,
-                hintText: "Type Your food name",
+                hintText: "Type your food name",
+              ),
+              SizedBox(height: 12.h),
+              CustomText(text: "Category", fontSize: 14.sp),
+              SizedBox(height: 8.h),
+              Obx(
+                () => CustomTextField(
+                  readOnly: true,
+                  controller: TextEditingController(
+                    text: controller.selectedCategory.value?.displayText,
+                  ),
+                  hintText: "Select a category",
+                  suffixIcon: PopupMenuButton<Category>(
+                    color: AppColors.white,
+                    icon: Icon(Icons.keyboard_arrow_down),
+                    onSelected: controller.setCategory,
+                    itemBuilder:
+                        (_) =>
+                            controller.categoryType
+                                .map(
+                                  (category) => PopupMenuItem(
+                                    value: category,
+                                    child: CustomText(
+                                      text: category.displayText,
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                )
+                                .toList(),
+                  ),
+                ),
               ),
               SizedBox(height: 12.h),
               CustomText(text: "Price", fontSize: 14.sp),
               SizedBox(height: 8.h),
               CustomTextField(
                 controller: controller.priceController,
-                hintText: "Select your food prices",
+                hintText: "Select your food price",
+                keyboardType: TextInputType.number,
               ),
               SizedBox(height: 12.h),
               Row(
@@ -60,18 +91,18 @@ class OwnerAddMenuScreen extends StatelessWidget {
                     controller.isOfferEnabled.value
                         ? CustomTextField(
                           controller: controller.offerController,
-                          hintText: "Select your offer prices",
+                          hintText: "Select your offer price",
+                          keyboardType: TextInputType.number,
                         )
                         : SizedBox.shrink(),
               ),
-
               SizedBox(height: 12.h),
               CustomText(text: "Description", fontSize: 14.sp),
               SizedBox(height: 8.h),
               CustomTextField(
                 maxLine: 3,
                 controller: controller.descriptionController,
-                hintText: "Type here you food description",
+                hintText: "Type your food description",
               ),
               SizedBox(height: 12.h),
               CustomText(text: "Upload image", fontSize: 14.sp),
@@ -148,14 +179,18 @@ class OwnerAddMenuScreen extends StatelessWidget {
                 }),
               ),
               SizedBox(height: 32.h),
-              CustomButton(
-                onPressed: () {
-                  Get.find<OwnerNavBarController>();
-                  Get.toNamed(AppRoute.ownerNavBar);
-                },
-                text: "Create",
-                isIcon: true,
-                icon: Icons.arrow_forward,
+              Obx(
+                () =>
+                    controller.isLoading.value
+                        ? SpinKitWave(color: AppColors.primary, size: 30.0)
+                        : CustomButton(
+                          onPressed: () {
+                            controller.addMenu();
+                          },
+                          text: "Create",
+                          isIcon: true,
+                          icon: Icons.arrow_forward,
+                        ),
               ),
             ],
           ),

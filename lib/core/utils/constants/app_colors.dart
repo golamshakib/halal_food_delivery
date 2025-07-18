@@ -16,7 +16,7 @@ class AppColors {
     colors: [Color(0xfffffa9e), Color(0xFFFAD0C4), Color(0xFFFAD0C4)],
   );
 
-  // Text Colors#
+  // Text Colors
   static const Color textPrimary = Color(0xFFF2E8D1);
   static const Color textSecondary = Color(0xFF141414);
   static const Color textThird = Color(0xFF171717);
@@ -39,4 +39,12 @@ class AppColors {
   static const Color warning = Color(0xFFFFA726);
   static const Color error = Color(0xFFF44336);
   static const Color info = Color(0xFF29B6F6);
+
+  // Shimmer Colors
+  static const Color greyLight = Color(
+    0xFFE0E0E0,
+  ); // Added for shimmer base color
+  static const Color greyLighter = Color(
+    0xFFF5F5F5,
+  ); // Added for shimmer highlight color
 }

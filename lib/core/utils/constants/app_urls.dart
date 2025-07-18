@@ -13,4 +13,6 @@ class AppUrls {
   /// user
   static const String create = '$_baseUrl/user/create';
   static const String changePassword = '$_baseUrl/user/change-password';
+  static const String user = '$_baseUrl/user/me';
+  static const String addMenu = '$_baseUrl/food/create';
 }

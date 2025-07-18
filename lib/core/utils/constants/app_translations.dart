@@ -148,6 +148,15 @@ class AppTranslations extends Translations {
       AppText.loginSuccesful: 'Login Successful',
       AppText.passwordIncorrted: 'Password is Incorrected',
       AppText.userNotExist: "User not Exist",
+
+      /// change Password
+      AppText.oldAndNewPasswordSame:
+          'Your old and new password are the same. Change password',
+      AppText.passwordUpdatedSuccess: 'Password updated successfully',
+      AppText.failedToUpdatePassword: 'Failed to update password',
+      AppText.errorChangingPassword:
+          'An error occurred while changing password',
+      AppText.incorrectCurrentPassword: 'Incorrect current password',
     },
     'fr_FR': {
       // Existing translations
@@ -308,6 +317,16 @@ class AppTranslations extends Translations {
       AppText.passwordIncorrted: 'Le mot de passe est incorrect',
 
       AppText.userNotExist: "L'utilisateur n'existe pas",
+
+      /// change Password
+      AppText.oldAndNewPasswordSame:
+          "Votre ancien et nouveau mot de passe sont identiques. Changez le mot de passe.",
+      AppText.passwordUpdatedSuccess: "Mot de passe mis à jour avec succès.",
+      AppText.failedToUpdatePassword:
+          "Échec de la mise à jour du mot de passe.",
+      AppText.errorChangingPassword:
+          "Une erreur s'est produite lors du changement de mot de passe.",
+      AppText.incorrectCurrentPassword: "Mot de passe actuel incorrect.",
     },
     'ar_AR': {
       // Existing translations
@@ -456,6 +475,14 @@ class AppTranslations extends Translations {
       AppText.loginSuccesful: 'تم تسجيل الدخول بنجاح',
       AppText.passwordIncorrted: 'كلمة المرور غير صحيحة',
       AppText.userNotExist: "المستخدم غير موجود",
+
+      /// change Password
+      AppText.oldAndNewPasswordSame:
+          "كلمتي المرور القديمة والجديدة متطابقتان. قم بتغيير كلمة المرور",
+      AppText.passwordUpdatedSuccess: "تم تحديث كلمة المرور بنجاح",
+      AppText.failedToUpdatePassword: "فشل في تحديث كلمة المرور",
+      AppText.errorChangingPassword: "حدث خطأ أثناء تغيير كلمة المرور",
+      AppText.incorrectCurrentPassword: "كلمة المرور الحالية غير صحيحة",
     },
   };
 }
