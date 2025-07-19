@@ -5,11 +5,11 @@ import 'package:halal_food_delivery/core/common/widgets/custom_text_field.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 
 import '../../../../../routes/app_routes.dart';
-import '../../controllers/customer_home_controller.dart';
+import '../../controllers/customer_search_controller.dart';
 
 class CustomerSearchScreen extends StatelessWidget {
   CustomerSearchScreen({super.key});
-  final controller = Get.put(CustomerHomeController());
+  final controller = Get.put(CustomerSearchController());
 
   @override
   Widget build(BuildContext context) {

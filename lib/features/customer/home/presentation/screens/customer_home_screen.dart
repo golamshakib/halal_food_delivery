@@ -43,7 +43,7 @@ class CustomerHomeScreen extends StatelessWidget {
               CustomTextField(
                 textColor: Color(0xffD9D9D9),
                 borderColor: Color(0xff808080),
-                controller: controller.searchController,
+                controller: TextEditingController(),
                 hintText: "Search for food...",
                 readOnly: true,
                 onTap: () {

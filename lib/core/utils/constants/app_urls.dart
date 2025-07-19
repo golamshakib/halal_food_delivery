@@ -16,4 +16,5 @@ class AppUrls {
   static const String user = '$_baseUrl/user/me';
   static const String addMenu = '$_baseUrl/food/create';
   static const String food = '$_baseUrl/food';
+  static const String offer = '$_baseUrl/food/offer';
 }

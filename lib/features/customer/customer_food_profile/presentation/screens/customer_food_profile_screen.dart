@@ -16,7 +16,8 @@ import '../widgets/customer_food_profile_image.dart';
 import '../widgets/customer_restaurant_review.dart';
 
 class CustomerFoodProfileScreen extends StatelessWidget {
-  CustomerFoodProfileScreen({super.key});
+  final String id;
+  CustomerFoodProfileScreen({super.key, required this.id});
   final controller = Get.put(
     CustomerFoodProfileController(),
     tag: UniqueKey().toString(),

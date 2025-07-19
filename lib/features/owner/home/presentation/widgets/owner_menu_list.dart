@@ -22,7 +22,7 @@ class OwnerMenuList extends StatelessWidget {
               ? _buildShimmerHorizontal(context)
               : controller.menuModel.value?.data == null ||
                   controller.menuModel.value!.data!.isEmpty
-              ? const Center(child: CustomText(text: 'No menu items available'))
+              ? Center(child: CustomText(text: 'No menu items available'))
               : SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(

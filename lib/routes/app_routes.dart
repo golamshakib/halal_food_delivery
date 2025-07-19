@@ -3,7 +3,6 @@ import '../features/authentication/presentation/screens/forget_password_screen.d
 import '../features/authentication/presentation/screens/login_screen.dart';
 import '../features/authentication/presentation/screens/successful_screen.dart';
 import '../features/authentication/presentation/screens/verification_successful_screen.dart';
-import '../features/customer/customer_food_profile/presentation/screens/customer_food_profile_screen.dart';
 import '../features/customer/customer_food_profile/presentation/screens/customer_order_confrim_screen.dart';
 import '../features/customer/customer_food_profile/presentation/screens/customer_payment_screen.dart';
 import '../features/customer/customer_food_profile/presentation/screens/customer_personal_information_screen.dart';
@@ -84,7 +83,6 @@ class AppRoute {
   static String customerRestaurantProfileScreen =
       "/customerRestaurantProfileScreen";
 
-  static String customerFoodProfileScreen = "/customerFoodProfileScreen";
   static String customerPersonalInformationScreen =
       "/customerPersonalInformationScreen";
   static String customerPaymentScreen = "/customerPaymentScreen";
@@ -179,10 +177,7 @@ class AppRoute {
       name: customerRestaurantProfileScreen,
       page: () => CustomerRestaurantProfileScreen(),
     ),
-    GetPage(
-      name: customerFoodProfileScreen,
-      page: () => CustomerFoodProfileScreen(),
-    ),
+    
     GetPage(
       name: customerPersonalInformationScreen,
       page: () => CustomerPersonalInformationScreen(),
