@@ -10,15 +10,27 @@ import 'package:halal_food_delivery/core/utils/constants/app_colors.dart';
 import 'package:halal_food_delivery/core/utils/constants/icon_path.dart';
 import 'package:halal_food_delivery/features/owner/owner_profile/controllers/owner_add_menu_controller.dart';
 import '../../../../../core/utils/constants/enums.dart';
+import '../../../home/model/menu_model.dart';
 
 class OwnerAddMenuScreen extends StatelessWidget {
-  OwnerAddMenuScreen({super.key});
+  final bool isAddMenu;
+  OwnerAddMenuScreen({super.key, required this.isAddMenu});
+
   final controller = Get.put(OwnerAddMenuController());
 
   @override
   Widget build(BuildContext context) {
+    // Pre-populate fields if editing
+    if (!isAddMenu) {
+      final Data menuItem = Get.arguments as Data;
+      controller.loadMenuItemForEdit(menuItem);
+    }
+
     return Scaffold(
-      appBar: CustomApp(istitle: true, title: "Add Menu"),
+      appBar: CustomApp(
+        istitle: true,
+        title: isAddMenu ? "Add Menu" : "Edit Menu",
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
@@ -43,7 +55,7 @@ class OwnerAddMenuScreen extends StatelessWidget {
                   hintText: "Select a category",
                   suffixIcon: PopupMenuButton<Category>(
                     color: AppColors.white,
-                    icon: Icon(Icons.keyboard_arrow_down),
+                    icon: const Icon(Icons.keyboard_arrow_down),
                     onSelected: controller.setCategory,
                     itemBuilder:
                         (_) =>
@@ -74,7 +86,7 @@ class OwnerAddMenuScreen extends StatelessWidget {
               Row(
                 children: [
                   CustomText(text: "Special Offer", fontSize: 14.sp),
-                  Spacer(),
+                  const Spacer(),
                   Obx(
                     () => Checkbox(
                       value: controller.isOfferEnabled.value,
@@ -94,7 +106,7 @@ class OwnerAddMenuScreen extends StatelessWidget {
                           hintText: "Select your offer price",
                           keyboardType: TextInputType.number,
                         )
-                        : SizedBox.shrink(),
+                        : const SizedBox.shrink(),
               ),
               SizedBox(height: 12.h),
               CustomText(text: "Description", fontSize: 14.sp),
@@ -113,39 +125,17 @@ class OwnerAddMenuScreen extends StatelessWidget {
                 },
                 child: Obx(() {
                   final file = controller.pickedImage.value;
-                  final extension = file?.path.split('.').last.toLowerCase();
-                  final isImage = ['jpg', 'jpeg', 'png'].contains(extension);
+                  final menuItem = isAddMenu ? null : Get.arguments as Data;
 
                   return Container(
                     width: double.infinity,
                     height: 108.h,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Color(0XFFE0E0E0)),
+                      border: Border.all(color: const Color(0xFFE0E0E0)),
                       borderRadius: BorderRadius.circular(8.h),
                     ),
                     child:
-                        file == null
-                            ? Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  CustomText(
-                                    text: "Upload",
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color(0xff767676),
-                                  ),
-                                  SizedBox(width: 6.w),
-                                  Image.asset(
-                                    IconPath.image,
-                                    width: 16.w,
-                                    height: 16.h,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ],
-                              ),
-                            )
-                            : isImage
+                        file != null
                             ? ClipRRect(
                               borderRadius: BorderRadius.circular(8.h),
                               child: Image.file(
@@ -155,22 +145,40 @@ class OwnerAddMenuScreen extends StatelessWidget {
                                 fit: BoxFit.cover,
                               ),
                             )
+                            : !isAddMenu && menuItem?.image != null
+                            ? ClipRRect(
+                              borderRadius: BorderRadius.circular(8.h),
+                              child: Image.network(
+                                menuItem!.image!,
+                                width: double.infinity,
+                                height: 108.h,
+                                fit: BoxFit.cover,
+                                errorBuilder:
+                                    (context, error, stackTrace) =>
+                                        const Center(
+                                          child: Icon(
+                                            Icons.broken_image,
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                              ),
+                            )
                             : Center(
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Icon(
-                                    Icons.insert_drive_file,
-                                    color: AppColors.primary,
+                                  CustomText(
+                                    text: "Upload",
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color(0xff767676),
                                   ),
-                                  SizedBox(width: 10.w),
-                                  Flexible(
-                                    child: CustomText(
-                                      text: file.path.split('/').last,
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.black87,
-                                    ),
+                                  SizedBox(width: 6.w),
+                                  Image.asset(
+                                    IconPath.image,
+                                    width: 16.w,
+                                    height: 16.h,
+                                    fit: BoxFit.cover,
                                   ),
                                 ],
                               ),
@@ -185,9 +193,13 @@ class OwnerAddMenuScreen extends StatelessWidget {
                         ? SpinKitWave(color: AppColors.primary, size: 30.0)
                         : CustomButton(
                           onPressed: () {
-                            controller.addMenu();
+                            if (isAddMenu) {
+                              controller.addMenu();
+                            } else {
+                              controller.updateMenu(Get.arguments.id!);
+                            }
                           },
-                          text: "Create",
+                          text: isAddMenu ? "Create" : "Update",
                           isIcon: true,
                           icon: Icons.arrow_forward,
                         ),

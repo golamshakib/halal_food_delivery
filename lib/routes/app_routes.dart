@@ -32,7 +32,6 @@ import '../features/owner/owner_nav_bar/presentation/screens/owner_nav_bar.dart'
 import '../features/owner/owner_notification/presentation/screens/owner_notification_screen.dart';
 import '../features/owner/owner_order/presentation/screens/owner_order_details_screen.dart';
 import '../features/owner/owner_order/presentation/screens/owner_order_scan_screen.dart';
-import '../features/owner/owner_profile/presentation/screens/owner_add_menu_screen.dart';
 import '../features/owner/owner_profile/presentation/screens/owner_change_password_screen.dart';
 import '../features/owner/owner_profile/presentation/screens/owner_policy_screen.dart';
 import '../features/role_selection_screen/presentation/screens/role_selection_screen.dart';
@@ -54,7 +53,6 @@ class AppRoute {
   static String deliveryNavBar = "/deliveryNavBar";
   static String ownerNavBar = "/ownerNavBar";
 
-  static String ownerAddMenuScreen = "/ownerAddMenuScreen";
   static String ownerChangePasswordScreen = "/ownerChangePasswordScreen";
   static String ownerPolicyScreen = "/ownerPolicyScreen";
 
@@ -113,7 +111,6 @@ class AppRoute {
     GetPage(name: customerNavBar, page: () => CustomerNavBar()),
     GetPage(name: deliveryNavBar, page: () => DeliveryNavBar()),
     GetPage(name: ownerNavBar, page: () => OwnerNavBar()),
-    GetPage(name: ownerAddMenuScreen, page: () => OwnerAddMenuScreen()),
     GetPage(
       name: ownerChangePasswordScreen,
       page: () => OwnerChangePasswordScreen(),

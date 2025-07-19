@@ -28,8 +28,10 @@ class Data {
   String? email;
   String? image;
   String? role;
-  String? location;
   String? description;
+  String? location;
+  double? latitude;
+  double? longitude;
   String? createdAt;
   String? updatedAt;
 
@@ -39,8 +41,10 @@ class Data {
     this.email,
     this.image,
     this.role,
-    this.location,
     this.description,
+    this.location,
+    this.latitude,
+    this.longitude,
     this.createdAt,
     this.updatedAt,
   });
@@ -53,6 +57,8 @@ class Data {
     role = json['role'];
     description = json['description'];
     location = json['location'];
+    latitude = json['latitude'];
+    longitude = json['longitude'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
   }
@@ -66,6 +72,8 @@ class Data {
     data['role'] = role;
     data['description'] = description;
     data['location'] = location;
+    data['latitude'] = latitude;
+    data['longitude'] = longitude;
     data['createdAt'] = createdAt;
     data['updatedAt'] = updatedAt;
     return data;

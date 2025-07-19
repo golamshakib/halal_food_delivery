@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_app.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
-
 import '../../../../../core/common/widgets/custom_text.dart';
-import '../../../../../routes/app_routes.dart';
+import '../../../owner_profile/presentation/screens/owner_add_menu_screen.dart';
 import '../widgets/owner_all_menu_list.dart';
 
 class OwnerMyOrderScreen extends StatelessWidget {
@@ -25,7 +24,7 @@ class OwnerMyOrderScreen extends StatelessWidget {
                   CustomText(text: "All List", fontWeight: FontWeight.w600),
                   GestureDetector(
                     onTap: () {
-                      Get.toNamed(AppRoute.ownerAddMenuScreen);
+                      Get.to(OwnerAddMenuScreen(isAddMenu: true));
                     },
                     child: Icon(
                       Icons.add_box,

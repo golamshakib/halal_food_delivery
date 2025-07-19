@@ -11,12 +11,18 @@ import '../widgets/cusotmer_pending.dart';
 import '../widgets/cusotmer_preparing.dart';
 
 class CusotmerOrderScreen extends StatelessWidget {
-  CusotmerOrderScreen({super.key});
-
-  final CusotmerOrderController controller = Get.put(CusotmerOrderController());
+  const CusotmerOrderScreen({
+    super.key,
+  }); // Use const constructor for better performance
 
   @override
   Widget build(BuildContext context) {
+    // Use Get.put or Get.find carefully to avoid reusing the same controller
+    final  controller = Get.put(
+      CusotmerOrderController(),
+      tag: UniqueKey().toString(),
+    );
+
     return Scaffold(
       appBar: CustomApp(isBack: false, title: "My Order", istitle: true),
       body: SafeArea(
@@ -34,23 +40,41 @@ class CusotmerOrderScreen extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      _buildTabItem(index: 0, title: "Pending"),
+                      _buildTabItem(
+                        index: 0,
+                        title: "Pending",
+                        controller: controller,
+                      ),
                       SizedBox(width: 4.w),
-                      _buildTabItem(index: 1, title: "Preparing"),
+                      _buildTabItem(
+                        index: 1,
+                        title: "Preparing",
+                        controller: controller,
+                      ),
                       SizedBox(width: 4.w),
-                      _buildTabItem(index: 2, title: "Ongoing"),
+                      _buildTabItem(
+                        index: 2,
+                        title: "Ongoing",
+                        controller: controller,
+                      ),
                       SizedBox(width: 4.w),
-                      _buildTabItem(index: 3, title: "Completed"),
+                      _buildTabItem(
+                        index: 3,
+                        title: "Completed",
+                        controller: controller,
+                      ),
                     ],
                   ),
                 ),
               ),
               SizedBox(height: 20.h),
               Expanded(
-                flex: 10,
                 child: PageView(
-                  physics: NeverScrollableScrollPhysics(),
                   controller: controller.pageController,
+                  physics: const NeverScrollableScrollPhysics(),
+                  onPageChanged: (index) {
+                    controller.selectedTab.value = index;
+                  },
                   children: [
                     CusotmerPending(),
                     CusotmerPreparing(),
@@ -66,7 +90,11 @@ class CusotmerOrderScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTabItem({required int index, required String title}) {
+  Widget _buildTabItem({
+    required int index,
+    required String title,
+    required CusotmerOrderController controller,
+  }) {
     return InkWell(
       onTap: () => controller.changeTab(index),
       child: Obx(() {
@@ -76,7 +104,7 @@ class CusotmerOrderScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 8.h),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50.h),
-            color: isSelected ? AppColors.primary : Color(0xffF2E8D1),
+            color: isSelected ? AppColors.primary : const Color(0xffF2E8D1),
           ),
           child: CustomText(
             textAlign: TextAlign.center,

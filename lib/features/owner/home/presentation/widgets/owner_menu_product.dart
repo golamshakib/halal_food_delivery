@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_text.dart';
+import 'package:halal_food_delivery/core/utils/constants/app_colors.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 
 class OwnerMenuProduct extends StatelessWidget {
   final String image;
   final String foodName;
   final String price;
+  final int offerPrice;
   final String star;
   final VoidCallback? onCheckTap;
   final VoidCallback? onDeleteTap;
@@ -19,6 +21,7 @@ class OwnerMenuProduct extends StatelessWidget {
     required this.star,
     this.onCheckTap,
     this.onDeleteTap,
+    required this.offerPrice,
   });
 
   @override
@@ -58,14 +61,40 @@ class OwnerMenuProduct extends StatelessWidget {
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w600,
                     ),
-                    Text(
-                      "\$$price",
-                      style: GoogleFonts.robotoSerif(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xff121212),
+                    if (offerPrice != 0) ...[
+                      Row(
+                        children: [
+                          Text(
+                            "\$$price",
+                            style: GoogleFonts.robotoSerif(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w700,
+                              decoration: TextDecoration.lineThrough,
+                              decorationColor: AppColors.secondary,
+                              color: AppColors.secondary,
+                            ),
+                          ),
+                          SizedBox(width: 8.w),
+                          Text(
+                            "\$$offerPrice",
+                            style: GoogleFonts.robotoSerif(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xff121212),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
+                    ] else ...[
+                      Text(
+                        "\$$price",
+                        style: GoogleFonts.robotoSerif(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xff121212),
+                        ),
+                      ),
+                    ],
                   ],
                 ),
                 SizedBox(height: 10.h),
@@ -118,11 +147,20 @@ class OwnerMenuProduct extends StatelessWidget {
           left: -25.w,
           right: 271.w,
           child: Center(
-            child: Image.asset(
-              image,
-              width: 71.414.w,
-              height: 75.102.h,
-              fit: BoxFit.cover,
+            child: ClipOval(
+              child: Image.network(
+                image,
+                width: 71.414.w,
+                height: 75.102.h,
+                fit: BoxFit.fill,
+                errorBuilder:
+                    (context, error, stackTrace) => Image.asset(
+                      image,
+                      width: 71.414.w,
+                      height: 75.102.h,
+                      fit: BoxFit.cover,
+                    ),
+              ),
             ),
           ),
         ),

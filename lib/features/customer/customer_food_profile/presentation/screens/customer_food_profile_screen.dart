@@ -17,7 +17,10 @@ import '../widgets/customer_restaurant_review.dart';
 
 class CustomerFoodProfileScreen extends StatelessWidget {
   CustomerFoodProfileScreen({super.key});
-  final controller = Get.put(CustomerFoodProfileController());
+  final controller = Get.put(
+    CustomerFoodProfileController(),
+    tag: UniqueKey().toString(),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -57,9 +60,17 @@ class CustomerFoodProfileScreen extends StatelessWidget {
                         ),
                         child: Row(
                           children: [
-                            _buildTabItem(index: 0, title: "Description"),
+                            _buildTabItem(
+                              index: 0,
+                              title: "Description",
+                              controller: controller,
+                            ),
                             SizedBox(width: 4.w),
-                            _buildTabItem(index: 1, title: "Review"),
+                            _buildTabItem(
+                              index: 1,
+                              title: "Review",
+                              controller: controller,
+                            ),
                           ],
                         ),
                       ),
@@ -68,8 +79,11 @@ class CustomerFoodProfileScreen extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.47,
                       child: PageView(
-                        physics: NeverScrollableScrollPhysics(),
                         controller: controller.pageController,
+                        physics: NeverScrollableScrollPhysics(),
+                        onPageChanged: (index) {
+                          controller.selectedTab.value = index;
+                        },
                         children: [
                           CustomerFoodDescription(),
                           CustomerRestaurantReview(),
@@ -121,7 +135,11 @@ class CustomerFoodProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTabItem({required int index, required String title}) {
+  Widget _buildTabItem({
+    required int index,
+    required String title,
+    required CustomerFoodProfileController controller,
+  }) {
     return InkWell(
       onTap: () => controller.changeTab(index),
       child: Obx(() {

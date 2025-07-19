@@ -5,18 +5,24 @@ import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 import '../../../../../core/common/widgets/custom_home_app_bar.dart';
 import '../../../../../core/common/widgets/custom_text.dart';
 import '../../../../../routes/app_routes.dart';
+import '../../../owner_profile/controllers/owner_edit_profile_controller.dart';
 import '../widgets/owner_menu_list.dart';
-import '../widgets/owner_order_list.dart';
+// import '../widgets/owner_order_list.dart';
 
 class OwnerHomeScreen extends StatelessWidget {
-  const OwnerHomeScreen({super.key});
+  OwnerHomeScreen({super.key});
+  final controller = Get.put(OwnerEditProfileController());
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.fetchProfileData();
+    });
+    final profile = controller.profileModel.value?.data;
     return Scaffold(
       appBar: CustomHomeAppBar(
-        userName: "John Doe",
-        userImageUrl: 'https://i.pravatar.cc/150?img=2',
+        userName: profile?.name ?? '',
+        userImageUrl: profile?.image,
         onNotification: () {
           Get.toNamed(AppRoute.ownerNotificationScreen);
         },
@@ -62,7 +68,7 @@ class OwnerHomeScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 12.h),
-              OwnerOrderList(),
+              // OwnerOrderList(),
             ],
           ),
         ),

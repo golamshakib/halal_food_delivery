@@ -56,6 +56,23 @@ class OwnerEditProfileScreen extends StatelessWidget {
                                   height: 120.h,
                                   fit: BoxFit.cover,
                                 )
+                                : controller.profileImageUrl.value != null &&
+                                    controller.profileImageUrl.value!.isNotEmpty
+                                ? Image.network(
+                                  controller.profileImageUrl.value!,
+                                  width: 120.h,
+                                  height: 120.h,
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    // Fallback to default asset if network image fails
+                                    return Image.asset(
+                                      ImagePath.background,
+                                      width: 120.h,
+                                      height: 120.h,
+                                      fit: BoxFit.cover,
+                                    );
+                                  },
+                                )
                                 : Image.asset(
                                   ImagePath.background,
                                   width: 120.h,

@@ -24,8 +24,8 @@ class OwnerEditProfileController extends GetxController {
   final locationController = TextEditingController();
   final descriptionController = TextEditingController();
   var isLoading = false.obs;
-  var pickedImage = Rx<File?>(null); // Removed `final` to allow reassignment
-  var profileImageUrl = Rx<String?>(null); // New variable to store image URL
+  var pickedImage = Rx<File?>(null);
+  var profileImageUrl = Rx<String?>(null);
   var isMapVisible = false.obs;
   var profileModel = Rxn<ProfileModel>();
   final Rx<LatLng?> userLocation = Rx<LatLng?>(null);
@@ -57,8 +57,23 @@ class OwnerEditProfileController extends GetxController {
         locationController.text = profileModel.value?.data?.location ?? '';
         descriptionController.text =
             profileModel.value?.data?.description ?? '';
-        // Store the image URL instead of assigning to pickedImage
         profileImageUrl.value = profileModel.value?.data?.image ?? '';
+
+        // Check if latitude and longitude are available and valid
+        final latitudeStr = profileModel.value?.data?.latitude;
+        final longitudeStr = profileModel.value?.data?.longitude;
+        if (latitudeStr != null && longitudeStr != null) {
+          try {
+            final latitude = latitudeStr;
+            final longitude = longitudeStr;
+            selectedLatLng.value = LatLng(latitude, longitude);
+          } catch (e) {
+            log("Error parsing latitude/longitude: $e");
+            AppSnackBar.showError("Invalid location data");
+          }
+        } else {
+          selectedLatLng.value = null; // Reset if no valid data
+        }
       }
     } catch (e) {
       log("Fetch profile error: $e");
@@ -132,12 +147,21 @@ class OwnerEditProfileController extends GetxController {
 
     isLoading.value = true;
 
+    // Check if selectedLatLng is not null before accessing latitude and longitude
+    if (selectedLatLng.value == null) {
+      AppSnackBar.showError("Location is not selected");
+      isLoading.value = false;
+      return;
+    }
+
+    // Convert latitude and longitude to double
     final requestBody = {
       "name": name,
       "location": location,
       "description": description,
-      'latitude': selectedLatLng.value!.latitude,
-      'longitude': selectedLatLng.value!.longitude,
+      'latitude': selectedLatLng.value!.latitude, // Send as double, not string
+      'longitude':
+          selectedLatLng.value!.longitude, // Send as double, not string
     };
 
     log("$requestBody");

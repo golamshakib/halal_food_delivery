@@ -7,6 +7,7 @@ import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 
 import '../../../../../core/common/widgets/custom_home_app_bar.dart';
 import '../../../../../routes/app_routes.dart';
+import '../../../../owner/owner_profile/controllers/owner_edit_profile_controller.dart';
 import '../../controllers/customer_home_controller.dart';
 import '../widgets/customer_home_bannar.dart';
 import '../widgets/customer_offers.dart';
@@ -15,13 +16,18 @@ import '../widgets/customer_restaurants.dart';
 class CustomerHomeScreen extends StatelessWidget {
   CustomerHomeScreen({super.key});
   final controller = Get.put(CustomerHomeController());
+  final profileController = Get.put(OwnerEditProfileController());
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      profileController.fetchProfileData();
+    });
+    final profile = profileController.profileModel.value?.data;
     return Scaffold(
       appBar: CustomHomeAppBar(
-        userName: "John Doe",
-        userImageUrl: 'https://i.pravatar.cc/150?img=1',
+        userName: profile?.name ?? '',
+        userImageUrl: profile?.image,
         onNotification: () {
           Get.toNamed(AppRoute.customerNotificationScreen);
         },

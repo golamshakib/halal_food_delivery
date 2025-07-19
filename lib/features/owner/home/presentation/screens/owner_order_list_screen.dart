@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_app.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
-import '../widgets/owner_all_order_list.dart';
+// import '../widgets/owner_all_order_list.dart';
 
 class OwnerOrderListScreen extends StatelessWidget {
   const OwnerOrderListScreen({super.key});
@@ -13,7 +13,7 @@ class OwnerOrderListScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: Column(children: [OwnerAllOrderList()]),
+          // child: Column(children: [OwnerAllOrderList()]),
         ),
       ),
     );
