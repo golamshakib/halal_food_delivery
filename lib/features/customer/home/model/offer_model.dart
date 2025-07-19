@@ -32,14 +32,14 @@ class Data {
   String? userId;
   String? name;
   String? description;
-  int? price;
-  int? offerPrice;
+  num? price;
+  num? offerPrice;
   String? category;
   String? image;
-  int? averageRating;
+  num? averageRating; // Changed from int? to num?
   String? createdAt;
-  List<Review>? review;
   String? updatedAt;
+  List<Review>? review;
 
   Data({
     this.id,
@@ -57,17 +57,20 @@ class Data {
   });
 
   Data.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    userId = json['userId'];
-    name = json['name'];
-    description = json['description'];
-    price = json['price'];
-    offerPrice = json['offerPrice'];
-    category = json['category'];
-    image = json['image'];
-    averageRating = json['averageRating'];
-    createdAt = json['createdAt'];
-    updatedAt = json['updatedAt'];
+    id = json['id']?.toString();
+    userId = json['userId']?.toString();
+    name = json['name']?.toString();
+    description = json['description']?.toString();
+    price = json['price'] is num ? json['price'] : null;
+    offerPrice = json['offerPrice'] is num ? json['offerPrice'] : null;
+    category = json['category']?.toString();
+    image = json['image']?.toString();
+    averageRating =
+        json['averageRating'] is num
+            ? json['averageRating']
+            : null; // Changed to handle num
+    createdAt = json['createdAt']?.toString();
+    updatedAt = json['updatedAt']?.toString();
     if (json['Review'] != null) {
       review = [];
       json['Review'].forEach((v) {
@@ -100,17 +103,18 @@ class Review {
   String? id;
   String? userId;
   String? comment;
-  int? rating;
+  num? rating; // Changed from int? to num?
   String? createdAt;
 
   Review({this.id, this.userId, this.comment, this.rating, this.createdAt});
 
   Review.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    userId = json['userId'];
-    comment = json['comment'];
-    rating = json['rating'];
-    createdAt = json['createdAt'];
+    id = json['id']?.toString();
+    userId = json['userId']?.toString();
+    comment = json['comment']?.toString();
+    rating =
+        json['rating'] is num ? json['rating'] : null; // Changed to handle num
+    createdAt = json['createdAt']?.toString();
   }
 
   Map<String, dynamic> toJson() {

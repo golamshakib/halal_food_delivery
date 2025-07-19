@@ -52,7 +52,7 @@ class CustomerSearch extends StatelessWidget {
                   foodName: item.name ?? '',
                   price: item.price?.toString() ?? '0.00',
                   star: item.averageRating?.toString() ?? '0.0',
-                  offerPrice: item.offerPrice,
+                  offerPrice: item.offerPrice?.toDouble(),
                   onTap: () {
                     Get.to(() => CustomerFoodProfileScreen(id: item.id!));
                   },

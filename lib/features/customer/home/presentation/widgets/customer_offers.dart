@@ -38,7 +38,7 @@ class CustomerOffers extends StatelessWidget {
                       return Padding(
                         padding: EdgeInsets.only(right: 16.h),
                         child: CustomerCustomProductVertical(
-                          offerPrice: item.offerPrice ?? 0,
+                          offerPrice: item.offerPrice?.toDouble(),
                           image: item.image ?? ImagePath.background,
                           foodName: item.name ?? '',
                           price: (item.price ?? 0).toString(),

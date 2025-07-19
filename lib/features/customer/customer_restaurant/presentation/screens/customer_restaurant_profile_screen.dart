@@ -4,9 +4,9 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_app.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 import 'package:halal_food_delivery/core/utils/constants/image_path.dart';
+import 'package:halal_food_delivery/core/utils/constants/app_colors.dart';
 
 import '../../../../../core/common/widgets/custom_text.dart';
-import '../../../../../core/utils/constants/app_colors.dart';
 import '../../../home/presentation/widgets/customer_restaurants.dart';
 import '../../controllers/customer_restaurant_profile_controller.dart';
 import '../widgets/customer_restaurant_description.dart';

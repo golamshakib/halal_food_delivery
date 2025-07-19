@@ -4,7 +4,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_button.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 import 'package:halal_food_delivery/routes/app_routes.dart';
-
 import '../../../../../core/common/widgets/custom_app.dart';
 import '../../../../../core/common/widgets/custom_text.dart';
 import '../../../../../core/utils/constants/app_colors.dart';
@@ -25,6 +24,9 @@ class CustomerFoodProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.fetchSingleFood(id);
+    });
     return Scaffold(
       appBar: CustomApp(
         istitle: true,
@@ -81,7 +83,7 @@ class CustomerFoodProfileScreen extends StatelessWidget {
                       height: MediaQuery.of(context).size.height * 0.47,
                       child: PageView(
                         controller: controller.pageController,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         onPageChanged: (index) {
                           controller.selectedTab.value = index;
                         },
@@ -104,17 +106,20 @@ class CustomerFoodProfileScreen extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                     SizedBox(height: 12.h),
-                    SizedBox(
-                      width: 343.w,
-                      height: 218.h,
-                      child: GoogleMap(
-                        initialCameraPosition: CameraPosition(
-                          target: controller.initialPosition,
-                          zoom: 14.0,
+                    Obx(
+                      () => SizedBox(
+                        width: 343.w,
+                        height: 218.h,
+                        child: GoogleMap(
+                          initialCameraPosition: CameraPosition(
+                            target: controller.initialPosition.value,
+                            zoom: 14.0,
+                          ),
+                          myLocationEnabled: true,
+                          myLocationButtonEnabled: true,
+                          zoomControlsEnabled: false,
+                          markers: controller.markers,
                         ),
-                        myLocationEnabled: true,
-                        myLocationButtonEnabled: false,
-                        zoomControlsEnabled: false,
                       ),
                     ),
                     SizedBox(height: 20.h),

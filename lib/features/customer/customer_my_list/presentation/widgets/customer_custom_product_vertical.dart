@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_text.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
+import 'package:halal_food_delivery/core/utils/constants/image_path.dart';
 import '../../../../../core/utils/constants/app_colors.dart';
 
 class CustomerCustomProductVertical extends StatelessWidget {
@@ -9,7 +10,7 @@ class CustomerCustomProductVertical extends StatelessWidget {
   final String foodName;
   final String price;
   final String star;
-  final int? offerPrice;
+  final double? offerPrice;
   final VoidCallback? onTap;
 
   const CustomerCustomProductVertical({
@@ -41,7 +42,9 @@ class CustomerCustomProductVertical extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(7.h),
-                border: Border.all(color: const Color(0xff023621).withAlpha(25)),
+                border: Border.all(
+                  color: const Color(0xff023621).withAlpha(25),
+                ),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withAlpha(51),
@@ -82,42 +85,50 @@ class CustomerCustomProductVertical extends StatelessWidget {
                         ],
                       ),
                       Flexible(
-                        child: offerPrice != null && offerPrice != 0
-                            ? Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    "\$$price",
-                                    style: GoogleFonts.robotoSerif(
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.w700,
-                                      decoration: TextDecoration.lineThrough,
-                                      decorationColor: AppColors.secondary,
-                                      color: AppColors.secondary,
+                        child:
+                            offerPrice != null && offerPrice != 0
+                                ? Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Flexible(
+                                      child: Text(
+                                        "\$$price",
+                                        style: GoogleFonts.robotoSerif(
+                                          fontSize:
+                                              13.sp, // Reduced for clarity
+                                          fontWeight: FontWeight.w700,
+                                          decoration:
+                                              TextDecoration.lineThrough,
+                                          decorationColor: AppColors.secondary,
+                                          color: AppColors.secondary,
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                                     ),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  SizedBox(width: 4.w),
-                                  Text(
-                                    "\$$offerPrice",
-                                    style: GoogleFonts.robotoSerif(
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.w700,
-                                      color: const Color(0xff121212),
+                                    SizedBox(width: 4.w),
+                                    Flexible(
+                                      child: Text(
+                                        "\$${offerPrice!.toStringAsFixed(offerPrice!.truncateToDouble() == offerPrice ? 0 : 2)}",
+                                        style: GoogleFonts.robotoSerif(
+                                          fontSize:
+                                              13.sp, // Reduced for clarity
+                                          fontWeight: FontWeight.w700,
+                                          color: const Color(0xff121212),
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                                     ),
-                                    overflow: TextOverflow.ellipsis,
+                                  ],
+                                )
+                                : Text(
+                                  "\$$price",
+                                  style: GoogleFonts.robotoSerif(
+                                    fontSize: 13.sp, // Reduced for clarity
+                                    fontWeight: FontWeight.w700,
+                                    color: const Color(0xff121212),
                                   ),
-                                ],
-                              )
-                            : Text(
-                                "\$$price",
-                                style: GoogleFonts.robotoSerif(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w700,
-                                  color: const Color(0xff121212),
+                                  overflow: TextOverflow.ellipsis,
                                 ),
-                                overflow: TextOverflow.ellipsis,
-                              ),
                       ),
                     ],
                   ),
@@ -136,12 +147,13 @@ class CustomerCustomProductVertical extends StatelessWidget {
                   width: 95.w,
                   height: 100.h,
                   fit: BoxFit.fill,
-                  errorBuilder: (context, error, stackTrace) => Image.asset(
-                    image,
-                    width: 95.w,
-                    height: 100.h,
-                    fit: BoxFit.fill,
-                  ),
+                  errorBuilder:
+                      (context, error, stackTrace) => Image.asset(
+                        ImagePath.background,
+                        width: 95.w,
+                        height: 100.h,
+                        fit: BoxFit.fill,
+                      ),
                 ),
               ),
             ),
