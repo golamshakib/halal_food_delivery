@@ -17,7 +17,7 @@ class CustomerReviewList extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: 12.h),
-            ...reviews.take(10).map((item) {
+            ...reviews.map((item) {
               return Padding(
                 padding: EdgeInsets.only(bottom: 12.h),
                 child: CustomerReviewBox(

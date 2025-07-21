@@ -63,7 +63,7 @@ class CustomerFoodProfileScreen extends StatelessWidget {
                               )
                               : Image.network(
                                 controller.singleFoodModel.value?.data?.image ??
-                                    ImagePath.food,
+                                    ImagePath.placeholder,
                                 width: double.infinity,
                                 height: 187.h,
                                 fit: BoxFit.cover,

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
-import 'package:halal_food_delivery/routes/app_routes.dart';
-
 import '../../../../../core/utils/constants/image_path.dart';
 import '../../../customer_food_profile/controllers/customer_food_profile_controller.dart';
+import '../../../customer_restaurant/presentation/screens/customer_restaurant_profile_screen.dart';
 import 'customer_restaurants_box.dart.dart';
 
 class CustomerRestaurants extends StatelessWidget {
@@ -32,7 +31,9 @@ class CustomerRestaurants extends StatelessWidget {
                       name: item.name ?? '',
                       star: item.averageRating?.toStringAsFixed(1) ?? '0.0',
                       onTap: () {
-                        Get.toNamed(AppRoute.customerRestaurantProfileScreen);
+                        Get.to(
+                          () => CustomerRestaurantProfileScreen(id: item.id!),
+                        );
                       },
                     ),
                   );

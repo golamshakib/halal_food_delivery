@@ -10,10 +10,7 @@ import '../features/customer/customer_nav_bar/presentation/screens/customer_nav_
 import '../features/customer/customer_notification/presentation/screens/customer_notification_screen.dart';
 import '../features/customer/customer_notification/presentation/screens/customer_rating_screen.dart';
 import '../features/customer/customer_order/presentation/screens/cusotmer_order_details_screen.dart';
-import '../features/customer/customer_profile/presentation/screens/customer_change_password_screen.dart';
 import '../features/customer/customer_profile/presentation/screens/customer_policy_screen.dart';
-import '../features/customer/customer_restaurant/presentation/screens/customer_restaurant_menu_screen.dart';
-import '../features/customer/customer_restaurant/presentation/screens/customer_restaurant_profile_screen.dart';
 import '../features/customer/home/presentation/screens/customer_search_result_screen.dart';
 import '../features/customer/home/presentation/screens/customer_search_screen.dart';
 import '../features/delivery/delivery_nav_bar/presentation/screens/delivery_nav_bar.dart';
@@ -55,8 +52,6 @@ class AppRoute {
   static String ownerChangePasswordScreen = "/ownerChangePasswordScreen";
   static String ownerPolicyScreen = "/ownerPolicyScreen";
 
-  static String customerChangePasswordScreen = "/customerChangePasswordScreen";
-  
   static String customerPolicyScreen = "/customerPolicyScreen";
 
   static String deliveryChangePasswordScreen = "/deliveryChangePasswordScreen";
@@ -79,9 +74,6 @@ class AppRoute {
   static String customerRatingScreen = "/customerRatingScreen";
   static String customerSearchScreen = "/customerSearchScreen";
   static String customerSearchResultScreen = "/customerSearchResultScreen";
-  static String customerRestaurantMenuScreen = "/customerRestaurantMenuScreen";
-  static String customerRestaurantProfileScreen =
-      "/customerRestaurantProfileScreen";
 
   static String customerPersonalInformationScreen =
       "/customerPersonalInformationScreen";
@@ -91,7 +83,7 @@ class AppRoute {
   static List<GetPage> routes = [
     GetPage(name: loginScreen, page: () => LoginScreen()),
     GetPage(name: init, page: () => SplashScreen()),
-    
+
     GetPage(
       name: languageSelectionScreen,
       page: () => LanguageSelectionScreen(),
@@ -114,11 +106,6 @@ class AppRoute {
       page: () => OwnerChangePasswordScreen(),
     ),
     GetPage(name: ownerPolicyScreen, page: () => OwnerPolicyScreen()),
-
-    GetPage(
-      name: customerChangePasswordScreen,
-      page: () => CustomerChangePasswordScreen(),
-    ),
 
     GetPage(name: customerPolicyScreen, page: () => CustomerPolicyScreen()),
 
@@ -169,15 +156,8 @@ class AppRoute {
       name: customerSearchResultScreen,
       page: () => CustomerSearchResultScreen(),
     ),
-    GetPage(
-      name: customerRestaurantMenuScreen,
-      page: () => CustomerRestaurantMenuScreen(),
-    ),
-    GetPage(
-      name: customerRestaurantProfileScreen,
-      page: () => CustomerRestaurantProfileScreen(),
-    ),
-    
+  
+
     GetPage(
       name: customerPersonalInformationScreen,
       page: () => CustomerPersonalInformationScreen(),
