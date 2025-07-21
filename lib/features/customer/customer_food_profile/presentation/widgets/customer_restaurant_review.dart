@@ -6,11 +6,11 @@ import '../../controllers/customer_food_profile_controller.dart';
 import 'customer_review_list.dart';
 
 class CustomerRestaurantReview extends StatelessWidget {
-  const CustomerRestaurantReview({super.key});
+  CustomerRestaurantReview({super.key});
+  final controller = Get.put(CustomerFoodProfileController());
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<CustomerFoodProfileController>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -23,18 +23,17 @@ class CustomerRestaurantReview extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
               CustomText(
-                text: "(${controller.singleFoodModel.value?.data?.review?.length ?? 0})",
+                text:
+                    "(${controller.singleFoodModel.value?.data?.review?.length ?? 0})",
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
-                color: const Color(0xff747474),
+                color:  Color(0xff747474),
               ),
             ],
           ),
         ),
         SizedBox(height: 16.h),
-         Expanded(
-          child: CustomerReviewList(),
-        ),
+        Expanded(child: CustomerReviewList()),
       ],
     );
   }

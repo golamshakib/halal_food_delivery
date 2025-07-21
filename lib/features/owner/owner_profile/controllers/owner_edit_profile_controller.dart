@@ -36,6 +36,12 @@ class OwnerEditProfileController extends GetxController {
     isMapVisible.value = !isMapVisible.value;
   }
 
+  @override
+  void onInit() {
+    super.onInit();
+    fetchProfileData("Name is Controller");
+  }
+
   Future<void> pickImage() async {
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
@@ -44,8 +50,9 @@ class OwnerEditProfileController extends GetxController {
     }
   }
 
-  Future<void> fetchProfileData() async {
+  Future<void> fetchProfileData(String name) async {
     isLoading.value = true;
+    log(name);
     try {
       final response = await NetworkCaller().getRequest(
         AppUrls.user,
@@ -202,7 +209,7 @@ class OwnerEditProfileController extends GetxController {
       if (response.statusCode == 200) {
         Get.back();
         AppSnackBar.showSuccess("Profile Update Successfully");
-        fetchProfileData();
+        fetchProfileData("Name is not Controller");
       } else {
         AppSnackBar.showError("Failed to update profile");
         log('Failed to update the user: ${response.body}');

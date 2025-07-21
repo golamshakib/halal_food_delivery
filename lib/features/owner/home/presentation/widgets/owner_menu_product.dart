@@ -8,7 +8,7 @@ class OwnerMenuProduct extends StatelessWidget {
   final String image;
   final String foodName;
   final String price;
-  final int offerPrice;
+  final double offerPrice;
   final String star;
   final VoidCallback? onCheckTap;
   final VoidCallback? onDeleteTap;

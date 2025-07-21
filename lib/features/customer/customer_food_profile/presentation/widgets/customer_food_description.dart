@@ -5,13 +5,14 @@ import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 import '../../controllers/customer_food_profile_controller.dart';
 
 class CustomerFoodDescription extends StatelessWidget {
-  const CustomerFoodDescription({super.key});
+  CustomerFoodDescription({super.key});
+  final controller = Get.put(CustomerFoodProfileController());
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<CustomerFoodProfileController>();
     return Obx(
       () => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomText(
             text: controller.singleFoodModel.value?.data?.description ?? "",

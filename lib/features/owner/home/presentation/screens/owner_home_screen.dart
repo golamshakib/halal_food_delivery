@@ -16,16 +16,21 @@ class OwnerHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      controller.fetchProfileData();
+      controller.fetchProfileData("Name is Onwner Home Screen");
     });
-    final profile = controller.profileModel.value?.data;
+
     return Scaffold(
-      appBar: CustomHomeAppBar(
-        userName: profile?.name ?? '',
-        userImageUrl: profile?.image,
-        onNotification: () {
-          Get.toNamed(AppRoute.ownerNotificationScreen);
-        },
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Obx(
+          () => CustomHomeAppBar(
+            userName: controller.profileModel.value?.data?.name ?? '',
+            userImageUrl: controller.profileModel.value?.data?.image,
+            onNotification: () {
+              Get.toNamed(AppRoute.ownerNotificationScreen);
+            },
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(

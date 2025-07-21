@@ -32,14 +32,14 @@ class Data {
   String? userId;
   String? name;
   String? description;
-  int? price;
-  int? offerPrice;
+  double? price; // Changed from int? to double?
+  double? offerPrice; // Changed from int? to double? for consistency
   String? category;
   String? image;
   String? createdAt;
   String? updatedAt;
   List<Review>? review;
-  int? averageRating;
+  double? averageRating; // Changed to double? to match API response
 
   Data({
     this.id,
@@ -61,8 +61,16 @@ class Data {
     userId = json['userId'];
     name = json['name'];
     description = json['description'];
-    price = json['price'];
-    offerPrice = json['offerPrice'];
+    // Handle price as int or double
+    price =
+        json['price'] is int
+            ? (json['price'] as int).toDouble()
+            : json['price'] as double?;
+    // Handle offerPrice as int or double
+    offerPrice =
+        json['offerPrice'] is int
+            ? (json['offerPrice'] as int).toDouble()
+            : json['offerPrice'] as double?;
     category = json['category'];
     image = json['image'];
     createdAt = json['createdAt'];
@@ -73,7 +81,11 @@ class Data {
         review!.add(Review.fromJson(v));
       });
     }
-    averageRating = json['averageRating'];
+    // Handle averageRating as int or double
+    averageRating =
+        json['averageRating'] is int
+            ? (json['averageRating'] as int).toDouble()
+            : json['averageRating'] as double?;
   }
 
   Map<String, dynamic> toJson() {
@@ -100,7 +112,7 @@ class Review {
   String? id;
   String? userId;
   String? comment;
-  int? rating;
+  double? rating; // Changed to double? to match API response
   String? createdAt;
 
   Review({this.id, this.userId, this.comment, this.rating, this.createdAt});
@@ -109,7 +121,11 @@ class Review {
     id = json['id'];
     userId = json['userId'];
     comment = json['comment'];
-    rating = json['rating'];
+    // Handle rating as int or double
+    rating =
+        json['rating'] is int
+            ? (json['rating'] as int).toDouble()
+            : json['rating'] as double?;
     createdAt = json['createdAt'];
   }
 

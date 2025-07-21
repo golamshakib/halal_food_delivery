@@ -21,13 +21,13 @@ class CustomerSearch extends StatelessWidget {
     return Obx(() {
       if (controller.isLoading.value) {
         return GridView.count(
-          childAspectRatio: 0.55,
-          crossAxisCount: 3,
-          crossAxisSpacing: 4.w,
+          childAspectRatio: 0.9,
+          crossAxisCount: 2,
+          crossAxisSpacing: 8.w,
           mainAxisSpacing: 20.h,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          children: List.generate(6, (index) => _buildShimmer(context)),
+          children: List.generate(4, (index) => _buildShimmer(context)),
         );
       } else if (controller.menuModel.value?.data == null ||
           controller.menuModel.value!.data!.isEmpty) {
@@ -39,9 +39,9 @@ class CustomerSearch extends StatelessWidget {
         );
       } else {
         return GridView.count(
-          childAspectRatio: 0.55,
-          crossAxisCount: 3,
-          crossAxisSpacing: 4.w,
+          childAspectRatio: 0.9,
+          crossAxisCount: 2,
+          crossAxisSpacing: 8.w,
           mainAxisSpacing: 20.h,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -50,9 +50,9 @@ class CustomerSearch extends StatelessWidget {
                 return CustomerCustomProductVertical(
                   image: item.image ?? ImagePath.background,
                   foodName: item.name ?? '',
-                  price: item.price?.toString() ?? '0.00',
-                  star: item.averageRating?.toString() ?? '0.0',
-                  offerPrice: item.offerPrice?.toDouble(),
+                  price: item.price?.toStringAsFixed(0) ?? '0.00',
+                  star: item.averageRating?.toStringAsFixed(1) ?? '0.0',
+                  offerPrice: item.offerPrice,
                   onTap: () {
                     Get.to(() => CustomerFoodProfileScreen(id: item.id!));
                   },
@@ -68,8 +68,8 @@ class CustomerSearch extends StatelessWidget {
       baseColor: Colors.grey[300]!,
       highlightColor: Colors.grey[100]!,
       child: Container(
-        width: 125.w,
-        margin: EdgeInsets.only(left: 0.w, right: 0.w, top: 52.h),
+        width: 160.w, // Adjusted width for 2-column layout
+        margin: EdgeInsets.symmetric(horizontal: 8.w, vertical: 10.h),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(7.h),
@@ -78,15 +78,19 @@ class CustomerSearch extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(width: 95.w, height: 100.h, color: Colors.grey),
-            SizedBox(height: 63.h),
+            Container(
+              width: double.infinity, // Full width of the container
+              height: 120.h, // Adjusted height for better proportion
+              color: Colors.grey,
+            ),
+            SizedBox(height: 12.h),
             Container(width: 100.w, height: 16.h, color: Colors.grey),
             SizedBox(height: 12.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(width: 40.w, height: 12.h, color: Colors.grey),
-                Container(width: 40.w, height: 12.h, color: Colors.grey),
+                Container(width: 60.w, height: 12.h, color: Colors.grey),
+                Container(width: 60.w, height: 12.h, color: Colors.grey),
               ],
             ),
           ],

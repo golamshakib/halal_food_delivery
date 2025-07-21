@@ -27,4 +27,5 @@ class ImagePath {
   static const String fried = '$_basePath/fried.png';
 
   static const String food = '$_basePath/food.png';
+  static const String placeholder = '$_basePath/placeholder.png';
 }

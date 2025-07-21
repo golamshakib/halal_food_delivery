@@ -32,7 +32,7 @@ class CustomerCustomProductVertical extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 0.w, right: 0.w, top: 52.h),
             child: Container(
-              width: 125.w,
+              width: 200.w,
               padding: EdgeInsets.only(
                 top: 63.h,
                 bottom: 13.h,
@@ -94,8 +94,7 @@ class CustomerCustomProductVertical extends StatelessWidget {
                                       child: Text(
                                         "\$$price",
                                         style: GoogleFonts.robotoSerif(
-                                          fontSize:
-                                              13.sp, // Reduced for clarity
+                                          fontSize: 13.sp,
                                           fontWeight: FontWeight.w700,
                                           decoration:
                                               TextDecoration.lineThrough,

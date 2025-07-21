@@ -15,7 +15,7 @@ class OwnerProfileDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      controller.fetchProfileData();
+      controller.fetchProfileData("Name is Owner Profile Screen");
     });
     return Obx(() {
       return Align(

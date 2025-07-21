@@ -18,4 +18,5 @@ class AppUrls {
   static const String food = '$_baseUrl/food';
   static const String offer = '$_baseUrl/food/offer';
   static const String singleFood = '$_baseUrl/food/single';
+  static const String nearbyRestaurant = '$_baseUrl/nearby-restaurant';
 }

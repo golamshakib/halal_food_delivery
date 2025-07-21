@@ -8,11 +8,11 @@ class SingleFoodModel {
   SingleFoodModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     message = json['message'];
-    data = json['data'] != null ?  Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['success'] = success;
     data['message'] = message;
     if (this.data != null) {
@@ -38,28 +38,32 @@ class Data {
   double? averageRating;
   List<NearestRestaurant>? nearestRestaurant;
 
-  Data(
-      {this.id,
-      this.userId,
-      this.name,
-      this.description,
-      this.price,
-      this.offerPrice,
-      this.category,
-      this.image,
-      this.createdAt,
-      this.updatedAt,
-      this.review,
-      this.userDetails,
-      this.averageRating,
-      this.nearestRestaurant});
+  Data({
+    this.id,
+    this.userId,
+    this.name,
+    this.description,
+    this.price,
+    this.offerPrice,
+    this.category,
+    this.image,
+    this.createdAt,
+    this.updatedAt,
+    this.review,
+    this.userDetails,
+    this.averageRating,
+    this.nearestRestaurant,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     userId = json['userId'];
     name = json['name'];
     description = json['description'];
-    price = json['price'];
+    price =
+        json['price'] is double
+            ? (json['price'] as double).toInt()
+            : json['price'] as int?;
     offerPrice = json['offerPrice'];
     category = json['category'];
     image = json['image'];
@@ -68,17 +72,21 @@ class Data {
     if (json['Review'] != null) {
       review = <Review>[];
       json['Review'].forEach((v) {
-        review!.add( Review.fromJson(v));
+        review!.add(Review.fromJson(v));
       });
     }
-    userDetails = json['userDetails'] != null
-        ?  UserDetails.fromJson(json['userDetails'])
-        : null;
-    averageRating = json['averageRating'];
+    userDetails =
+        json['userDetails'] != null
+            ? UserDetails.fromJson(json['userDetails'])
+            : null;
+    averageRating =
+        json['averageRating'] is int
+            ? (json['averageRating'] as int).toDouble()
+            : json['averageRating'] as double?;
     if (json['nearestRestaurant'] != null) {
       nearestRestaurant = <NearestRestaurant>[];
       json['nearestRestaurant'].forEach((v) {
-        nearestRestaurant!.add( NearestRestaurant.fromJson(v));
+        nearestRestaurant!.add(NearestRestaurant.fromJson(v));
       });
     }
   }
@@ -120,15 +128,16 @@ class Review {
   String? updatedAt;
   ReviewerUserDetails? userDetails;
 
-  Review(
-      {this.id,
-      this.userId,
-      this.foodId,
-      this.rating,
-      this.comment,
-      this.createdAt,
-      this.updatedAt,
-      this.userDetails});
+  Review({
+    this.id,
+    this.userId,
+    this.foodId,
+    this.rating,
+    this.comment,
+    this.createdAt,
+    this.updatedAt,
+    this.userDetails,
+  });
 
   Review.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -138,9 +147,10 @@ class Review {
     comment = json['comment'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
-    userDetails = json['userDetails'] != null
-        ?  ReviewerUserDetails.fromJson(json['userDetails'])
-        : null;
+    userDetails =
+        json['userDetails'] != null
+            ? ReviewerUserDetails.fromJson(json['userDetails'])
+            : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -167,13 +177,14 @@ class UserDetails {
   double? latitude;
   double? longitude;
 
-  UserDetails(
-      {this.id,
-      this.name,
-      this.image,
-      this.location,
-      this.latitude,
-      this.longitude});
+  UserDetails({
+    this.id,
+    this.name,
+    this.image,
+    this.location,
+    this.latitude,
+    this.longitude,
+  });
 
   UserDetails.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -203,8 +214,13 @@ class ReviewerUserDetails {
   double? latitude;
   double? longitude;
 
-  ReviewerUserDetails(
-      {this.name, this.image, this.location, this.latitude, this.longitude});
+  ReviewerUserDetails({
+    this.name,
+    this.image,
+    this.location,
+    this.latitude,
+    this.longitude,
+  });
 
   ReviewerUserDetails.fromJson(Map<String, dynamic> json) {
     name = json['name'];
@@ -234,14 +250,15 @@ class NearestRestaurant {
   double? latitude;
   double? averageRating;
 
-  NearestRestaurant(
-      {this.id,
-      this.name,
-      this.image,
-      this.location,
-      this.longitude,
-      this.latitude,
-      this.averageRating});
+  NearestRestaurant({
+    this.id,
+    this.name,
+    this.image,
+    this.location,
+    this.longitude,
+    this.latitude,
+    this.averageRating,
+  });
 
   NearestRestaurant.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -250,7 +267,10 @@ class NearestRestaurant {
     location = json['location'];
     longitude = json['longitude'];
     latitude = json['latitude'];
-    averageRating = json['averageRating'];
+    averageRating =
+        json['averageRating'] is int
+            ? (json['averageRating'] as int).toDouble()
+            : json['averageRating'] as double?;
   }
 
   Map<String, dynamic> toJson() {

@@ -4,6 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_button.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 import 'package:halal_food_delivery/routes/app_routes.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../../../../core/common/widgets/custom_app.dart';
 import '../../../../../core/common/widgets/custom_text.dart';
 import '../../../../../core/utils/constants/app_colors.dart';
@@ -45,14 +46,38 @@ class CustomerFoodProfileScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Image.asset(
-                      ImagePath.food,
-                      width: double.infinity,
-                      height: 187.h,
-                      fit: BoxFit.cover,
+                    Obx(
+                      () =>
+                          controller.isLoading.value
+                              ? Shimmer.fromColors(
+                                baseColor: Colors.grey[300]!,
+                                highlightColor: Colors.grey[100]!,
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 187.h,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                              )
+                              : Image.network(
+                                controller.singleFoodModel.value?.data?.image ??
+                                    ImagePath.food,
+                                width: double.infinity,
+                                height: 187.h,
+                                fit: BoxFit.cover,
+                                errorBuilder:
+                                    (context, error, stackTrace) => Image.asset(
+                                      ImagePath.placeholder,
+                                      width: double.infinity,
+                                      height: 187.h,
+                                      fit: BoxFit.cover,
+                                    ),
+                              ),
                     ),
                     SizedBox(height: 12.h),
-                    CustomerFoodProfileImage(),
+                    CustomerFoodProfileImage(id: id),
                     SizedBox(height: 24.h),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -80,7 +105,7 @@ class CustomerFoodProfileScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 16.h),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.47,
+                      height: MediaQuery.of(context).size.height * 0.25,
                       child: PageView(
                         controller: controller.pageController,
                         physics: const NeverScrollableScrollPhysics(),
@@ -107,20 +132,39 @@ class CustomerFoodProfileScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 12.h),
                     Obx(
-                      () => SizedBox(
-                        width: 343.w,
-                        height: 218.h,
-                        child: GoogleMap(
-                          initialCameraPosition: CameraPosition(
-                            target: controller.initialPosition.value,
-                            zoom: 14.0,
-                          ),
-                          myLocationEnabled: true,
-                          myLocationButtonEnabled: true,
-                          zoomControlsEnabled: false,
-                          markers: controller.markers,
-                        ),
-                      ),
+                      () =>
+                          controller.isLoading.value
+                              ? Shimmer.fromColors(
+                                baseColor: Colors.grey[300]!,
+                                highlightColor: Colors.grey[100]!,
+                                child: Container(
+                                  width: 343.w,
+                                  height: 218.h,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                              )
+                              : SizedBox(
+                                width: 343.w,
+                                height: 218.h,
+                                child: GoogleMap(
+                                  onMapCreated: controller.onMapCreated,
+                                  initialCameraPosition: CameraPosition(
+                                    target: controller.initialPosition.value,
+                                    zoom: 14.0,
+                                  ),
+                                  myLocationEnabled: true,
+                                  myLocationButtonEnabled: true,
+                                  zoomControlsEnabled: true,
+                                  zoomGesturesEnabled: true,
+                                  scrollGesturesEnabled: true,
+                                  tiltGesturesEnabled: true,
+                                  rotateGesturesEnabled: true,
+                                  markers: controller.markers,
+                                ),
+                              ),
                     ),
                     SizedBox(height: 20.h),
                     CustomButton(

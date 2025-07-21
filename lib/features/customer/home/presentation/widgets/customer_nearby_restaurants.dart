@@ -4,15 +4,18 @@ import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 import 'package:halal_food_delivery/routes/app_routes.dart';
 
 import '../../../../../core/utils/constants/image_path.dart';
-import '../../../customer_food_profile/controllers/customer_food_profile_controller.dart';
+import '../../controllers/customer_home_controller.dart';
 import 'customer_restaurants_box.dart.dart';
 
-class CustomerRestaurants extends StatelessWidget {
-  CustomerRestaurants({super.key});
-  final controller = Get.put(CustomerFoodProfileController());
+class CustomerNearbyRestaurants extends StatelessWidget {
+  CustomerNearbyRestaurants({super.key});
+  final controller = Get.put(CustomerHomeController());
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.fetchnearbyRestaurant();
+    });
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Obx(
@@ -20,7 +23,7 @@ class CustomerRestaurants extends StatelessWidget {
           children: [
             SizedBox(height: 12.h),
             // Use nearestRestaurant from singleFoodModel
-            ...(controller.singleFoodModel.value?.data?.nearestRestaurant ?? [])
+            ...(controller.nearbyRestaurantModel.value?.data ?? [])
                 .asMap()
                 .entries
                 .map((entry) {

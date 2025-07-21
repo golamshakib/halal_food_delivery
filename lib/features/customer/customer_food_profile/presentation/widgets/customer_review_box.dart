@@ -33,11 +33,18 @@ class CustomerReviewBox extends StatelessWidget {
               Row(
                 children: [
                   ClipOval(
-                    child: Image.asset(
+                    child: Image.network(
                       image,
                       width: 30.w,
                       height: 30.h,
                       fit: BoxFit.cover,
+                      errorBuilder:
+                          (context, error, stackTrace) => Image.asset(
+                            image,
+                            width: 30.w,
+                            height: 30.h,
+                            fit: BoxFit.cover,
+                          ),
                     ),
                   ),
                   SizedBox(width: 8.h),
