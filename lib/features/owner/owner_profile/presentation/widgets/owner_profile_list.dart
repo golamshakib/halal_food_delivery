@@ -5,6 +5,8 @@ import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 import 'package:halal_food_delivery/core/utils/constants/icon_path.dart';
 import 'package:halal_food_delivery/routes/app_routes.dart';
 
+import '../screens/owner_add_menu_screen.dart';
+import '../screens/owner_edit_profile_screen.dart';
 import 'ownerr_logout_bottom_sheet.dart';
 
 class OwnerProfileList extends StatelessWidget {
@@ -17,14 +19,14 @@ class OwnerProfileList extends StatelessWidget {
         icon: IconPath.user,
         text: "Your profile",
         onPressed: () {
-          Get.toNamed(AppRoute.ownerEditProfileScreen);
+          Get.to(() => OwnerEditProfileScreen(isOwner: true));
         },
       ),
       _ListItem(
         icon: IconPath.menu,
         text: "Add Menu",
         onPressed: () {
-          Get.toNamed(AppRoute.ownerAddMenuScreen);
+          Get.to(OwnerAddMenuScreen(isAddMenu: true));
         },
       ),
       _ListItem(

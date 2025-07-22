@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_app.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
-
-import '../widgets/delivery_profile_details.dart';
+import '../../../../owner/owner_profile/presentation/widgets/owner_profile_details.dart';
 import '../widgets/delivery_profile_list.dart';
 
 class DeliveryProfileScreen extends StatelessWidget {
@@ -16,7 +15,7 @@ class DeliveryProfileScreen extends StatelessWidget {
         padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 54.h),
         child: Column(
           children: [
-            DeliveryProfileDetails(),
+            OwnerProfileDetails(),
             SizedBox(height: 45.h),
             DeliveryProfileList(),
           ],

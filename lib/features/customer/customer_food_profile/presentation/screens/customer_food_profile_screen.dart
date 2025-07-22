@@ -4,7 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_button.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 import 'package:halal_food_delivery/routes/app_routes.dart';
-
+import 'package:shimmer/shimmer.dart';
 import '../../../../../core/common/widgets/custom_app.dart';
 import '../../../../../core/common/widgets/custom_text.dart';
 import '../../../../../core/utils/constants/app_colors.dart';
@@ -16,11 +16,18 @@ import '../widgets/customer_food_profile_image.dart';
 import '../widgets/customer_restaurant_review.dart';
 
 class CustomerFoodProfileScreen extends StatelessWidget {
-  CustomerFoodProfileScreen({super.key});
-  final controller = Get.put(CustomerFoodProfileController());
+  final String id;
+  CustomerFoodProfileScreen({super.key, required this.id});
+  final controller = Get.put(
+    CustomerFoodProfileController(),
+    tag: UniqueKey().toString(),
+  );
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.fetchSingleFood(id);
+    });
     return Scaffold(
       appBar: CustomApp(
         istitle: true,
@@ -39,14 +46,38 @@ class CustomerFoodProfileScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Image.asset(
-                      ImagePath.food,
-                      width: double.infinity,
-                      height: 187.h,
-                      fit: BoxFit.cover,
+                    Obx(
+                      () =>
+                          controller.isLoading.value
+                              ? Shimmer.fromColors(
+                                baseColor: Colors.grey[300]!,
+                                highlightColor: Colors.grey[100]!,
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 187.h,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                              )
+                              : Image.network(
+                                controller.singleFoodModel.value?.data?.image ??
+                                    ImagePath.placeholder,
+                                width: double.infinity,
+                                height: 187.h,
+                                fit: BoxFit.cover,
+                                errorBuilder:
+                                    (context, error, stackTrace) => Image.asset(
+                                      ImagePath.placeholder,
+                                      width: double.infinity,
+                                      height: 187.h,
+                                      fit: BoxFit.cover,
+                                    ),
+                              ),
                     ),
                     SizedBox(height: 12.h),
-                    CustomerFoodProfileImage(),
+                    CustomerFoodProfileImage(id: id),
                     SizedBox(height: 24.h),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -57,19 +88,30 @@ class CustomerFoodProfileScreen extends StatelessWidget {
                         ),
                         child: Row(
                           children: [
-                            _buildTabItem(index: 0, title: "Description"),
+                            _buildTabItem(
+                              index: 0,
+                              title: "Description",
+                              controller: controller,
+                            ),
                             SizedBox(width: 4.w),
-                            _buildTabItem(index: 1, title: "Review"),
+                            _buildTabItem(
+                              index: 1,
+                              title: "Review",
+                              controller: controller,
+                            ),
                           ],
                         ),
                       ),
                     ),
                     SizedBox(height: 16.h),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.47,
+                      height: MediaQuery.of(context).size.height * 0.25,
                       child: PageView(
-                        physics: NeverScrollableScrollPhysics(),
                         controller: controller.pageController,
+                        physics: const NeverScrollableScrollPhysics(),
+                        onPageChanged: (index) {
+                          controller.selectedTab.value = index;
+                        },
                         children: [
                           CustomerFoodDescription(),
                           CustomerRestaurantReview(),
@@ -89,18 +131,40 @@ class CustomerFoodProfileScreen extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                     SizedBox(height: 12.h),
-                    SizedBox(
-                      width: 343.w,
-                      height: 218.h,
-                      child: GoogleMap(
-                        initialCameraPosition: CameraPosition(
-                          target: controller.initialPosition,
-                          zoom: 14.0,
-                        ),
-                        myLocationEnabled: true,
-                        myLocationButtonEnabled: false,
-                        zoomControlsEnabled: false,
-                      ),
+                    Obx(
+                      () =>
+                          controller.isLoading.value
+                              ? Shimmer.fromColors(
+                                baseColor: Colors.grey[300]!,
+                                highlightColor: Colors.grey[100]!,
+                                child: Container(
+                                  width: 343.w,
+                                  height: 218.h,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                              )
+                              : SizedBox(
+                                width: 343.w,
+                                height: 218.h,
+                                child: GoogleMap(
+                                  onMapCreated: controller.onMapCreated,
+                                  initialCameraPosition: CameraPosition(
+                                    target: controller.initialPosition.value,
+                                    zoom: 14.0,
+                                  ),
+                                  myLocationEnabled: true,
+                                  myLocationButtonEnabled: true,
+                                  zoomControlsEnabled: true,
+                                  zoomGesturesEnabled: true,
+                                  scrollGesturesEnabled: true,
+                                  tiltGesturesEnabled: true,
+                                  rotateGesturesEnabled: true,
+                                  markers: controller.markers,
+                                ),
+                              ),
                     ),
                     SizedBox(height: 20.h),
                     CustomButton(
@@ -121,7 +185,11 @@ class CustomerFoodProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTabItem({required int index, required String title}) {
+  Widget _buildTabItem({
+    required int index,
+    required String title,
+    required CustomerFoodProfileController controller,
+  }) {
     return InkWell(
       onTap: () => controller.changeTab(index),
       child: Obx(() {

@@ -10,8 +10,7 @@ import '../../owner/owner_nav_bar/presentation/screens/owner_nav_bar.dart';
 class SplashController extends GetxController {
   void navigateToHomeScreen() {
     Future.delayed(const Duration(milliseconds: 1500), () {
-      bool hasToken = AuthService.hasToken();
-      if (hasToken) {
+      if (AuthService.token != null) {
         final Role? role = AuthService.roleAsEnum;
         if (role == Role.CUSTOMER) {
           Get.offAll(() => CustomerNavBar());

@@ -130,5 +130,11 @@ class AppText {
   static const String loginSuccesful = 'loginSuccesful';
   static const String passwordIncorrted = 'passwordIncorrted';
   static const String userNotExist = 'userNotExist';
-  
+
+  /// change Password
+  static const String oldAndNewPasswordSame = 'oldAndNewPasswordSame';
+  static const String passwordUpdatedSuccess = 'passwordUpdatedSuccess';
+  static const String failedToUpdatePassword = 'failedToUpdatePassword';
+  static const String errorChangingPassword = 'errorChangingPassword';
+  static const String incorrectCurrentPassword = 'incorrectCurrentPassword';
 }

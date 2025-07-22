@@ -40,7 +40,7 @@ class CustomText extends StatelessWidget {
             decorationColor: decorationColor ?? const Color(0xffA59F92),
             fontSize: fontSize ?? 16.sp,
             color: color ?? AppColors.textSecondary,
-            fontWeight: fontWeight ?? FontWeight.w500,
+            fontWeight: fontWeight ?? FontWeight.w600,
           ),
           overflow: textOverflow,
           maxLines: maxLines,

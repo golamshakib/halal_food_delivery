@@ -23,7 +23,19 @@ class CustomerRestaurantsBox extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(image, width: 157.w, height: 93.h, fit: BoxFit.cover),
+          Image.network(
+            image,
+            width: 157.w,
+            height: 93.h,
+            fit: BoxFit.cover,
+            errorBuilder:
+                (context, error, stackTrace) => Image.asset(
+                  image,
+                  width: 157.w,
+                  height: 93.h,
+                  fit: BoxFit.cover,
+                ),
+          ),
           SizedBox(height: 8.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

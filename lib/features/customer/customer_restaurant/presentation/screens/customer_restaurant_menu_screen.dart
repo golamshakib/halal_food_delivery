@@ -2,19 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_app.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
+import 'package:halal_food_delivery/core/utils/constants/enums.dart';
 import '../../../../../core/common/widgets/custom_text.dart';
 import '../../../../../core/utils/constants/app_colors.dart';
 import '../../controllers/customer_menu_controller.dart';
-import '../widgets/customer_menu_appetizers.dart';
-import '../widgets/customer_menu_burger.dart';
-import '../widgets/customer_menu_desserts.dart';
-import '../widgets/customer_menu_drink.dart';
-import '../widgets/customer_menu_fries.dart';
-import '../widgets/customer_menu_other.dart';
-import '../widgets/customer_menu_salad.dart';
+import '../widgets/customer_menu.dart';
 
 class CustomerRestaurantMenuScreen extends StatelessWidget {
-  CustomerRestaurantMenuScreen({super.key});
+  final String id;
+  CustomerRestaurantMenuScreen({super.key, required this.id});
   final controller = Get.put(CustomerMenuController());
 
   @override
@@ -51,13 +47,13 @@ class CustomerRestaurantMenuScreen extends StatelessWidget {
                 physics: NeverScrollableScrollPhysics(),
                 controller: controller.pageController,
                 children: [
-                  CustomerMenuAppetizers(),
-                  CustomerMenuDesserts(),
-                  CustomerMenuBurger(),
-                  CustomerMenuDrink(),
-                  CustomerMenuSalad(),
-                  CustomerMenuFries(),
-                  CustomerMenuOther(),
+                  CustomerMenu(id: id, category: Category.APPETIZERS),
+                  CustomerMenu(id: id, category: Category.DESSERTS),
+                  CustomerMenu(id: id, category: Category.BURGER),
+                  CustomerMenu(id: id, category: Category.DRINK),
+                  CustomerMenu(id: id, category: Category.SALAD),
+                  CustomerMenu(id: id, category: Category.FRIES),
+                  CustomerMenu(id: id, category: Category.OTHER),
                 ],
               ),
             ),

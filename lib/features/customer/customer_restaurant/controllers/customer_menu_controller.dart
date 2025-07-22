@@ -1,10 +1,19 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:halal_food_delivery/core/utils/constants/image_path.dart';
+import '../../../../core/services/Auth_service.dart';
+import '../../../../core/services/network_caller.dart';
+import '../../../../core/utils/constants/app_urls.dart';
+import '../../../../core/utils/constants/enums.dart';
+import '../model/food_category_model.dart';
 
 class CustomerMenuController extends GetxController {
   final PageController pageController = PageController();
   final RxInt selectedTab = 0.obs;
+  final isLoading = false.obs;
+
+  final foodCategoryModel = Rxn<FoodCategoryModel>();
 
   void changeTab(int tab) {
     selectedTab.value = tab;
@@ -15,114 +24,23 @@ class CustomerMenuController extends GetxController {
     );
   }
 
-  final List<Map<String, String>> foodItems =
-      [
-        {
-          'image': ImagePath.chicken,
-          'name': 'Veggie Chicken',
-          'price': '479',
-          'rating': '4.8',
-          'location': ' 1234 Main Street, Springfield, NY...',
-        },
-        {
-          'image': ImagePath.chicken,
-          'name': 'Veggie Chicken',
-          'price': '479',
-          'rating': '4.8',
-          'location': ' 1234 Main Street, Springfield, NY...',
-        },
-        {
-          'image': ImagePath.chicken,
-          'name': 'Veggie Chicken',
-          'price': '479',
-          'rating': '4.8',
-          'location': ' 1234 Main Street, Springfield, NY...',
-        },
-        {
-          'image': ImagePath.chicken,
-          'name': 'Veggie Chicken',
-          'price': '479',
-          'rating': '4.8',
-          'location': ' 1234 Main Street, Springfield, NY...',
-        },
-        {
-          'image': ImagePath.chicken,
-          'name': 'Veggie Chicken',
-          'price': '479',
-          'rating': '4.8',
-          'location': ' 1234 Main Street, Springfield, NY...',
-        },
-        {
-          'image': ImagePath.chicken,
-          'name': 'Veggie Chicken',
-          'price': '479',
-          'rating': '4.8',
-          'location': ' 1234 Main Street, Springfield, NY...',
-        },
-        {
-          'image': ImagePath.chicken,
-          'name': 'Veggie Chicken',
-          'price': '479',
-          'rating': '4.8',
-          'location': ' 1234 Main Street, Springfield, NY...',
-        },
-        {
-          'image': ImagePath.chicken,
-          'name': 'Veggie Chicken',
-          'price': '479',
-          'rating': '4.8',
-          'location': ' 1234 Main Street, Springfield, NY...',
-        },
-        {
-          'image': ImagePath.chicken,
-          'name': 'Veggie Chicken',
-          'price': '479',
-          'rating': '4.8',
-          'location': ' 1234 Main Street, Springfield, NY...',
-        },
-        {
-          'image': ImagePath.chicken,
-          'name': 'Veggie Chicken',
-          'price': '479',
-          'rating': '4.8',
-          'location': ' 1234 Main Street, Springfield, NY...',
-        },
-        {
-          'image': ImagePath.chicken,
-          'name': 'Veggie Chicken',
-          'price': '479',
-          'rating': '4.8',
-          'location': ' 1234 Main Street, Springfield, NY...',
-        },
-        {
-          'image': ImagePath.chicken,
-          'name': 'Veggie Chicken',
-          'price': '479',
-          'rating': '4.8',
-          'location': ' 1234 Main Street, Springfield, NY...',
-        },
-        {
-          'image': ImagePath.chicken,
-          'name': 'Veggie Chicken',
-          'price': '479',
-          'rating': '4.8',
-          'location': ' 1234 Main Street, Springfield, NY...',
-        },
-        {
-          'image': ImagePath.chicken,
-          'name': 'Veggie Chicken',
-          'price': '479',
-          'rating': '4.8',
-          'location': ' 1234 Main Street, Springfield, NY...',
-        },
-        {
-          'image': ImagePath.chicken,
-          'name': 'Veggie Chicken',
-          'price': '479',
-          'rating': '4.8',
-          'location': ' 1234 Main Street, Springfield, NY...',
-        },
-      ].obs;
+  Future<void> fetchMenuByCategory(String id, Category category) async {
+    isLoading.value = true;
 
-  List<Map<String, String>> get firstTenItems => foodItems.take(5).toList();
+    try {
+      final response = await NetworkCaller().getRequest(
+        "${AppUrls.foodRestaurant}/$id?category=${category.name}",
+        token: "Bearer ${AuthService.token}",
+      );
+      if (response.isSuccess) {
+        foodCategoryModel.value = FoodCategoryModel.fromJson(
+          response.responseData,
+        );
+      }
+    } catch (e) {
+      log("Fetch menu error: $e");
+    } finally {
+      isLoading.value = false;
+    }
+  }
 }

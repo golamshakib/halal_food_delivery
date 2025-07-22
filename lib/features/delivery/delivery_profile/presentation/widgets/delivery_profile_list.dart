@@ -4,6 +4,7 @@ import 'package:halal_food_delivery/core/common/widgets/custom_text.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 import 'package:halal_food_delivery/core/utils/constants/icon_path.dart';
 import 'package:halal_food_delivery/routes/app_routes.dart';
+import '../../../../owner/owner_profile/presentation/screens/owner_edit_profile_screen.dart';
 import 'delivery_logout_bottom_sheet.dart';
 
 class DeliveryProfileList extends StatelessWidget {
@@ -16,14 +17,14 @@ class DeliveryProfileList extends StatelessWidget {
         icon: IconPath.user,
         text: "Your profile",
         onPressed: () {
-          Get.toNamed(AppRoute.deliveryEditProfileScreen);
+          Get.to(() => OwnerEditProfileScreen(isOwner: false));
         },
       ),
       _ListItem(
         icon: IconPath.key,
         text: "Password Manager",
         onPressed: () {
-          Get.toNamed(AppRoute.deliveryChangePasswordScreen);
+          Get.toNamed(AppRoute.ownerChangePasswordScreen);
         },
       ),
       _ListItem(

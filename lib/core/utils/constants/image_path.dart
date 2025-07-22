@@ -1,6 +1,5 @@
 class ImagePath {
   static const String _basePath = 'assets/images';
-  static const String backGroundImage = '$_basePath/backgroundImage.png';
   static const String appLogo = 'assets/logos/appLogo.png';
   static const String image1 = '$_basePath/image1.png';
   static const String image2 = '$_basePath/image2.png';
@@ -28,4 +27,5 @@ class ImagePath {
   static const String fried = '$_basePath/fried.png';
 
   static const String food = '$_basePath/food.png';
+  static const String placeholder = '$_basePath/placeholder.png';
 }

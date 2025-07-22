@@ -5,20 +5,30 @@ import 'package:halal_food_delivery/core/common/widgets/custom_text.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
 import 'package:halal_food_delivery/routes/app_routes.dart';
 
+import '../../../../owner/owner_profile/controllers/owner_edit_profile_controller.dart';
 import '../widgets/delivery_food_list.dart';
 
 class DeliveryHomeScreen extends StatelessWidget {
-  const DeliveryHomeScreen({super.key});
+  DeliveryHomeScreen({super.key});
+  final controller = Get.put(OwnerEditProfileController());
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.fetchProfileData("Name is Delivery Screen");
+    });
     return Scaffold(
-      appBar: CustomHomeAppBar(
-        userName: "John Doe",
-        userImageUrl: 'https://i.pravatar.cc/150?img=1',
-        onNotification: () {
-          Get.toNamed(AppRoute.deliveryNotificationScreen);
-        },
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Obx(
+          () => CustomHomeAppBar(
+            userName: controller.profileModel.value?.data?.name ?? '',
+            userImageUrl: controller.profileModel.value?.data?.image,
+            onNotification: () {
+              Get.toNamed(AppRoute.ownerNotificationScreen);
+            },
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(

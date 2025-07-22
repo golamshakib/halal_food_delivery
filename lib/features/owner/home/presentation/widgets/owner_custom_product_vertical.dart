@@ -89,11 +89,20 @@ class OwnerCustomProductVertical extends StatelessWidget {
           left: 0.w,
           right: 0.w,
           child: Center(
-            child: Image.asset(
-              image,
-              width: 102.w,
-              height: 103.h,
-              fit: BoxFit.cover,
+            child: ClipOval(
+              child: Image.network(
+                image,
+                width: 102.w,
+                height: 103.h,
+                fit: BoxFit.fill,
+                errorBuilder:
+                    (context, error, stackTrace) => Image.asset(
+                      image,
+                      width: 102.w,
+                      height: 103.h,
+                      fit: BoxFit.fill,
+                    ),
+              ),
             ),
           ),
         ),

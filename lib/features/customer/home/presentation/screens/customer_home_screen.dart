@@ -4,27 +4,40 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_text.dart';
 import 'package:halal_food_delivery/core/common/widgets/custom_text_field.dart';
 import 'package:halal_food_delivery/core/utils/constants/app_sizer.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../../../core/common/widgets/custom_home_app_bar.dart';
 import '../../../../../routes/app_routes.dart';
+import '../../../../owner/owner_profile/controllers/owner_edit_profile_controller.dart';
 import '../../controllers/customer_home_controller.dart';
 import '../widgets/customer_home_bannar.dart';
+import '../widgets/customer_nearby_restaurants.dart';
 import '../widgets/customer_offers.dart';
-import '../widgets/customer_restaurants.dart';
 
 class CustomerHomeScreen extends StatelessWidget {
   CustomerHomeScreen({super.key});
   final controller = Get.put(CustomerHomeController());
+  final profileController = Get.put(OwnerEditProfileController());
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      profileController.fetchProfileData("Name is Customer Screen");
+      controller.fetchnearbyRestaurant();
+    });
+
     return Scaffold(
-      appBar: CustomHomeAppBar(
-        userName: "John Doe",
-        userImageUrl: 'https://i.pravatar.cc/150?img=1',
-        onNotification: () {
-          Get.toNamed(AppRoute.customerNotificationScreen);
-        },
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Obx(
+          () => CustomHomeAppBar(
+            userName: profileController.profileModel.value?.data?.name ?? '',
+            userImageUrl: profileController.profileModel.value?.data?.image,
+            onNotification: () {
+              Get.toNamed(AppRoute.ownerNotificationScreen);
+            },
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -37,7 +50,7 @@ class CustomerHomeScreen extends StatelessWidget {
               CustomTextField(
                 textColor: Color(0xffD9D9D9),
                 borderColor: Color(0xff808080),
-                controller: controller.searchController,
+                controller: TextEditingController(),
                 hintText: "Search for food...",
                 readOnly: true,
                 onTap: () {
@@ -59,22 +72,44 @@ class CustomerHomeScreen extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
               SizedBox(height: 12.h),
-              CustomerRestaurants(),
+              CustomerNearbyRestaurants(),
               SizedBox(height: 20.h),
               CustomText(text: "Find nearby", fontWeight: FontWeight.w600),
               SizedBox(height: 12.h),
-              SizedBox(
-                width: 343.w,
-                height: 218.h,
-                child: GoogleMap(
-                  initialCameraPosition: CameraPosition(
-                    target: controller.initialPosition,
-                    zoom: 14.0,
-                  ),
-                  myLocationEnabled: true,
-                  myLocationButtonEnabled: false,
-                  zoomControlsEnabled: false,
-                ),
+              Obx(
+                () =>
+                    controller.isLoading.value
+                        ? Shimmer.fromColors(
+                          baseColor: Colors.grey[300]!,
+                          highlightColor: Colors.grey[100]!,
+                          child: Container(
+                            width: 343.w,
+                            height: 218.h,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                        )
+                        : SizedBox(
+                          width: 343.w,
+                          height: 218.h,
+                          child: GoogleMap(
+                            onMapCreated: controller.onMapCreated,
+                            initialCameraPosition: CameraPosition(
+                              target: controller.initialPosition.value,
+                              zoom: 14.0,
+                            ),
+                            myLocationEnabled: true,
+                            myLocationButtonEnabled: true,
+                            zoomControlsEnabled: true,
+                            zoomGesturesEnabled: true,
+                            scrollGesturesEnabled: true,
+                            tiltGesturesEnabled: true,
+                            rotateGesturesEnabled: true,
+                            markers: controller.markers,
+                          ),
+                        ),
               ),
             ],
           ),
