@@ -26,6 +26,7 @@ class OwnerMenuList extends StatelessWidget {
               : SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 12.h),
                     ...controller.firstTenItems.asMap().entries.map((entry) {

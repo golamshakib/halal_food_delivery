@@ -146,6 +146,15 @@ class OwnerAddMenuController extends GetxController {
       if (response.statusCode == 200) {
         Get.back();
         AppSnackBar.showSuccess("Menu Added Successfully");
+        controller.fetchMenuData();
+        // Clear text fields and reset form state
+        foodNameController.clear();
+        priceController.clear();
+        offerController.clear();
+        descriptionController.clear();
+        pickedImage.value = null;
+        selectedCategory.value = null;
+        isOfferEnabled.value = false;
       } else {
         AppSnackBar.showError("Failed to add menu");
         log('Failed to add menu: ${response.body}');
@@ -180,6 +189,13 @@ class OwnerAddMenuController extends GetxController {
       return;
     }
 
+    // Validate that price is a valid number
+    final parsedPrice = int.tryParse(price);
+    if (parsedPrice == null) {
+      AppSnackBar.showError("Price must be a valid number");
+      return;
+    }
+
     if (description.isEmpty) {
       AppSnackBar.showError("Description is required");
       return;
@@ -192,13 +208,20 @@ class OwnerAddMenuController extends GetxController {
       return;
     }
 
+    // Validate offer price if enabled
+    final parsedOffer = isOfferEnabled.value ? int.tryParse(offer) : 0;
+    if (isOfferEnabled.value && parsedOffer == null) {
+      AppSnackBar.showError("Offer price must be a valid number");
+      return;
+    }
+
     isLoading.value = true;
 
     final requestBody = {
       "name": foodName,
       "description": description,
-      "price": int.tryParse(price),
-      "offerPrice": int.tryParse(offer) ?? 0,
+      "price": parsedPrice,
+      "offerPrice": parsedOffer ?? 0,
       "category": selectedCategory.value!.name,
     };
     log("$requestBody");
