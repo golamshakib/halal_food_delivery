@@ -32,14 +32,14 @@ class Data {
   String? userId;
   String? name;
   String? description;
-  int? price;
-  int? offerPrice;
+  double? price; // Changed to double? to handle both int and double
+  double? offerPrice; // Changed to double? to handle both int and double
   String? category;
   String? image;
   String? createdAt;
   String? updatedAt;
   List<Review>? review;
-  double? averageRating;
+  double? averageRating; // Changed to double? to handle both int and double
 
   Data({
     this.id,
@@ -61,8 +61,10 @@ class Data {
     userId = json['userId'];
     name = json['name'];
     description = json['description'];
-    price = json['price'];
-    offerPrice = json['offerPrice'];
+    price = _toDouble(json['price']); // Use helper to convert int or double
+    offerPrice = _toDouble(
+      json['offerPrice'],
+    ); // Use helper to convert int or double
     category = json['category'];
     image = json['image'];
     createdAt = json['createdAt'];
@@ -73,7 +75,9 @@ class Data {
         review!.add(Review.fromJson(v));
       });
     }
-    averageRating = json['averageRating'];
+    averageRating = _toDouble(
+      json['averageRating'],
+    ); // Use helper to convert int or double
   }
 
   Map<String, dynamic> toJson() {
@@ -94,13 +98,21 @@ class Data {
     data['averageRating'] = averageRating;
     return data;
   }
+
+  // Helper function to convert int or double to double?
+  double? _toDouble(dynamic value) {
+    if (value == null) return null;
+    if (value is int) return value.toDouble();
+    if (value is double) return value;
+    return null; // Handle unexpected types
+  }
 }
 
 class Review {
   String? id;
   String? userId;
   String? foodId;
-  double? rating;
+  double? rating; // Changed to double? to handle both int and double
   String? comment;
   String? createdAt;
   String? updatedAt;
@@ -119,7 +131,7 @@ class Review {
     id = json['id'];
     userId = json['userId'];
     foodId = json['foodId'];
-    rating = json['rating'];
+    rating = _toDouble(json['rating']); // Use helper to convert int or double
     comment = json['comment'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
@@ -135,5 +147,13 @@ class Review {
     data['createdAt'] = createdAt;
     data['updatedAt'] = updatedAt;
     return data;
+  }
+
+  // Helper function to convert int or double to double?
+  double? _toDouble(dynamic value) {
+    if (value == null) return null;
+    if (value is int) return value.toDouble();
+    if (value is double) return value;
+    return null; // Handle unexpected types
   }
 }
